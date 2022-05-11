@@ -6,14 +6,14 @@ from wtforms.validators import DataRequired, Email, Length, NumberRange, email_v
 
 
 class RegisterForm(FlaskForm):
-    username = StringField('username', render_kw={'placeholder':'Unique Username'}, validators=[DataRequired()])
-    password = PasswordField('password', render_kw={'placeholder':'Password'}, validators=[DataRequired()])
-    email = EmailField('email', render_kw={'placeholder':'Email Address (for account recovery)'}, validators=[Email()])
-    age = IntegerField('age', render_kw={'placeholder':'Your age please'}, validators=[NumberRange(min=8, max=120)])
-    zipcode = IntegerField('zipcode', render_kw={'placeholder':'Your Zip Code'}, validators=[Length(min=5, max=5, message='Only U.S. zipcodes accepted(5 numbers total)')])
+    username = StringField('Username', render_kw={'placeholder':'Unique Username'}, validators=[DataRequired()])
+    password = PasswordField('Password', render_kw={'placeholder':'Password'}, validators=[DataRequired()])
+    email = EmailField('Email', render_kw={'placeholder':'Email Address'}, validators=[Email()])
+    age = IntegerField('Age', render_kw={'placeholder':'Your age'}, validators=[NumberRange(min=8, max=120)])
+    zipcode = StringField('Zip Code', render_kw={'placeholder':'Your Zip Code'}, validators=[Length(min=5, max=5, message='Only U.S. zipcodes accepted(5 numbers total)')])
     submit = SubmitField('Submit')
     
 class LoginForm(FlaskForm):
-    username = StringField('username', render_kw={'placeholder':'Unique Username'}, validators=[DataRequired()])
-    password = PasswordField('password', render_kw={'placeholder':'Password'}, validators=[DataRequired()])
-    submit = SubmitField('submit')
+    username = StringField('Username', render_kw={'placeholder':'Username'}, validators=[DataRequired()])
+    password = PasswordField('Password', render_kw={'placeholder':'Password'}, validators=[DataRequired()])
+    submit = SubmitField('Submit')

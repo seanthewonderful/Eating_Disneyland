@@ -1,5 +1,4 @@
 {% extends 'bootstrap/base.html' %}
-{% import 'bootstrap/wtf.html' as wtf %}
 
 {% include 'navbar.html' %}
 
@@ -7,8 +6,26 @@
 
 {% block content %} 
 
-{{ wtf.quick_form(form, novalidate=True) }}
-<p>Need to Register an account first?</p>
-<a class="btn btn-primary" href="{{ url_for('register') }}" role="button">Register</a>
+<div class="container justify-content-md-center">
+    <form class="" method="post" action="{{ url_for('login') }}">
+        <h2 class="heading">Login</h2>
+            {{ form.csrf_token }}
+        <div class="form-group m-2 col-4">
+            {{ form.username.label }}
+            {{ form.username(class="form-control") }}
+        </div>
+        <div class="form-group m-2 col-4">
+            {{ form.password.label }}
+            {{ form.password(class="form-control") }}
+        </div>
+        <div class="form-group m-2 col">
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
+    </form>
+    <div class="m-2">
+        <p style="padding-top:3%">Need to Register an account first?</p>
+        <a class="btn btn-primary btn-sm" href="{{ url_for('register') }}" role="button">Register</a>
+    </div>
+</div>
 
 {% endblock %}

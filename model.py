@@ -1,29 +1,30 @@
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import UserMixin
 
 
 db = SQLAlchemy()
 
 
-class User(db.Model):
+class User(UserMixin, db.Model):
     __tablename__ = "users"
     # if tablename not set, automatically creates lower case version 
-    user_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    username = db.Column(db.String(64), nullable=False)
-    password = db.Column(db.String(64), nullable=False)
-    email = db.Column(db.String(100), nullable=True)
+    id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    username = db.Column(db.String(250), nullable=False)
+    password = db.Column(db.String(250), nullable=False)
+    email = db.Column(db.String(250), nullable=True)
     age = db.Column(db.Integer, nullable=True)
-    zipcode = db.Column(db.String(15), nullable=True)
+    zipcode = db.Column(db.String(250), nullable=True)
     
     def __repr__(self):
-        return f"<User user_id={self.user_id} username={self.username}>"
+        return f"<User id={self.id} username={self.username}>"
 
 
 class Restaurant(db.Model):
     __tablename__ = "restaurants"
     
     rest_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
-    land = db.Column(db.String(50), nullable=True)
+    name = db.Column(db.String(250), nullable=False)
+    land = db.Column(db.String(250), nullable=True)
     expense = db.Column(db.Integer, nullable=True)
     star_avg = db.Column(db.Float, nullable=True)
     total_ratings = db.Column(db.Integer, nullable=True)
@@ -49,7 +50,7 @@ class Rating(db.Model):
     
     rating_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     rest_id = db.Column(db.Integer, db.ForeignKey('restaurants.rest_id'))
-    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     star_rating = db.Column(db.Integer, nullable=True)
     review = db.Column(db.String(2000), nullable=True)
     

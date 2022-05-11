@@ -7,7 +7,7 @@ from flask_bootstrap import Bootstrap
 from model import connect_to_db, User, Restaurant, Rating, db
 from forms import RegisterForm, LoginForm
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import login_user, logout_user
+from flask_login import LoginManager, login_user, logout_user
 
 
 
@@ -17,8 +17,9 @@ app.secret_key = "6fb0ad050f264f45b1c29962f08ff548"
 
 app.jinja_env.undefined = StrictUndefined
 app.config["DEBUG_TB_INTERCEPT_REDIRECTS"]=False
+login_manager = LoginManager()
+login_manager.init_app(app)
 
-# disneyland_map = Map([33.812034, -117.918968], 15)
 
 @app.route("/")
 def home():
@@ -56,8 +57,10 @@ def register():
 def login():
     form = LoginForm()
     if form.validate_on_submit():
+        print("Validated")
         user = User.query.filter_by(username=form.username.data).first()
         if user:
+            print("User found")
             password = form.password.data
             if check_password_hash(user.password, password):
                 print("PW Checked")
@@ -77,6 +80,11 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for('home'))
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 
 @app.route('/restaurants')
