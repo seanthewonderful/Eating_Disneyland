@@ -1,0 +1,68 @@
+{% extends 'bootstrap/base.html' %}
+
+{% includes 'navbar.html' %}
+
+{% block title %}Everywhere to Eat{% endblock %}
+
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+{% endblock %}
+
+{% block content %} 
+
+{% for each in restaurants %} 
+<div class="card" >
+    <div class="front" style="background-image: url('{{ restaurant.img_url }}');">
+        <p class="large">{{ each.land }}</p>
+    </div>
+    <div class="back">
+      <div>
+    <div class="title">{{ each.name }} <span class="release_date">({{ each.expense }})</span></div>
+        <div class="rating">
+            <label>{{ each.star_avg }}</label>
+          <i class="fas fa-star star"></i>
+        </div>
+          <p class="review">"{{ each.review }}"</p>
+        <p class="overview">
+            {% if each.full_service %}
+            Full-Service<br>
+            {% endif %}
+            {% if each.breakfast %}
+            Breakfast<br>
+            {% endif %}}
+            {% if each.american %}
+            American<br>
+            {% endif %}}
+            {% if each.southern %}
+            Southern<br>
+            {% endif %}}
+            {% if each.mexican %}
+            Mexican<br>
+            {% endif %}}
+            {% if each.italian %}
+            Italian<br>
+            {% endif %}}
+            {% if each.dessert %}
+            Dessert<br>
+            {% endif %}}
+            {% if each.snacks %}
+            Snacks<br>
+            {% endif %}}
+            {% if each.coffee %}
+            Coffee<br>
+            {% endif %}}
+            {% if each.beverage_only %}
+            Beverages Only<br>
+            {% endif %}}
+        </p>
+
+        <a href="{{ url_for('edit', rest_id=each.id) }}" class="button">Update</a>
+        <!-- <a href="{{ url_for('delete', rest_id=each.id) }}" class="button delete-button">Delete</a> -->
+
+      </div>
+    </div>
+  </div>
+{% endfor %}
+
+{% endblock %}

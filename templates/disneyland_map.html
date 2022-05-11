@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_564604d6ad960940f9f2f69b5d0717be {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_564604d6ad960940f9f2f69b5d0717be" ></div>
+        
+</body>
+<script>    
+    
+            var map_564604d6ad960940f9f2f69b5d0717be = L.map(
+                "map_564604d6ad960940f9f2f69b5d0717be",
+                {
+                    center: [33.812034, -117.918968],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 15,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_2c0cd977aecfe99481f76b3e3aa5a5aa = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_564604d6ad960940f9f2f69b5d0717be);
+        
+    
+            var marker_24c8d979c89dadc09dda60a0a6b305cf = L.marker(
+                [33.811067, -117.919103],
+                {}
+            ).addTo(map_564604d6ad960940f9f2f69b5d0717be);
+        
+    
+            var icon_370f175de87866c92544746910077ef0 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-coffee", "iconColor": "orange", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_24c8d979c89dadc09dda60a0a6b305cf.setIcon(icon_370f175de87866c92544746910077ef0);
+        
+    
+        var popup_11772cb04a299e12283920662d706cf2 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_590a753d718cc80fe1ebd04c63b3f454 = $(`<div id="html_590a753d718cc80fe1ebd04c63b3f454" style="width: 100.0%; height: 100.0%;"><a href='https://eatingdisneyland.com'>Click Me</a></div>`)[0];
+            popup_11772cb04a299e12283920662d706cf2.setContent(html_590a753d718cc80fe1ebd04c63b3f454);
+        
+
+        marker_24c8d979c89dadc09dda60a0a6b305cf.bindPopup(popup_11772cb04a299e12283920662d706cf2)
+        ;
+
+        
+    
+    
+            marker_24c8d979c89dadc09dda60a0a6b305cf.bindTooltip(
+                `<div>
+                     Carnation Cafe
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e13fbb3177a9e70a0d788301817b25a8 = L.marker(
+                [33.811165, -117.919086],
+                {}
+            ).addTo(map_564604d6ad960940f9f2f69b5d0717be);
+        
+    
+        var popup_ed3c8e396c39dec7ab0c81424dbf7385 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_1606cd75ecc2043ccb704c43bcb690ba = $(`<div id="html_1606cd75ecc2043ccb704c43bcb690ba" style="width: 100.0%; height: 100.0%;">Gibson Girl Ice Cream</div>`)[0];
+            popup_ed3c8e396c39dec7ab0c81424dbf7385.setContent(html_1606cd75ecc2043ccb704c43bcb690ba);
+        
+
+        marker_e13fbb3177a9e70a0d788301817b25a8.bindPopup(popup_ed3c8e396c39dec7ab0c81424dbf7385)
+        ;
+
+        
+    
+    
+            marker_e13fbb3177a9e70a0d788301817b25a8.bindTooltip(
+                `<div>
+                     Gibson Girl
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_83581e8a127407beae653d1617819fb7 = L.marker(
+                [33.81144, -117.919081],
+                {}
+            ).addTo(map_564604d6ad960940f9f2f69b5d0717be);
+        
+    
+            var icon_16fb44cbdec4762cedd7ca65453176e1 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-spoon", "iconColor": "red", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_83581e8a127407beae653d1617819fb7.setIcon(icon_16fb44cbdec4762cedd7ca65453176e1);
+        
+    
+        var popup_fa40f50aa8904469486e7018cc5062d5 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_9105bf1e26cecfccae69a973bc2f438f = $(`<div id="html_9105bf1e26cecfccae69a973bc2f438f" style="width: 100.0%; height: 100.0%;">Refreshment Corner</div>`)[0];
+            popup_fa40f50aa8904469486e7018cc5062d5.setContent(html_9105bf1e26cecfccae69a973bc2f438f);
+        
+
+        marker_83581e8a127407beae653d1617819fb7.bindPopup(popup_fa40f50aa8904469486e7018cc5062d5)
+        ;
+
+        
+    
+    
+            var marker_688df88713725605cfcaf93c44565036 = L.marker(
+                [33.8116963939521, -117.91851581766903],
+                {}
+            ).addTo(map_564604d6ad960940f9f2f69b5d0717be);
+        
+    
+        var popup_b319ccd9733db6ff05510f15bcd3ee62 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_509e6a4b54172492c9404af7d77e2a42 = $(`<div id="html_509e6a4b54172492c9404af7d77e2a42" style="width: 100.0%; height: 100.0%;">Plaza Inn</div>`)[0];
+            popup_b319ccd9733db6ff05510f15bcd3ee62.setContent(html_509e6a4b54172492c9404af7d77e2a42);
+        
+
+        marker_688df88713725605cfcaf93c44565036.bindPopup(popup_b319ccd9733db6ff05510f15bcd3ee62)
+        ;
+
+        
+    
+    
+            var marker_c5255e1e83c24e3aee740e1e20a1cac2 = L.marker(
+                [33.81148556711443, -117.9186905116349],
+                {}
+            ).addTo(map_564604d6ad960940f9f2f69b5d0717be);
+        
+    
+        var popup_97c4160a0b6a31aa8424b94cacd35bdf = L.popup({"maxWidth": "100%"});
+
+        
+            var html_16fbdc29e138efb58834d6a848203905 = $(`<div id="html_16fbdc29e138efb58834d6a848203905" style="width: 100.0%; height: 100.0%;">Little Red Wagon</div>`)[0];
+            popup_97c4160a0b6a31aa8424b94cacd35bdf.setContent(html_16fbdc29e138efb58834d6a848203905);
+        
+
+        marker_c5255e1e83c24e3aee740e1e20a1cac2.bindPopup(popup_97c4160a0b6a31aa8424b94cacd35bdf)
+        ;
+
+        
+    
+    
+            var marker_32a35e76403b05fcd2c7985c9b220cc1 = L.marker(
+                [33.81168285912394, -117.9193818473908],
+                {}
+            ).addTo(map_564604d6ad960940f9f2f69b5d0717be);
+        
+    
+            var icon_8850e6c969dfb266ce3efcbb861479af = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-cutlery", "iconColor": "dodgerblue", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_32a35e76403b05fcd2c7985c9b220cc1.setIcon(icon_8850e6c969dfb266ce3efcbb861479af);
+        
+    
+        var popup_9ebd1c798d17b8a39682591ac719d008 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_42dde3c41b3dabc680ce57ebf768de8d = $(`<div id="html_42dde3c41b3dabc680ce57ebf768de8d" style="width: 100.0%; height: 100.0%;">Jolly Holiday Bakery Cafe</div>`)[0];
+            popup_9ebd1c798d17b8a39682591ac719d008.setContent(html_42dde3c41b3dabc680ce57ebf768de8d);
+        
+
+        marker_32a35e76403b05fcd2c7985c9b220cc1.bindPopup(popup_9ebd1c798d17b8a39682591ac719d008)
+        ;
+
+        
+    
+    
+            var marker_94ba754100ff11780ed5d8964df5b28c = L.marker(
+                [33.81245859568607, -117.9199964482139],
+                {}
+            ).addTo(map_564604d6ad960940f9f2f69b5d0717be);
+        
+    
+        var popup_478dbac52994924da45d777506b60946 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_c049d50791890b12bbecd7e6792dee56 = $(`<div id="html_c049d50791890b12bbecd7e6792dee56" style="width: 100.0%; height: 100.0%;">Rancho Del Zocalo</div>`)[0];
+            popup_478dbac52994924da45d777506b60946.setContent(html_c049d50791890b12bbecd7e6792dee56);
+        
+
+        marker_94ba754100ff11780ed5d8964df5b28c.bindPopup(popup_478dbac52994924da45d777506b60946)
+        ;
+
+        
+    
+    
+            var marker_934cc019f35156454bf26fccc5003f0c = L.marker(
+                [33.81374305708073, -117.91773874128609],
+                {}
+            ).addTo(map_564604d6ad960940f9f2f69b5d0717be);
+        
+    
+        var popup_597fad4a4f75a553ecbfc05ecbe12e3f = L.popup({"maxWidth": "100%"});
+
+        
+            var html_4925c4ba5213a4c8199787628a5af46c = $(`<div id="html_4925c4ba5213a4c8199787628a5af46c" style="width: 100.0%; height: 100.0%;">Edelweiss Snacks</div>`)[0];
+            popup_597fad4a4f75a553ecbfc05ecbe12e3f.setContent(html_4925c4ba5213a4c8199787628a5af46c);
+        
+
+        marker_934cc019f35156454bf26fccc5003f0c.bindPopup(popup_597fad4a4f75a553ecbfc05ecbe12e3f)
+        ;
+
+        
+    
+    
+            var marker_d7f5e4ef03b521c12da831c2ad2da1bf = L.marker(
+                [33.81346065509974, -117.9194651550013],
+                {}
+            ).addTo(map_564604d6ad960940f9f2f69b5d0717be);
+        
+    
+        var popup_bc25c2b31c09612945307e7699b265d7 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_2e9506ed93c8831b434df098eff8f3c8 = $(`<div id="html_2e9506ed93c8831b434df098eff8f3c8" style="width: 100.0%; height: 100.0%;">Red Rose Taverne</div>`)[0];
+            popup_bc25c2b31c09612945307e7699b265d7.setContent(html_2e9506ed93c8831b434df098eff8f3c8);
+        
+
+        marker_d7f5e4ef03b521c12da831c2ad2da1bf.bindPopup(popup_bc25c2b31c09612945307e7699b265d7)
+        ;
+
+        
+    
+</script>

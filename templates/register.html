@@ -1,0 +1,14 @@
+{% extends 'bootstrap/base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% include 'navbar.html' %}
+
+{% block title %}Sign on up!{% endblock %}
+
+{% block content %} 
+<div class="content">
+<h2 class="heading">Register an account</h2>
+    {{ wtf.quick_form(form, novalidate=True) }}
+</div>
+
+{% endblock %}

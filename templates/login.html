@@ -1,0 +1,14 @@
+{% extends 'bootstrap/base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% include 'navbar.html' %}
+
+{% block title %}Log on in!{% endblock %}
+
+{% block content %} 
+
+{{ wtf.quick_form(form, novalidate=True) }}
+<p>Need to Register an account first?</p>
+<a class="btn btn-primary" href="{{ url_for('register') }}" role="button">Register</a>
+
+{% endblock %}
