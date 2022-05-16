@@ -2,7 +2,7 @@ from flask import Flask, redirect, render_template, flash, url_for
 from jinja2 import StrictUndefined
 import folium
 from flask_debugtoolbar import DebugToolbarExtension
-from flask_bootstrap import Bootstrap
+# from flask_bootstrap import Bootstrap
 # from map import Map
 from model import connect_to_db, User, Restaurant, Rating, db
 from forms import DeleteUser, UpdateUser, RegisterForm, LoginForm, AddRestaurant
@@ -13,7 +13,7 @@ from make_map import make_map
 
 
 app = Flask(__name__)
-Bootstrap(app)
+# Bootstrap(app)
 app.secret_key = "6fb0ad050f264f45b1c29962f08ff548"
 
 app.jinja_env.undefined = StrictUndefined
