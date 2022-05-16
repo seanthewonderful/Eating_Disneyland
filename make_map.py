@@ -1,7 +1,7 @@
 import folium
 from folium.plugins import MarkerCluster
 import pandas as pd
-import model
+# import model
 
 
 carnation_cafe_coords = [33.811067, -117.919103]
@@ -42,93 +42,117 @@ maurices_treats_coords = [33.81250160079871, -117.91931709893191]
 
 coords_list = []
 
-# disneyland_map = folium.Map(location=[33.812034, -117.918968], zoom_start=15)
 
 # restaurant = model.Restaurant.query.filter_by(name='Harbour Galley').first()
-
-html = """
-        <div>
-        <img style="max-width: 175px;" src="https://farm8.static.flickr.com/7384/12143860156_c84d299f7e_b.jpg"><br>
-        <h4>{{ restaurant.name }}</h4>
-        <p>Here's the Harbour Galley</p>
-        </div>
-        """
-# iframe = folium.Element.IFrame(html=html, width=500, height=400)
-popup = folium.Popup(html, max_width=200)
-
-def make_map():
-    disneyland_map = folium.Map(location=[33.812034, -117.918968], zoom_start=16, min_zoom=15, max_zoom=19)
-
-    folium.Marker(carnation_cafe_coords, tooltip="Carnation Cafe", popup = "<a href='https://eatingdisneyland.com'>Click Me</a>",
-                icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
-    folium.Marker(gibson_girl_coords, tooltip='Gibson Girl', popup = 'Gibson Girl Ice Cream',
-                icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
-    folium.Marker(refreshment_corner_coords, tooltip='Refreshment Corner', popup = 'Refreshment Corner',
-                icon=folium.Icon(icon_color='white', icon='fa-spoon', prefix='fa')).add_to(disneyland_map)
-    folium.Marker(plaza_inn_coords, tooltip="Plaza Inn", popup = 'Plaza Inn',
-                icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
-    folium.Marker(little_red_wagon_coords, tooltip='Little Red Wagon', popup = 'Little Red Wagon',
-                icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
-    folium.Marker(jolly_holliday_coords, tooltip='Jolly Holiday Bakery Cafe', popup = 'Jolly Holiday Bakery Cafe', 
-                icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
-    folium.Marker(rancho_del_zocalo_coords, tooltip="Rancho del Zocalo", popup = 'Rancho Del Zocalo',
-                icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
-    folium.Marker(edelweiss_snacks_coords, tooltip="Edelweiss Snacks", popup = 'Edelweiss Snacks',
-                icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
-    folium.Marker(red_rose_coords, tooltip="Red Rose Taverne", popup = 'Red Rose Taverne',
-                icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
-    folium.Marker(pizza_planet_coords, tooltip="Alien Pizza Planet", popup="Alien Pizza Planet",
-                icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
-    folium.Marker(galactic_grill_coords, tooltip="Galactic Grill", popup="Galactic Grill",
-                icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
-    folium.Marker(edelweiss_snacks_coords, tooltip="Edelweiss Snacks", popup="Edelweiss Snacks",
-                icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
-    folium.Marker(troubador_tavern_coords, tooltip="Troubador Tavern", popup="Troubador Tavern",
-                icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
-    folium.Marker(daisys_diner_coords, tooltip="Daisy's Diner", popup="Daisy's Diner",
-                icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
-    folium.Marker(plutos_doghouse_coords, tooltip="Pluto's Doghouse", popup="Pluto's Doghouse",
-                icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
-    folium.Marker(clarabelles_coords, tooltip="Clarabelle's", popup="Clarabelle's",
-                icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
-    folium.Marker(milk_stand_coords, tooltip="Milk Stand", popup="Milk Stand",
-                icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
-    folium.Marker(ogas_cantina_coords, tooltip="Oga's Cantina", popup="Oga's Cantina",
-                icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
-    folium.Marker(docking_bay_coords, tooltip="Docking Bay 7 Food & Cargo", popup="Docking Bay 7 Food & Cargo",
-                icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
-    folium.Marker(ronto_roasters_coords, tooltip="Ronto Roasters", popup="Ronto Roasters",
-                icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
-    folium.Marker(hungry_bear_coords, tooltip="Hungry Bear Restaurant", popup="Hungry Bear Restaurant",
-                icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
-    folium.Marker(harbour_galley_coords, tooltip="Harbour Galley", popup=popup,
-                icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
-    folium.Marker(mint_julep_coords, tooltip="Mint Julep Bar", popup="Mint Julep Bar",
-                icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
-    folium.Marker(french_market_coords, tooltip="French Market Restaurant", popup="French Market Restaurant",
-                icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
-    folium.Marker(cafe_orleans_coords, tooltip="Cafe Orleans", popup="Cafe Orleans",
-                icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
-    folium.Marker(blue_bayou_coords, tooltip="Blue Bayou", popup="Blue Bayou",
-                icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
-    folium.Marker(royal_street_veranda_coords, tooltip="Royal Street Veranda", popup="Royal Street Veranda",
-                icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
-    folium.Marker(river_belle_coords, tooltip="River Belle Terrace", popup="River Belle Terrace",
-                icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
-    folium.Marker(bengal_bbq_coords, tooltip="Bengal Barbecue", popup="Bengal Barbecue",
-                icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
-    folium.Marker(stage_door_coords, tooltip="Stage Door Cafe", popup="Stage Door Cafe",
-                icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
-    folium.Marker(golden_horseshoe_coords, tooltip="The Golden Horseshoe", popup="The Golden Horseshoe",
-                icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
-    folium.Marker(turkey_leg_cart, tooltip="Turkey Leg Cart", popup="Turkey Leg Cart",
-                icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
-    folium.Marker(maurices_treats_coords, tooltip="Maurice's Treats", popup="Maurice's Treats",
-                icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
-
-    # folium.TileLayer('stamenwatercolor').add_to(disneyland_map)
+def make_map(restaurants):
     
-    disneyland_map.save('templates/disneyland_map.html')
+    disneyland_map = folium.Map(location=[33.812034, -117.918968], zoom_start=16, min_zoom=15, max_zoom=19)
+    
+    for each in restaurants:
+        
+        html = """
+                <div>
+                <img style="max-width: 175px;" src="{0}"><br>
+                <h4>{1}</h4>
+                <p>{2}</p>
+                <p>{3}</p>
+                </div>
+                """
+        popup = folium.Popup(html.format(each.image_url, each.name, each.expense, each.land), max_width=200)
+        
+        folium.Marker([each.x_coord, each.y_coord], tooltip=each.name, popup=popup,
+                icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
+        
+        disneyland_map.save('templates/disneyland_map.html')
+
+
+
+
+
+# def make_map(restaurant):
+#     name = restaurant.name
+#     html = """
+#             <div>
+#             <img style="max-width: 175px;" src="https://farm8.static.flickr.com/7384/12143860156_c84d299f7e_b.jpg"><br>
+#             <h4>{0}</h4>
+#             <p>Here's the Harbour Galley</p>
+#             </div>
+#             """
+#     # iframe = folium.Element.IFrame(html=html, width=500, height=400)
+#     popup = folium.Popup(html.format(name), max_width=200)
+
+#     disneyland_map = folium.Map(location=[33.812034, -117.918968], zoom_start=16, min_zoom=15, max_zoom=19)
+
+#     folium.Marker(carnation_cafe_coords, tooltip="Carnation Cafe", popup = "<a href='https://eatingdisneyland.com'>Click Me</a>",
+#                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
+#     folium.Marker(gibson_girl_coords, tooltip='Gibson Girl', popup = 'Gibson Girl Ice Cream',
+#                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
+#     folium.Marker(refreshment_corner_coords, tooltip='Refreshment Corner', popup = 'Refreshment Corner',
+#                 icon=folium.Icon(icon_color='white', icon='fa-spoon', prefix='fa')).add_to(disneyland_map)
+#     folium.Marker(plaza_inn_coords, tooltip="Plaza Inn", popup = 'Plaza Inn',
+#                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
+#     folium.Marker(little_red_wagon_coords, tooltip='Little Red Wagon', popup = 'Little Red Wagon',
+#                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
+#     folium.Marker(jolly_holliday_coords, tooltip='Jolly Holiday Bakery Cafe', popup = 'Jolly Holiday Bakery Cafe', 
+#                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
+#     folium.Marker(rancho_del_zocalo_coords, tooltip="Rancho del Zocalo", popup = 'Rancho Del Zocalo',
+#                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
+#     folium.Marker(edelweiss_snacks_coords, tooltip="Edelweiss Snacks", popup = 'Edelweiss Snacks',
+#                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
+#     folium.Marker(red_rose_coords, tooltip="Red Rose Taverne", popup = 'Red Rose Taverne',
+#                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
+#     folium.Marker(pizza_planet_coords, tooltip="Alien Pizza Planet", popup="Alien Pizza Planet",
+#                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
+#     folium.Marker(galactic_grill_coords, tooltip="Galactic Grill", popup="Galactic Grill",
+#                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
+#     folium.Marker(edelweiss_snacks_coords, tooltip="Edelweiss Snacks", popup="Edelweiss Snacks",
+#                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
+#     folium.Marker(troubador_tavern_coords, tooltip="Troubador Tavern", popup="Troubador Tavern",
+#                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
+#     folium.Marker(daisys_diner_coords, tooltip="Daisy's Diner", popup="Daisy's Diner",
+#                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
+#     folium.Marker(plutos_doghouse_coords, tooltip="Pluto's Doghouse", popup="Pluto's Doghouse",
+#                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
+#     folium.Marker(clarabelles_coords, tooltip="Clarabelle's", popup="Clarabelle's",
+#                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
+#     folium.Marker(milk_stand_coords, tooltip="Milk Stand", popup="Milk Stand",
+#                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
+#     folium.Marker(ogas_cantina_coords, tooltip="Oga's Cantina", popup="Oga's Cantina",
+#                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
+#     folium.Marker(docking_bay_coords, tooltip="Docking Bay 7 Food & Cargo", popup="Docking Bay 7 Food & Cargo",
+#                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
+#     folium.Marker(ronto_roasters_coords, tooltip="Ronto Roasters", popup="Ronto Roasters",
+#                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
+#     folium.Marker(hungry_bear_coords, tooltip="Hungry Bear Restaurant", popup="Hungry Bear Restaurant",
+#                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
+#     folium.Marker(harbour_galley_coords, tooltip="Harbour Galley", popup=popup,
+#                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
+#     folium.Marker(mint_julep_coords, tooltip="Mint Julep Bar", popup="Mint Julep Bar",
+#                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
+#     folium.Marker(french_market_coords, tooltip="French Market Restaurant", popup="French Market Restaurant",
+#                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
+#     folium.Marker(cafe_orleans_coords, tooltip="Cafe Orleans", popup="Cafe Orleans",
+#                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
+#     folium.Marker(blue_bayou_coords, tooltip="Blue Bayou", popup="Blue Bayou",
+#                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
+#     folium.Marker(royal_street_veranda_coords, tooltip="Royal Street Veranda", popup="Royal Street Veranda",
+#                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
+#     folium.Marker(river_belle_coords, tooltip="River Belle Terrace", popup="River Belle Terrace",
+#                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
+#     folium.Marker(bengal_bbq_coords, tooltip="Bengal Barbecue", popup="Bengal Barbecue",
+#                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
+#     folium.Marker(stage_door_coords, tooltip="Stage Door Cafe", popup="Stage Door Cafe",
+#                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
+#     folium.Marker(golden_horseshoe_coords, tooltip="The Golden Horseshoe", popup="The Golden Horseshoe",
+#                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
+#     folium.Marker(turkey_leg_cart, tooltip="Turkey Leg Cart", popup="Turkey Leg Cart",
+#                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
+#     folium.Marker(maurices_treats_coords, tooltip="Maurice's Treats", popup="Maurice's Treats",
+#                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
+
+#     # folium.TileLayer('stamenwatercolor').add_to(disneyland_map)
+    
+#     disneyland_map.save('templates/disneyland_map.html')
 
 
 

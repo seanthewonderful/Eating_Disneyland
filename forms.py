@@ -48,4 +48,5 @@ class AddRestaurant(FlaskForm):
     snacks = BooleanField('Snacks')
     coffee = BooleanField('Coffee')
     beverage_only = BooleanField('Beverage Only')
+    x_coord = 
     submit = SubmitField('Submit')
