@@ -5,9 +5,10 @@ from flask_debugtoolbar import DebugToolbarExtension
 from flask_bootstrap import Bootstrap
 # from map import Map
 from model import connect_to_db, User, Restaurant, Rating, db
-from forms import RegisterForm, LoginForm
+from forms import DeleteUser, UpdateUser, RegisterForm, LoginForm, AddRestaurant
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import LoginManager, login_user, logout_user
+from flask_login import LoginManager, login_user, logout_user, login_required, current_user
+from make_map import make_map
 
 
 
@@ -28,12 +29,14 @@ def home():
 
 @app.route('/map')
 def map():
+    make_map()
     return render_template('disneyland_map.html')
 
 
 @app.route('/register', methods=["GET", "POST"])
 def register():
     form = RegisterForm()
+    form.validate()
     if form.validate_on_submit():
         username = form.username.data
         password = generate_password_hash(form.password.data, method='pbkdf2:sha256', salt_length=8)
@@ -82,6 +85,21 @@ def logout():
     return redirect(url_for('home'))
 
 
+@app.route('/delete_user', methods=["GET", "POST"])
+def delete_user():
+    form = DeleteUser()
+    # form.validate()
+    if form.validate_on_submit():
+        print("form validated")
+        return redirect(url_for('delete_user'))
+    return render_template('delete_user.html', form=form)
+
+
+@app.route('/profile', methods=["GET", "POST"])
+def profile():
+    return render_template('profile.html')
+
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
@@ -91,6 +109,37 @@ def load_user(user_id):
 def restaurants():
     restaurants = Restaurant.query.all()
     return render_template('restaurants.html', restaurants=restaurants)
+
+
+@app.route('/add_restaurant', methods=["GET", "POST"])
+def add_restaurant():
+    form = AddRestaurant()
+    if form.validate_on_submit():
+        print("Form validated")
+        if Restaurant.query.filter_by(name=form.name.data).first():
+            flash("Restaurant already exists")
+            return redirect(url_for('add_restaurant'))
+        new_restaurant = Restaurant(
+            name = form.name.data,
+            image_url = form.image_url.data,
+            land = form.land.data,
+            expense = form.expense.data,
+            full_service = form.full_service.data,
+            breakfast = form.breakfast.data,
+            american = form.american.data,
+            southern = form.southern.data,
+            mexican = form.mexican.data,
+            italian = form.italian.data,
+            dessert = form.dessert.data,
+            snacks = form.snacks.data,
+            coffee = form.coffee.data,
+            beverage_only = form.beverage_only.data
+        )
+        db.session.add(new_restaurant)
+        db.session.commit()
+        flash("Restaurant added successfully")
+        return redirect(url_for('add_restaurant'))
+    return render_template('addrestaurant.html', form=form)
 
 
 if __name__ == "__main__":

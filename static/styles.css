@@ -6,7 +6,7 @@ html {
     line-height: 1.5;
     font-weight: 300;
     color: #333;
-    font-family: "Nunito Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 body {
     margin: 0;
@@ -63,10 +63,10 @@ p.overview {
 .card {
     color: inherit;
     cursor: pointer;
-    width: calc(33% - 3rem);
-    min-width: calc(33% - 3rem);
-    height: 400px;
-    min-height: 400px;
+    width: calc(50% - 3rem);
+    min-width: calc(50% - 3rem);
+    height: 300px;
+    min-height: 300px;
     perspective: 1000px;
     margin: 1rem auto;
     position: relative;
@@ -125,7 +125,7 @@ p.overview {
     transform: rotateY(-180deg);
 }
 .back {
-    background: #fff;
+    background: rgba(234, 234, 187, 0.725);
     transform: rotateY(-180deg);
     padding: 0 2em;
 }
