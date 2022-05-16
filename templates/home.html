@@ -7,9 +7,13 @@
     {% include 'navbar.html' %}
     {% block content %}
     
-    <div class="container">
-
-        <iframe class="map" src="{{ url_for('map') }}" width="700" height="700" style="border: 2px solid black;"></iframe>
+    <div class="container map-container">
+        <div class="iframe-container">
+            <iframe class="map" src="{{ url_for('map') }}" width="700" height="700" style="border: 2px solid black;"></iframe>
+        </div>
+        <div class="">
+            Other content here
+        </div>
     </div>
     {% endblock %}
 

@@ -1,6 +1,7 @@
 import folium
 from folium.plugins import MarkerCluster
 import pandas as pd
+import model
 
 
 carnation_cafe_coords = [33.811067, -117.919103]
@@ -43,32 +44,17 @@ coords_list = []
 
 # disneyland_map = folium.Map(location=[33.812034, -117.918968], zoom_start=15)
 
-# icon_icecream = folium.features.CustomIcon('static/images/', icon_size=(100,100))
+# restaurant = model.Restaurant.query.filter_by(name='Harbour Galley').first()
 
-# class Map:
-#     def __init__(self, center, zoom_start):
-#         self.center = center
-#         self.zoom_start = zoom_start
-    
-#     def showMap(self):
-#         #Create the map
-#         # disneyland_map = folium.Map(location=[33.812034, -117.918968], zoom_start=15)
-#         disneyland_map = folium.Map(location = self.center, zoom_start = self.zoom_start)
-        
-#         folium.Marker(carnation_cafe_coords, tooltip="Carnation Cafe", popup = "<a href='https://eatingdisneyland.com'>Click Me</a>",
-#                     icon=folium.Icon(icon_color='orange', icon='fa-coffee', prefix='fa')).add_to(disneyland_map)
-#         folium.Marker(gibson_girl_coords, tooltip='Gibson Girl', popup = 'Gibson Girl Ice Cream').add_to(disneyland_map)
-#         folium.Marker(refreshment_corner_coords, popup = 'Refreshment Corner',
-#                     icon=folium.Icon(icon_color='red', icon='fa-spoon', prefix='fa')).add_to(disneyland_map)
-#         folium.Marker(plaza_inn_coords, popup = 'Plaza Inn').add_to(disneyland_map)
-#         folium.Marker(little_red_wagon_coords, popup = 'Little Red Wagon').add_to(disneyland_map)
-#         folium.Marker(jolly_holliday_coords, popup = 'Jolly Holiday Bakery Cafe', 
-#                     icon=folium.Icon(icon_color='dodgerblue', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
-#         folium.Marker(rancho_del_zocalo_coords, popup = 'Rancho Del Zocalo').add_to(disneyland_map)
-#         folium.Marker(edelweiss_snacks_coords, popup = 'Edelweiss Snacks').add_to(disneyland_map)
-#         folium.Marker(red_rose_coords, popup = 'Red Rose Taverne').add_to(disneyland_map)
-
-#         disneyland_map.save('templates/disneyland_map.html')
+html = """
+        <div>
+        <img style="max-width: 175px;" src="https://farm8.static.flickr.com/7384/12143860156_c84d299f7e_b.jpg"><br>
+        <h4>{{ restaurant.name }}</h4>
+        <p>Here's the Harbour Galley</p>
+        </div>
+        """
+# iframe = folium.Element.IFrame(html=html, width=500, height=400)
+popup = folium.Popup(html, max_width=200)
 
 def make_map():
     disneyland_map = folium.Map(location=[33.812034, -117.918968], zoom_start=16, min_zoom=15, max_zoom=19)
@@ -77,13 +63,13 @@ def make_map():
                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
     folium.Marker(gibson_girl_coords, tooltip='Gibson Girl', popup = 'Gibson Girl Ice Cream',
                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
-    folium.Marker(refreshment_corner_coords, popup = 'Refreshment Corner',
+    folium.Marker(refreshment_corner_coords, tooltip='Refreshment Corner', popup = 'Refreshment Corner',
                 icon=folium.Icon(icon_color='white', icon='fa-spoon', prefix='fa')).add_to(disneyland_map)
     folium.Marker(plaza_inn_coords, tooltip="Plaza Inn", popup = 'Plaza Inn',
                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
-    folium.Marker(little_red_wagon_coords, tooltips="Little Red Wagon", popup = 'Little Red Wagon',
+    folium.Marker(little_red_wagon_coords, tooltip='Little Red Wagon', popup = 'Little Red Wagon',
                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
-    folium.Marker(jolly_holliday_coords, popup = 'Jolly Holiday Bakery Cafe', 
+    folium.Marker(jolly_holliday_coords, tooltip='Jolly Holiday Bakery Cafe', popup = 'Jolly Holiday Bakery Cafe', 
                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
     folium.Marker(rancho_del_zocalo_coords, tooltip="Rancho del Zocalo", popup = 'Rancho Del Zocalo',
                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
@@ -115,7 +101,7 @@ def make_map():
                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
     folium.Marker(hungry_bear_coords, tooltip="Hungry Bear Restaurant", popup="Hungry Bear Restaurant",
                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
-    folium.Marker(harbour_galley_coords, tooltip="Harbour Galley", popup="Harbour Galley",
+    folium.Marker(harbour_galley_coords, tooltip="Harbour Galley", popup=popup,
                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
     folium.Marker(mint_julep_coords, tooltip="Mint Julep Bar", popup="Mint Julep Bar",
                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
@@ -161,3 +147,29 @@ def make_map():
 # import folium
 # import webbrowser
 
+# icon_icecream = folium.features.CustomIcon('static/images/', icon_size=(100,100))
+
+# class Map:
+#     def __init__(self, center, zoom_start):
+#         self.center = center
+#         self.zoom_start = zoom_start
+    
+#     def showMap(self):
+#         #Create the map
+#         # disneyland_map = folium.Map(location=[33.812034, -117.918968], zoom_start=15)
+#         disneyland_map = folium.Map(location = self.center, zoom_start = self.zoom_start)
+        
+#         folium.Marker(carnation_cafe_coords, tooltip="Carnation Cafe", popup = "<a href='https://eatingdisneyland.com'>Click Me</a>",
+#                     icon=folium.Icon(icon_color='orange', icon='fa-coffee', prefix='fa')).add_to(disneyland_map)
+#         folium.Marker(gibson_girl_coords, tooltip='Gibson Girl', popup = 'Gibson Girl Ice Cream').add_to(disneyland_map)
+#         folium.Marker(refreshment_corner_coords, popup = 'Refreshment Corner',
+#                     icon=folium.Icon(icon_color='red', icon='fa-spoon', prefix='fa')).add_to(disneyland_map)
+#         folium.Marker(plaza_inn_coords, popup = 'Plaza Inn').add_to(disneyland_map)
+#         folium.Marker(little_red_wagon_coords, popup = 'Little Red Wagon').add_to(disneyland_map)
+#         folium.Marker(jolly_holliday_coords, popup = 'Jolly Holiday Bakery Cafe', 
+#                     icon=folium.Icon(icon_color='dodgerblue', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
+#         folium.Marker(rancho_del_zocalo_coords, popup = 'Rancho Del Zocalo').add_to(disneyland_map)
+#         folium.Marker(edelweiss_snacks_coords, popup = 'Edelweiss Snacks').add_to(disneyland_map)
+#         folium.Marker(red_rose_coords, popup = 'Red Rose Taverne').add_to(disneyland_map)
+
+#         disneyland_map.save('templates/disneyland_map.html')
