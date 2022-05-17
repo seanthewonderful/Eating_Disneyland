@@ -52,3 +52,7 @@ class AddRestaurant(FlaskForm):
     x_coord = DecimalField('X Coordinate')
     y_coord = DecimalField('Y Coordinate')
     submit = SubmitField('Submit')
+    
+    
+class RateRestaurant(FlaskForm):
+    star_rating = SelectField('Stars out of 5', choices=['1', ''])

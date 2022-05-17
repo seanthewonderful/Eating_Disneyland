@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template, flash, url_for
+from flask import Flask, redirect, render_template, flash, url_for, request
 from jinja2 import StrictUndefined
 import folium
 from flask_debugtoolbar import DebugToolbarExtension
@@ -13,7 +13,6 @@ from make_map import make_map
 
 
 app = Flask(__name__)
-# Bootstrap(app)
 app.secret_key = "6fb0ad050f264f45b1c29962f08ff548"
 
 app.jinja_env.undefined = StrictUndefined
@@ -53,6 +52,7 @@ def register():
                         zipcode=zipcode)
         db.session.add(new_user)
         db.session.commit()
+        db.session.close()
         flash("Account created! Please login with your credentials.", category='success')
         return redirect(url_for('login'))
     return render_template('register.html', form=form)
@@ -98,6 +98,7 @@ def profile():
         current_user.age = age
         current_user.zipcode = zipcode
         db.session.commit()
+        db.session.close()
         flash("Updates made.", category='success')
         return redirect(url_for('profile'))
     return render_template('profile.html', form=form)
@@ -118,7 +119,8 @@ def delete_user():
         print("form validated")
         db.session.delete(current_user)
         db.session.commit()
-        flash("Account sent to the Memory Dump. Now perusing as a guest!", category='dark')
+        db.session.close()
+        flash("Account sent to the Memory Dump. Now perusing as a guest!", category='info')
         return redirect(url_for('home'))
     return render_template('delete_user.html', form=form)
 

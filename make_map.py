@@ -24,6 +24,7 @@ def make_map(restaurants):
                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
         
         disneyland_map.save('templates/disneyland_map.html')
+        # return disneyland_map.render()
 
 
 
