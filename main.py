@@ -5,7 +5,7 @@ from flask_debugtoolbar import DebugToolbarExtension
 # from flask_bootstrap import Bootstrap
 # from map import Map
 from model import connect_to_db, User, Restaurant, Rating, db
-from forms import DeleteUser, UpdateUser, RegisterForm, LoginForm, AddRestaurant
+from forms import DeleteUser, UpdateUser, RegisterForm, LoginForm, AddRestaurant, RateRestaurant
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 from make_map import make_map
@@ -125,15 +125,27 @@ def delete_user():
     return render_template('delete_user.html', form=form)
 
 
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
-
-
 @app.route('/restaurants')
 def restaurants():
     restaurants = Restaurant.query.all()
     return render_template('restaurants.html', restaurants=restaurants)
+
+
+@app.route('/eating_place/<rest_id>', methods=["GET", "POST"])
+def eating_place(rest_id):
+    restaurant = Restaurant.query.get(rest_id)
+    return render_template('eating_place.html', restaurant=restaurant)
+
+
+@app.route('/rate_food', methods=["GET", "POST"])
+def rate_food():
+    form = RateRestaurant()
+    return render_template('rate_food.html', form=form)
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 
 @app.route('/add_restaurant', methods=["GET", "POST"])

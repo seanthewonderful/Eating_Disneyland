@@ -4,11 +4,6 @@
 
 {% block title %}Everywhere to Eat{% endblock %}
 
-{% block styles %}
-    {{ super() }}
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-{% endblock %}
-
 {% block content %} 
 
 {% for each in restaurants %} 
@@ -57,7 +52,7 @@
             {% endif %}
         </p>
 
-        <a href="#" class="button">Update</a>
+        <a href="{{ url_for('eating_place', rest_id=each.rest_id) }}" class="button">See Details</a>
         {% if current_user.is_authenticated %}
         {% if current_user.username == "TinyTim" %}
         <a href="#" class="button delete-button">Delete</a>
