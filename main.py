@@ -39,13 +39,13 @@ def register():
     form = RegisterForm()
     form.validate()
     if form.validate_on_submit():
-        username = form.username.data
+        username = (form.username.data).lower()
         password = generate_password_hash(form.password.data, method='pbkdf2:sha256', salt_length=8)
         email = form.email.data
         age = form.age.data
         zipcode = form.zipcode.data
         if User.query.filter_by(username=username).first():
-            flash("That's such a great Username that it's already been taken! So sorry, please try a different Username.")
+            flash("That's such a great Username that it's already been taken! So sorry, please try a different Username.", category='warning')
             return redirect(url_for('register'))
         new_user = User(username=username,
                         password=password,
@@ -57,33 +57,58 @@ def register():
         return redirect(url_for('login'))
     return render_template('register.html', form=form)
 
+
 @app.route('/login', methods=["GET", "POST"])
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        print("Validated")
-        user = User.query.filter_by(username=form.username.data).first()
+        user = User.query.filter_by(username=(form.username.data).lower()).first()
         if user:
-            print("User found")
             password = form.password.data
             if check_password_hash(user.password, password):
-                print("PW Checked")
                 login_user(user)
-                flash("Flight to Loginland successful")
+                flash("Flight to LoginLand successful", category='success')
                 return redirect(url_for('home'))
             else:
-                flash("Incorrect password")
+                flash("Incorrect password", category='danger')
                 return redirect(url_for('login'))
         else:
-            flash("We find no records of that username, please register or type better")
+            flash("No such username exists...yet. Please register to claim it!", category='warning')
             return redirect(url_for('login'))
     return render_template('login.html', form=form)
+
+
+@app.route('/profile', methods=["GET", "POST"])
+@login_required
+def profile():
+    form = UpdateUser()
+    print(current_user)
+    form.validate()
+    if form.validate_on_submit():
+        username = (form.username.data).lower()
+        password = generate_password_hash(form.password.data, method='pbkdf2:sha256', salt_length=8)
+        email = form.email.data
+        age = form.age.data
+        zipcode = form.zipcode.data
+        # user = User.query.get(user_id)
+        if User.query.filter_by(username=username).first():
+            flash("That's such a great Username that it's already been taken! So sorry, please try a different Username.", category='warning')
+            return redirect(url_for('profile'))
+        current_user.username = username
+        current_user.password = password
+        current_user.email = email
+        current_user.age = age
+        current_user.zipcode = zipcode
+        db.session.commit()
+        flash("Updates made.", category='success')
+        return redirect(url_for('profile'))
+    return render_template('profile.html', form=form)
 
 
 @app.route('/logout')
 def logout():
     logout_user()
-    flash("Logged out.")
+    flash("Now leaving LoginLand. Please fly our way again!", category='primary')
     return redirect(url_for('home'))
 
 
@@ -95,12 +120,6 @@ def delete_user():
         print("form validated")
         return redirect(url_for('delete_user'))
     return render_template('delete_user.html', form=form)
-
-
-@app.route('/profile', methods=["GET", "POST"])
-@login_required
-def profile():
-    return render_template('profile.html')
 
 
 @login_manager.user_loader
@@ -120,7 +139,7 @@ def add_restaurant():
     if form.validate_on_submit():
         print("Form validated")
         if Restaurant.query.filter_by(name=form.name.data).first():
-            flash("Restaurant already exists")
+            flash("Restaurant already exists", category='danger')
             return redirect(url_for('add_restaurant'))
         new_restaurant = Restaurant(
             name = form.name.data,
@@ -140,7 +159,7 @@ def add_restaurant():
         )
         db.session.add(new_restaurant)
         db.session.commit()
-        flash("Restaurant added successfully")
+        flash("Restaurant added successfully", category='success')
         return redirect(url_for('add_restaurant'))
     return render_template('addrestaurant.html', form=form)
 

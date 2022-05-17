@@ -16,7 +16,7 @@
             <a class="nav-link" href="{{ url_for('restaurants') }}">Eating Places</a>
           </li>
           {% if current_user.is_authenticated %} 
-            {% if current_user.username == 'TinyTim' %} 
+            {% if current_user.username == 'tinytim' %} 
                 <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('add_restaurant') }}">Add Restaurant</a>
                 </li>
@@ -36,21 +36,28 @@
               </ul>
             </li>
             {% else %} 
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+            <li class="nav-item-dropdown dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Login/Register
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="{{ url_for('login') }}">Login</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('register') }}">Register</a></li>
+              </ul>
             </li>
             {% endif %} 
         </ul>
       </div>
     </div>
   </nav>
-  <div class="box">
-    {% with messages = get_flashed_messages() %}
-      {% if messages %}
-        {% for message in messages %}
-          <p>{{ message }}</p>
-        {% endfor %}
-      {% endif %}
-    {% endwith %}
-    </div>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }}" role="alert">
+            <p>{{ message }}</p>
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
 
