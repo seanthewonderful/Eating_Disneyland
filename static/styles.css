@@ -39,7 +39,7 @@ body {
 }
 p.overview {
     font-size: 12px;
-    height: 200px;
+    height: 5rem;
     width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -224,5 +224,6 @@ p.overview {
 }
 .release_date {
     font-weight: normal;
+    font-style: italic;
 }
 

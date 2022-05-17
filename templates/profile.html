@@ -2,10 +2,15 @@
 
 {% include 'navbar.html' %}
 
-{% block title %}Hi, {{ user.name }}{% endblock %}
+{% block title %}Hi, {{ current_user.username }}{% endblock %}
 
 {% block content %} 
 
+<div>
+
+    <h2>Well well well, if it isn't {{ current_user.username }}.</h2>
+    
+</div>
 
 
 {% endblock %}
