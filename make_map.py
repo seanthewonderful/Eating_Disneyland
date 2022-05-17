@@ -1,61 +1,25 @@
 import folium
 from folium.plugins import MarkerCluster
 import pandas as pd
-# import model
 
 
-carnation_cafe_coords = [33.811067, -117.919103]
-gibson_girl_coords = [33.811165, -117.919086]
-market_house_coords = [33.810929374836455, -117.91888406625188]
-refreshment_corner_coords = [33.811440, -117.919081]
-jolly_holliday_coords = [33.81168285912394, -117.9193818473908]
-plaza_inn_coords = [33.8116963939521, -117.91851581766903]
-pizza_planet_coords = [33.811728031793685, -117.91691154585381]
-galactic_grill_coords = [33.8123815226415, -117.91715260949891]
-edelweiss_snacks_coords = [33.81374305708073, -117.91773874128609]
-troubador_tavern_coords = [33.8144856242707, -117.91875940912425]
-daisys_diner_coords = [33.81551618186138, -117.91871838555176]
-plutos_doghouse_coords = [33.81554960890238, -117.91871033892531]
-clarabelles_coords = [33.81557802187698, -117.91868821070254]
-red_rose_coords = [33.81346065509974, -117.9194651550013]
-milk_stand_coords = [33.814428886234296, -117.92069637808706]
-ogas_cantina_coords = [33.8147258031444, -117.920964585531]
-docking_bay_coords = [33.81469267859092, -117.92147272989884]
-ronto_roasters_coords = [33.814462613156586, -117.92153869443413]
-hungry_bear_coords = [33.812590935972715, -117.92260721018377]
-harbour_galley_coords = [33.812041180621804, -117.9219757109676]
-mint_julep_coords = [33.811182398373205, -117.92166376575899]
-french_market_coords = [33.81125204155685, -117.92162085041623]
-cafe_orleans_coords = [33.811243684377416, -117.92120041416223]
-blue_bayou_coords = [33.811113869426435, -117.9210944669072]
-river_belle_coords = [33.81149662796846, -117.92051108644743]
-bengal_bbq_coords = [33.81154732802444, -117.92031126189028]
-stage_door_coords = [33.81189888473691, -117.9203206496091]
-golden_horseshoe_coords = [33.812048755541824, -117.9202844397871]
-turkey_leg_cart = [33.812423735113434, -117.92057041285449]
-rancho_del_zocalo_coords = [33.81245859568607, -117.9199964482139]
-maurices_treats_coords = [33.81250160079871, -117.91931709893191]
-little_red_wagon_coords = [33.81148556711443, -117.9186905116349]
-royal_street_veranda_coords = [33.811242012942394, -117.92095096871431]
-
-
-# restaurant = model.Restaurant.query.filter_by(name='Harbour Galley').first()
 def make_map(restaurants):
     
     disneyland_map = folium.Map(location=[33.812034, -117.918968], zoom_start=16, min_zoom=15, max_zoom=19)
     
     for each in restaurants:
-        
         html = """
-                <div>
-                <img style="max-width: 175px;" src="{0}"><br>
-                <h4>{1}</h4>
-                <p>{2}</p>
-                <p>{3}</p>
+                <div class="card text-center" style="max-width: 22rem;">
+                        <img class="card-img-top" src="{0}" alt="an image should be here..." style="max-width: 20rem;">
+                                <div class="card-body">
+                                        <h3 class="card-title">{1}</h3>
+                                        <h5 class="card-text" style="-webkit-text-stroke: 1px green; color: green;">{2}</h5>
+                                        <h6 class="card-text" style="font-style: italic;">{3}</h6>
+                                        <a href="#" class="btn btn-primary">See Details</a>
+                                </div>
                 </div>
                 """
         popup = folium.Popup(html.format(each.image_url, each.name, each.expense, each.land), max_width=200)
-        
         folium.Marker([each.x_coord, each.y_coord], tooltip=each.name, popup=popup,
                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
         
@@ -63,6 +27,45 @@ def make_map(restaurants):
 
 
 
+
+
+
+
+
+
+# carnation_cafe_coords = [33.811067, -117.919103]
+# gibson_girl_coords = [33.811165, -117.919086]
+# market_house_coords = [33.810929374836455, -117.91888406625188]
+# refreshment_corner_coords = [33.811440, -117.919081]
+# jolly_holliday_coords = [33.81168285912394, -117.9193818473908]
+# plaza_inn_coords = [33.8116963939521, -117.91851581766903]
+# pizza_planet_coords = [33.811728031793685, -117.91691154585381]
+# galactic_grill_coords = [33.8123815226415, -117.91715260949891]
+# edelweiss_snacks_coords = [33.81374305708073, -117.91773874128609]
+# troubador_tavern_coords = [33.8144856242707, -117.91875940912425]
+# daisys_diner_coords = [33.81551618186138, -117.91871838555176]
+# plutos_doghouse_coords = [33.81554960890238, -117.91871033892531]
+# clarabelles_coords = [33.81557802187698, -117.91868821070254]
+# red_rose_coords = [33.81346065509974, -117.9194651550013]
+# milk_stand_coords = [33.814428886234296, -117.92069637808706]
+# ogas_cantina_coords = [33.8147258031444, -117.920964585531]
+# docking_bay_coords = [33.81469267859092, -117.92147272989884]
+# ronto_roasters_coords = [33.814462613156586, -117.92153869443413]
+# hungry_bear_coords = [33.812590935972715, -117.92260721018377]
+# harbour_galley_coords = [33.812041180621804, -117.9219757109676]
+# mint_julep_coords = [33.811182398373205, -117.92166376575899]
+# french_market_coords = [33.81125204155685, -117.92162085041623]
+# cafe_orleans_coords = [33.811243684377416, -117.92120041416223]
+# blue_bayou_coords = [33.811113869426435, -117.9210944669072]
+# river_belle_coords = [33.81149662796846, -117.92051108644743]
+# bengal_bbq_coords = [33.81154732802444, -117.92031126189028]
+# stage_door_coords = [33.81189888473691, -117.9203206496091]
+# golden_horseshoe_coords = [33.812048755541824, -117.9202844397871]
+# turkey_leg_cart = [33.812423735113434, -117.92057041285449]
+# rancho_del_zocalo_coords = [33.81245859568607, -117.9199964482139]
+# maurices_treats_coords = [33.81250160079871, -117.91931709893191]
+# little_red_wagon_coords = [33.81148556711443, -117.9186905116349]
+# royal_street_veranda_coords = [33.811242012942394, -117.92095096871431]
 
 
 # def make_map(restaurant):

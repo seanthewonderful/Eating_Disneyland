@@ -83,6 +83,7 @@ def login():
 @app.route('/logout')
 def logout():
     logout_user()
+    flash("Logged out.")
     return redirect(url_for('home'))
 
 
