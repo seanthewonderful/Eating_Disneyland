@@ -28,10 +28,10 @@ class UpdateUser(FlaskForm):
     submit = SubmitField('Submit')
     
 class DeleteUser(FlaskForm):
-    type_delete = StringField("Please type DELETE in all upper case:", validators=[InputRequired(), EqualTo(u'DELETE', message='Must type in all upper case: DELETE')])
-    # def validate_type_delete(form, field):
-    #     if field.data != 'DELETE':
-    #         raise ValidationError('You must type DELETE like so, in all upper case')
+    type_delete = StringField("Please type DELETE:", validators=[InputRequired()])
+    def validate_type_delete(form, field):
+        if field.data != 'DELETE':
+            raise ValidationError('You must type DELETE in all upper case')
     submit = SubmitField('Submit')
     
 class AddRestaurant(FlaskForm):

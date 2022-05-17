@@ -37,7 +37,6 @@ def map():
 @app.route('/register', methods=["GET", "POST"])
 def register():
     form = RegisterForm()
-    form.validate()
     if form.validate_on_submit():
         username = (form.username.data).lower()
         password = generate_password_hash(form.password.data, method='pbkdf2:sha256', salt_length=8)
@@ -54,6 +53,7 @@ def register():
                         zipcode=zipcode)
         db.session.add(new_user)
         db.session.commit()
+        flash("Account created! Please login with your credentials.", category='success')
         return redirect(url_for('login'))
     return render_template('register.html', form=form)
 
@@ -83,14 +83,12 @@ def login():
 def profile():
     form = UpdateUser()
     print(current_user)
-    form.validate()
     if form.validate_on_submit():
         username = (form.username.data).lower()
         password = generate_password_hash(form.password.data, method='pbkdf2:sha256', salt_length=8)
         email = form.email.data
         age = form.age.data
         zipcode = form.zipcode.data
-        # user = User.query.get(user_id)
         if User.query.filter_by(username=username).first():
             flash("That's such a great Username that it's already been taken! So sorry, please try a different Username.", category='warning')
             return redirect(url_for('profile'))
@@ -113,12 +111,15 @@ def logout():
 
 
 @app.route('/delete_user', methods=["GET", "POST"])
+@login_required
 def delete_user():
     form = DeleteUser()
-    # form.validate()
     if form.validate_on_submit():
         print("form validated")
-        return redirect(url_for('delete_user'))
+        db.session.delete(current_user)
+        db.session.commit()
+        flash("Account sent to the Memory Dump. Now perusing as a guest!", category='dark')
+        return redirect(url_for('home'))
     return render_template('delete_user.html', form=form)
 
 
