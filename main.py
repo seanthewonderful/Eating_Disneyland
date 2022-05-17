@@ -29,7 +29,6 @@ def home():
 
 @app.route('/map')
 def map():
-    restaurant = Restaurant.query.filter_by(name='Harbour Galley').first()
     restaurants = Restaurant.query.all()
     make_map(restaurants)
     return render_template('disneyland_map.html')

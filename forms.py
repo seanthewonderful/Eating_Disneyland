@@ -1,6 +1,7 @@
+from decimal import Decimal
 from flask import Flask
 from flask_wtf import FlaskForm
-from wtforms import (StringField, SubmitField, PasswordField, TextAreaField, EmailField,
+from wtforms import (StringField, SubmitField, PasswordField, TextAreaField, EmailField, DecimalField,
                     IntegerField, RadioField, SelectField, BooleanField)
 from wtforms.validators import DataRequired, Email, Length, NumberRange, email_validator, InputRequired, EqualTo, ValidationError
 
@@ -48,5 +49,6 @@ class AddRestaurant(FlaskForm):
     snacks = BooleanField('Snacks')
     coffee = BooleanField('Coffee')
     beverage_only = BooleanField('Beverage Only')
-    x_coord = 
+    x_coord = DecimalField('X Coordinate')
+    y_coord = DecimalField('Y Coordinate')
     submit = SubmitField('Submit')

@@ -37,8 +37,8 @@ class Restaurant(db.Model):
     snacks = db.Column(db.Boolean, nullable=True)
     coffee = db.Column(db.Boolean, nullable=True)
     beverage_only = db.Column(db.Boolean, nullable=True)
-    x_coord = db.Column(db.Decimal, nullable=True)
-    y_coord = db.Column(db.Decimal, nullable=True)
+    x_coord = db.Column(db.Numeric, nullable=True)
+    y_coord = db.Column(db.Numeric, nullable=True)
     
     def __repr__(self):
         return f"""<Restaurant rest_id={self.rest_id} 
