@@ -16,11 +16,11 @@ def make_map(restaurants):
                                         <h3 class="card-title">{1}</h3>
                                         <h5 class="card-text" style="-webkit-text-stroke: 1px green; color: green;">{2}</h5>
                                         <h6 class="card-text" style="font-style: italic;">{3}</h6>
-                                        <a href="{{ url_for('eating_place', rest_id={4}) }}" class="btn btn-primary">See Details</a>
+                                        <a href="{4}" class="btn btn-info">See Details</a>
                                 </div>
                 </div>
                 """
-        popup = folium.Popup(html.format(each.image_url, each.name, each.expense, each.land, each.rest_id), max_width=200)
+        popup = folium.Popup(html.format(each.image_url, each.name, each.expense, each.land, url_for('eating_place', rest_id=each.rest_id)), max_width=200)
         folium.Marker([each.x_coord, each.y_coord], tooltip=each.name, popup=popup,
                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
         
