@@ -136,19 +136,24 @@ def restaurants():
 def eating_place(rest_id):
     form = RateRestaurant()
     restaurant = Restaurant.query.get(rest_id)
-    if form.validate_on_submit():
-        star_rating = form.star_rating.data
-        review = form.review.data
+    if current_user.is_authenticated:
         user_id = current_user.id
-        new_rating = Rating(user_id=user_id,
-                            rest_id=rest_id,
-                            star_rating=star_rating,
-                            review=review)
-        db.session.add(new_rating)
-        db.session.commit()
-        db.session.close()
-        flash("Your review has been accepted, thank you!", category='success')
-        return redirect(url_for('eating_place', rest_id=rest_id))
+        rated = Rating.query.filter_by(user_id=user_id, rest_id=rest_id).first()
+        if form.validate_on_submit():
+            star_rating = form.star_rating.data
+            review = form.review.data
+            if Rating.query.filter_by(user_id=user_id, rest_id=rest_id).first():
+                pass
+            new_rating = Rating(user_id=user_id,
+                                rest_id=rest_id,
+                                star_rating=star_rating,
+                                review=review)
+            db.session.add(new_rating)
+            db.session.commit()
+            db.session.close()
+            flash("Your review has been accepted, thank you!", category='success')
+            return redirect(url_for('eating_place', rest_id=rest_id))
+        return render_template('eating_place.html', restaurant=restaurant, form=form, rated=rated)
     return render_template('eating_place.html', restaurant=restaurant, form=form)
 
 
