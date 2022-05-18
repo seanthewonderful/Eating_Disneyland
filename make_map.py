@@ -16,7 +16,7 @@ def make_map(restaurants):
                                         <h3 class="card-title">{1}</h3>
                                         <h5 class="card-text" style="-webkit-text-stroke: 1px green; color: green;">{2}</h5>
                                         <h6 class="card-text" style="font-style: italic;">{3}</h6>
-                                        <a href="{4}" class="btn btn-info">See Details</a>
+                                        <a type="button" href="{4}" class="btn btn-primary-sm">See Details</a>
                                 </div>
                 </div>
                 """

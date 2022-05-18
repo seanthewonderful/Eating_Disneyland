@@ -12,9 +12,31 @@
       <h5 class="card-title">{{ restaurant.name }}</h5>
       <p class="card-text">{{ restaurant.land }}</p>
       <p class="card-text"><small class="text-muted">{{ restaurant.expense }}</small></p>
+      <p class="card-text">Description here</p>
+      <p class="card-text">Star rating average here</p><a href="#">See All Reviews</a>
+
+      {% if current_user.is_authenticated %}
+      <div class="container justify-content-md-center" style="padding-top: 5%;">
+          <form class="" method="post" action="{{ url_for('eating_place', rest_id=restaurant.rest_id) }}">
+              <h2 class="heading">Leave a Review</h2>
+                  {{ form.csrf_token }}
+              <div class="form-group m-2">
+                  {{ form.star_rating.label }}
+                  {{ form.star_rating(class="form-control") }}
+              </div>
+              <div class="form-group m-2">
+                  {{ form.review.label }}
+                  {{ form.review(class="form-control") }}
+              </div>
+              <div class="form-group m-2">
+                  {{ form.submit(class="btn btn-primary") }}
+              </div>
+          </form>
+      </div>
+      {% endif %}
+
     </div>
 </div>
 
-{{ restaurant.name }}
 
 {% endblock %}

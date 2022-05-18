@@ -1,6 +1,6 @@
 from flask import Flask, redirect, render_template, flash, url_for, request
 from jinja2 import StrictUndefined
-import folium
+import random
 from flask_debugtoolbar import DebugToolbarExtension
 # from flask_bootstrap import Bootstrap
 # from map import Map
@@ -23,7 +23,8 @@ login_manager.init_app(app)
 
 @app.route("/")
 def home():
-    return render_template('home.html')
+    restaurants = random.choices(Restaurant.query.all(), k=3)
+    return render_template('home.html', restaurants=restaurants)
 
 
 @app.route('/map')
@@ -133,14 +134,22 @@ def restaurants():
 
 @app.route('/eating_place/<rest_id>', methods=["GET", "POST"])
 def eating_place(rest_id):
-    restaurant = Restaurant.query.get(rest_id)
-    return render_template('eating_place.html', restaurant=restaurant)
-
-
-@app.route('/rate_food', methods=["GET", "POST"])
-def rate_food():
     form = RateRestaurant()
-    return render_template('rate_food.html', form=form)
+    restaurant = Restaurant.query.get(rest_id)
+    if form.validate_on_submit():
+        star_rating = form.star_rating.data
+        review = form.review.data
+        user_id = current_user.id
+        new_rating = Rating(user_id=user_id,
+                            rest_id=rest_id,
+                            star_rating=star_rating,
+                            review=review)
+        db.session.add(new_rating)
+        db.session.commit()
+        db.session.close()
+        flash("Your review has been accepted, thank you!", category='success')
+        return redirect(url_for('eating_place', rest_id=rest_id))
+    return render_template('eating_place.html', restaurant=restaurant, form=form)
 
 
 @login_manager.user_loader
