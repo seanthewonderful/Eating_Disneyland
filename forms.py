@@ -39,6 +39,7 @@ class AddRestaurant(FlaskForm):
     image_url = StringField('Image URL')
     land = RadioField('Land', choices=['Main Street', 'Adventureland', 'New Orleans Square', 'Critter Country', "Galaxy's Edge", 'Frontierland', 'Fantasyland', "Mickey's Toontown", 'Tomorrowland'])
     expense = SelectField('Expense', choices=[('$', '$'), ('$$', '$$'), ('$$$', '$$$'), ('$$$$', '$$$$')])
+    description = TextAreaField('Description')
     full_service = BooleanField('Full Service')
     breakfast = BooleanField('Breakfast')
     american = BooleanField('American')

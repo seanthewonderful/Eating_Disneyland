@@ -2,14 +2,12 @@ from flask import Flask, redirect, render_template, flash, url_for, request
 from jinja2 import StrictUndefined
 import random
 from flask_debugtoolbar import DebugToolbarExtension
-# from flask_bootstrap import Bootstrap
-# from map import Map
-from model import connect_to_db, User, Restaurant, Rating, db
+from model import connect_to_db, User, Restaurant, Rating, db, total_ratings, star_avg
 from forms import DeleteUser, UpdateUser, RegisterForm, LoginForm, AddRestaurant, RateRestaurant
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 from make_map import make_map
-
+from sqlalchemy.sql import func
 
 
 app = Flask(__name__)
@@ -21,10 +19,15 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 
+
+
+
 @app.route("/")
 def home():
     restaurants = random.choices(Restaurant.query.all(), k=3)
-    return render_template('home.html', restaurants=restaurants)
+    return render_template('home.html', restaurants=restaurants,
+                           total_ratings=total_ratings, 
+                           star_avg=star_avg)
 
 
 @app.route('/map')
@@ -129,13 +132,15 @@ def delete_user():
 @app.route('/restaurants')
 def restaurants():
     restaurants = Restaurant.query.all()
-    return render_template('restaurants.html', restaurants=restaurants)
+    return render_template('restaurants.html', restaurants=restaurants, total_ratings=total_ratings, star_avg=star_avg)
 
 
 @app.route('/eating_place/<rest_id>', methods=["GET", "POST"])
 def eating_place(rest_id):
     form = RateRestaurant()
     restaurant = Restaurant.query.get(rest_id)
+    previous_restaurant = Restaurant.query.get(int(rest_id) - 1)
+    next_restaurant = Restaurant.query.get(int(rest_id) + 1)
     if current_user.is_authenticated:
         user_id = current_user.id
         rated = Rating.query.filter_by(user_id=user_id, rest_id=rest_id).first()
@@ -153,8 +158,17 @@ def eating_place(rest_id):
             db.session.close()
             flash("Your review has been accepted, thank you!", category='success')
             return redirect(url_for('eating_place', rest_id=rest_id))
-        return render_template('eating_place.html', restaurant=restaurant, form=form, rated=rated)
-    return render_template('eating_place.html', restaurant=restaurant, form=form)
+        return render_template('eating_place.html', 
+                               restaurant=restaurant, 
+                               form=form, 
+                               rated=rated, 
+                               previous_restaurant=previous_restaurant, 
+                               next_restaurant=next_restaurant)
+    return render_template('eating_place.html', 
+                           restaurant=restaurant, 
+                           form=form, 
+                           previous_restaurant=previous_restaurant, 
+                           next_restaurant=next_restaurant)
 
 
 @login_manager.user_loader

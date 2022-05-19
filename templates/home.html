@@ -22,9 +22,13 @@
                 <img src="{{ each.image_url }}" class="card-img-top" alt="There ought to be something here...">
                 <div class="card-body">
                   <h5 class="card-title">{{ each.name }}</h5>
-                  <p class="card-text">{{ each.land }}</p>
+                  <p class="card-text" style="font-style: italic;">{{ each.land }}</p>
+                  <label>
+                    {{ star_avg(each.rest_id, total_ratings(each.rest_id)) }}<i class="fas fa-star star"></i>  
+                    <span style="font-style:italic; font-size: smaller;">({{ total_ratings(each.rest_id) }} reviews)</span>
+                  </label>
                   <p class="card-text"><small class="text-muted">{{ each.expense }}</small></p>
-                  <a href="{{ url_for('eating_place', rest_id=each.rest_id) }}" class="button">See Details</a>
+                  <a href="{{ url_for('eating_place', rest_id=each.rest_id) }}" class="btn btn-sm btn-outline-primary">See Details</a>
                 </div>
             </div>
             {% endfor %}

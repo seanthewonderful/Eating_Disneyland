@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin
+from sqlalchemy.sql import func
 
 
 db = SQLAlchemy()
@@ -27,6 +28,7 @@ class Restaurant(db.Model):
     land = db.Column(db.String(250), nullable=True)
     expense = db.Column(db.String, nullable=True)
     image_url = db.Column(db.String(500), nullable=True)
+    description = db.Column(db.String(2000), nullable=True)
     full_service = db.Column(db.Boolean, nullable=True)
     breakfast = db.Column(db.Boolean, nullable=True)
     american = db.Column(db.Boolean, nullable=True)
@@ -60,6 +62,15 @@ class Rating(db.Model):
                     user_id={self.user_id}
                     star_rating={self.star_rating}>
                     """
+
+
+
+def total_ratings(rest_id):
+        return Rating.query.filter_by(rest_id=rest_id).count()
+    
+def star_avg(rest_id, total_ratings):
+    total_stars = Rating.query.with_entities(func.sum(Rating.star_rating).filter(Rating.rest_id==rest_id).label('total')).first().total
+    return round((total_stars/total_ratings), 1)
 
 
 def connect_to_db(app):

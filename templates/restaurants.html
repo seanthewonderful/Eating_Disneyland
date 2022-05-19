@@ -13,12 +13,17 @@
     </div>
     <div class="back">
       <div>
-      <div class="title">{{ each.name }} <br><span class="release_date">{{ each.land }}</span></div>
+        <div class="title">{{ each.name }} <br><span class="release_date">{{ each.land }}</span></div>
+        <label>{{ each.expense }}</label>
         <div class="rating">
-            <label>{{ each.expense }}</label>
-          <i class="fas fa-star star"></i>
-        </div>
-          <p class="review">"{{ each.name }}"</p>
+          
+          <label>
+            {{ star_avg(each.rest_id, total_ratings(each.rest_id)) }}<i class="fas fa-star star"></i>  
+            <span style="font-style:italic; font-size: smaller;">({{ total_ratings(each.rest_id) }} reviews)</span>
+          </label>
+          
+          </div>
+          <p class="review">"{{ each.description }}"</p>
         <p class="overview">
             {% if each.full_service %}
             Full-Service<br>
