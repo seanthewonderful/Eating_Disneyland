@@ -66,7 +66,7 @@ class Rating(db.Model):
 
 
 def total_ratings(rest_id):
-        return Rating.query.filter_by(rest_id=rest_id).count()
+    return Rating.query.filter_by(rest_id=rest_id).count()
     
 def star_avg(rest_id, total_ratings):
     total_stars = Rating.query.with_entities(func.sum(Rating.star_rating).filter(Rating.rest_id==rest_id).label('total')).first().total

@@ -17,10 +17,10 @@
         <label>{{ each.expense }}</label>
         <div class="rating">
           
-          <label>
+          <a class="link-warning text-decoration-none" href="{{ url_for('eating_place', rest_id=each.rest_id) }}">
             {{ star_avg(each.rest_id, total_ratings(each.rest_id)) }}<i class="fas fa-star star"></i>  
             <span style="font-style:italic; font-size: smaller;">({{ total_ratings(each.rest_id) }} reviews)</span>
-          </label>
+          </a>
           
           </div>
           <p class="review">"{{ each.description }}"</p>

@@ -3,7 +3,7 @@ from jinja2 import StrictUndefined
 import random
 from flask_debugtoolbar import DebugToolbarExtension
 from model import connect_to_db, User, Restaurant, Rating, db, total_ratings, star_avg
-from forms import DeleteUser, UpdateUser, RegisterForm, LoginForm, AddRestaurant, RateRestaurant
+from forms import DeleteUser, UpdateUser, RegisterForm, LoginForm, AddRestaurant, RateRestaurant, EditReview
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 from make_map import make_map
@@ -17,8 +17,6 @@ app.jinja_env.undefined = StrictUndefined
 app.config["DEBUG_TB_INTERCEPT_REDIRECTS"]=False
 login_manager = LoginManager()
 login_manager.init_app(app)
-
-
 
 
 
@@ -108,6 +106,18 @@ def profile():
     return render_template('profile.html', form=form)
 
 
+@app.route('/my_contributions', methods=["GET", "POST"])
+@login_required
+def my_contributions():
+    form = EditReview()
+    reviews = Rating.query.filter_by(user_id=current_user.id).all()
+    restaurants = Restaurant.query.all()
+    return render_template('my_contributions.html', 
+                           form=form, 
+                           reviews=reviews,
+                           restaurants=restaurants)
+
+
 @app.route('/logout')
 def logout():
     logout_user()
@@ -163,12 +173,16 @@ def eating_place(rest_id):
                                form=form, 
                                rated=rated, 
                                previous_restaurant=previous_restaurant, 
-                               next_restaurant=next_restaurant)
+                               next_restaurant=next_restaurant,
+                               total_ratings=total_ratings,
+                               star_avg=star_avg)
     return render_template('eating_place.html', 
                            restaurant=restaurant, 
                            form=form, 
                            previous_restaurant=previous_restaurant, 
-                           next_restaurant=next_restaurant)
+                           next_restaurant=next_restaurant,
+                           total_ratings=total_ratings,
+                           star_avg=star_avg)
 
 
 @login_manager.user_loader

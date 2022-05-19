@@ -17,7 +17,7 @@
       </label>
       <p class="card-text"><small class="text-muted">{{ restaurant.expense }}</small></p>
       <p class="card-text">{{ restaurant.description }}</p>
-      <p class="card-text">Star rating average here</p><a href="#">See All Reviews</a>
+      <a href="#">See All Reviews</a>
 
       {% if current_user.is_authenticated %}
         {% if rated %}
