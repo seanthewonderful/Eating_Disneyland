@@ -1,13 +1,16 @@
-from flask import Flask, redirect, render_template, flash, url_for, request
+from flask import (Flask, redirect, render_template, render_template_string, 
+                   flash, url_for, request)
 from jinja2 import StrictUndefined
 import random
 from flask_debugtoolbar import DebugToolbarExtension
-from model import connect_to_db, User, Restaurant, Rating, db, total_ratings, star_avg
-from forms import DeleteUser, UpdateUser, RegisterForm, LoginForm, AddRestaurant, RateRestaurant, EditReview
+from model import (connect_to_db, User, Restaurant, Rating, db, 
+                   total_ratings, star_avg, restaurant_reviews, get_user, 
+                   get_restaurant, generate_stars)
+from forms import (DeleteUser, UpdateUser, RegisterForm, LoginForm, 
+                   AddRestaurant, RateRestaurant, EditReview)
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 from make_map import make_map
-from sqlalchemy.sql import func
 
 
 app = Flask(__name__)
@@ -25,7 +28,8 @@ def home():
     restaurants = random.choices(Restaurant.query.all(), k=3)
     return render_template('home.html', restaurants=restaurants,
                            total_ratings=total_ratings, 
-                           star_avg=star_avg)
+                           star_avg=star_avg,
+                           generate_stars=generate_stars)
 
 
 @app.route('/map')
@@ -115,7 +119,8 @@ def my_contributions():
     return render_template('my_contributions.html', 
                            form=form, 
                            reviews=reviews,
-                           restaurants=restaurants)
+                           restaurants=restaurants,
+                           get_restaurant=get_restaurant)
 
 
 @app.route('/logout')
@@ -142,7 +147,11 @@ def delete_user():
 @app.route('/restaurants')
 def restaurants():
     restaurants = Restaurant.query.all()
-    return render_template('restaurants.html', restaurants=restaurants, total_ratings=total_ratings, star_avg=star_avg)
+    return render_template('restaurants.html', 
+                           restaurants=restaurants, 
+                           total_ratings=total_ratings, 
+                           star_avg=star_avg,
+                           generate_stars=generate_stars)
 
 
 @app.route('/eating_place/<rest_id>', methods=["GET", "POST"])
@@ -151,6 +160,7 @@ def eating_place(rest_id):
     restaurant = Restaurant.query.get(rest_id)
     previous_restaurant = Restaurant.query.get(int(rest_id) - 1)
     next_restaurant = Restaurant.query.get(int(rest_id) + 1)
+    rest_len = Restaurant.query.count()
     if current_user.is_authenticated:
         user_id = current_user.id
         rated = Rating.query.filter_by(user_id=user_id, rest_id=rest_id).first()
@@ -174,15 +184,23 @@ def eating_place(rest_id):
                                rated=rated, 
                                previous_restaurant=previous_restaurant, 
                                next_restaurant=next_restaurant,
+                               rest_len=rest_len,
                                total_ratings=total_ratings,
-                               star_avg=star_avg)
+                               star_avg=star_avg,
+                               restaurant_reviews=restaurant_reviews, 
+                               get_user=get_user,
+                               generate_stars=generate_stars)
     return render_template('eating_place.html', 
                            restaurant=restaurant, 
                            form=form, 
                            previous_restaurant=previous_restaurant, 
                            next_restaurant=next_restaurant,
+                           rest_len=rest_len,
                            total_ratings=total_ratings,
-                           star_avg=star_avg)
+                           star_avg=star_avg,
+                           restaurant_reviews=restaurant_reviews,
+                           get_user=get_user,
+                           generate_stars=generate_stars)
 
 
 @login_manager.user_loader

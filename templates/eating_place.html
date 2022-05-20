@@ -5,26 +5,27 @@
 {% block title %}Everybody's Got an Eatin' Place{% endblock %}
 
 {% block content %} 
-
-<div class="card text-center mb-3">
-    <img src="{{ restaurant.image_url }}" class="card-img-top" alt="There ought to be something here...">
+<div class="container-fluid row">
+<div class="card text-center mb-3 col" style="height: 86vh;">
+    <img src="{{ restaurant.image_url }}" class="card-img-top" style="height: 25vw;" alt="There ought to be something here...">
     <div class="card-body">
       <h5 class="card-title">{{ restaurant.name }}</h5>
       <p class="card-text" style="font-style: italic;">{{ restaurant.land }}</p>
       <label>
-        {{ star_avg(restaurant.rest_id, total_ratings(restaurant.rest_id)) }}<i class="fas fa-star star"></i>  
+        {{ star_avg(restaurant.rest_id, total_ratings(restaurant.rest_id)) }} {{ generate_stars(star_avg(restaurant.rest_id, total_ratings(restaurant.rest_id))) }} 
         <span style="font-style:italic; font-size: smaller;">({{ total_ratings(restaurant.rest_id) }} reviews)</span>
       </label>
       <p class="card-text"><small class="text-muted">{{ restaurant.expense }}</small></p>
       <p class="card-text">{{ restaurant.description }}</p>
-      <a href="#">See All Reviews</a>
-
+      <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#collapseReviews" aria-expanded="false" aria-controls="collapseReviews">
+        See Reviews <i class="fa-solid fa-arrow-right"></i>
+      </button>
       {% if current_user.is_authenticated %}
         {% if rated %}
         <div>
             <h5>You have already reviewed this place, thanks!</h5>
-            <a class="btn btn-outline-primary btn-sm" href="#">See your review</a>
-            <a class="btn btn-outline-primary btn-sm" href="{{ url_for('restaurants') }}">Rate more restaurants</a><br>
+            <a class="btn btn-primary btn-sm" href="{{ url_for('my_contributions') }}">See your reviews</a>
+            <a class="btn btn-primary btn-sm" href="{{ url_for('restaurants') }}">Rate more restaurants</a><br>
         </div>
         {% else %}
         <div class="container justify-content-md-center" style="padding-top: 5%;">
@@ -46,14 +47,32 @@
         </div>
         {% endif %}
       {% endif %}
+      <div class="pt-2">
         {% if restaurant.rest_id > 1 %}
-        <a class="btn btn-outline-primary btn-sm" href="{{ url_for('eating_place', rest_id=restaurant.rest_id+1) }}">Previous Restaurant: {{ previous_restaurant.name }}</a>
+            <a class="btn btn-outline-primary btn-sm" href="{{ url_for('eating_place', rest_id=restaurant.rest_id+1) }}">Previous Restaurant:<br>{{ previous_restaurant.name }}</a>
         {% endif %} 
-        {% if restaurant.rest_id < 33 %}
-        <a class="btn btn-outline-primary btn-sm" href="{{ url_for('eating_place', rest_id=restaurant.rest_id+1) }}">Next Restaurant: {{ next_restaurant.name }}</a>
+        {% if restaurant.rest_id < rest_len %}
+            <a class="btn btn-outline-primary btn-sm" href="{{ url_for('eating_place', rest_id=restaurant.rest_id+1) }}">Next Restaurant:<br>{{ next_restaurant.name }}</a>
+        </div> 
         {% endif %}
     </div>
 </div>
+  <div class="collapse col" id="collapseReviews">
+      <div class="card card-body">
+        <h2 style="font-family:Noto; font-style:italic;">Reviews</h2>
+        {% for each in restaurant_reviews(restaurant.rest_id) %}
+        <ul>
+            <h6>{{ get_user(each.user_id).username }} wrote:</h6>
+            <li>{{ each.review }}</li>
+        </ul>
+
+        {% endfor %}
+      </div>
+  </div>
+</div>
+
+
+  
 
 
 {% endblock %}

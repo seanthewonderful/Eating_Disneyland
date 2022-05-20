@@ -1,6 +1,8 @@
+from flask import render_template_string
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin
 from sqlalchemy.sql import func
+from markupsafe import Markup
 
 
 db = SQLAlchemy()
@@ -72,9 +74,54 @@ def star_avg(rest_id, total_ratings):
     total_stars = Rating.query.with_entities(func.sum(Rating.star_rating).filter(Rating.rest_id==rest_id).label('total')).first().total
     return round((total_stars/total_ratings), 1)
 
+def restaurant_reviews(rest_id):
+    return Rating.query.filter_by(rest_id=rest_id).all()
+
+def get_user(user_id):
+    return User.query.get(user_id)
+
+def get_restaurant(rest_id):
+    return Restaurant.query.get(rest_id)
+
+def generate_stars(stars):
+    if stars > 4.8:
+        return Markup("""
+            <strong><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i></strong>
+            """)
+    elif stars >= 4.4:
+        return Markup("""
+            <strong><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"><i class="fa-solid fa-star-half-stroke"></i></i></strong>
+            """)
+    elif stars >= 4:
+        return Markup("""
+            <strong><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i></strong>
+            """)
+    elif stars >= 3.5:
+        return Markup("""
+            <strong><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fa-solid fa-star-half-stroke"></i></i></strong>
+            """)
+    elif stars >= 3:
+        return Markup("""
+            <strong><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i></strong>
+            """)
+    elif stars >= 2.5:
+        return Markup("""
+            <strong><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fa-solid fa-star-half-stroke"></i></i></strong>
+            """)
+    elif stars >= 2:
+        return Markup("""
+            <strong><i class="fas fa-star star"></i><i class="fas fa-star star"></i></strong>
+            """)
+    elif stars >= 1.5:
+        return Markup("""
+            <strong><i class="fas fa-star star"></i><i class="fa-solid fa-star-half-stroke"></i>
+            """)
+    else:
+        return Markup("""
+            <strong><i class="fas fa-star star"></i></strong>
+            """)
 
 def connect_to_db(app):
-
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///disneyland_ratings'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.app = app

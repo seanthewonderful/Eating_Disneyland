@@ -14,8 +14,12 @@
 
         <div class="container justify-content-md-center m-4">
             {% for review in reviews %}
+            <div class="container p-4">
+                <li>{{ get_restaurant(review.rest_id).name }}</li>
+                <p>{{ review.star_rating }}</p>
+                <li>{{ review.review }}</li>
 
-            <p>{{ review.star_rating }}</p>
+            </div>
 
             {% endfor %}
         </div>
