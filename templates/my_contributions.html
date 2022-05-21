@@ -16,9 +16,49 @@
             {% for review in reviews %}
             <div class="container p-4">
                 <li>{{ get_restaurant(review.rest_id).name }}</li>
-                <p>{{ review.star_rating }}</p>
+                <p class="text-warning"><i class="fa-solid fa-star"></i> {{ review.star_rating }}</p>
                 <li>{{ review.review }}</li>
-
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Edit
+                </button>
+                <button type
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Edit Review for {{ get_restaurant(review.rest_id).name }}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="" method="post" action="{{ url_for('my_contributions') }}">
+                                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                    <input type="hidden" name="rest_id" value="{{ review.rest_id }}">
+                                    <div class="form-floating py-2">
+                                        <select class="form-select" id="floatingSelectGrid" name="star_rating">
+                                            <option hidden value="{{ review.star_rating }}">You rated: {{ review.star_rating }} ⭐️</option>
+                                            <option value="1">⭐️</option>
+                                            <option value="2">⭐️⭐️</option>
+                                            <option value="3">⭐️⭐️⭐️</option>
+                                            <option value="4">⭐️⭐️⭐️⭐️</option>
+                                            <option value="5">⭐️⭐️⭐️⭐️⭐️</option>
+                                        </select>
+                                        <label class="">Update Rating:<p class="text-warning" style="display:inline; font-size:smaller;"></p></label>
+                                    </div>
+                                    <div class="form-floating">
+                                        <textarea type="text-field", name="review" class="form-control", id="floatingInputGrid", style="height:200px;")>{{ review.review }}</textarea>
+                                        <label for="floatingInputGrid">Update review:</label>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <input type="submit" name="submit" value="Save Changes" class="btn btn-primary"></input>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             {% endfor %}
