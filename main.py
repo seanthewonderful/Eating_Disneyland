@@ -142,14 +142,24 @@ def my_contributions():
     restaurants = Restaurant.query.all()
     
     if request.method == "POST":
-        rest_id = request.form['rest_id']
-        rating = Rating.query.filter_by(user_id=current_user.id, rest_id=rest_id).first()
-        rating.star_rating = request.form['star_rating']
-        rating.review = request.form['review']
-        db.session.commit()
-        db.session.close()
-        flash("Updates made.", category='success')
-        return redirect(url_for('my_contributions'))
+        try:
+            print(request.form['rating_'])
+        except:
+            rest_id = request.form['rest_id']
+            rating = Rating.query.filter_by(user_id=current_user.id, rest_id=rest_id).first()
+            rating.star_rating = request.form['star_rating']
+            rating.review = request.form['review']
+            db.session.commit()
+            db.session.close()
+            flash("Updates made.", category='success')
+            return redirect(url_for('my_contributions'))
+        else:
+            rating = Rating.query.get(request.form['rating_'])
+            db.session.delete(rating)
+            db.session.commit()
+            db.session.close()
+            flash("Rating deleted. It's as if you never ate there.", category='danger')
+            return redirect(url_for('my_contributions'))
     
     return render_template('my_contributions.html',  
                            reviews=reviews,
@@ -158,11 +168,19 @@ def my_contributions():
                            generate_stars=generate_stars)
 
 
-@app.route('/rating/delete', methods=["DELETE"])
+@app.route('/delete_rating/<rating_id>', methods=["GET", "DELETE"])
 @login_required
-def delete_rating(user_id, rest_id):
-    rating = Rating.query.filter_by(user_id=user_id, rest_id=rest_id).first()
-    print(rating)
+def delete_rating(rating_id):
+    if request.method == "DELETE":
+        # rating = Rating.query.filter_by(user_id=user_id, rest_id=rest_id).first()
+        # db.session.delete(rating)
+        # db.session.commit()
+        # db.session.close()
+        # return redirect(url_for('my_contributions'))
+        # print(user_id)
+        # print(rest_id)
+        print(rating_id)
+        # return redirect(url_for('my_contributions'))
 
 
 @app.route('/profile', methods=["GET", "POST"])

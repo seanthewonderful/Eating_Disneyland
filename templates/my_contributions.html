@@ -18,17 +18,19 @@
                 <li>{{ get_restaurant(review.rest_id).name }}</li>
                 <p class="text-warning"><i class="fa-solid fa-star"></i> {{ review.star_rating }}</p>
                 <li>{{ review.review }}</li>
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <!-- Modal trigger Buttons -->
+                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal{{ review.rating_id }}">
                     Edit
                 </button>
-                <button type
+                <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ review.rating_id }}">
+                    Delete Review
+                </button>
                 <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="modal{{ review.rating_id }}" tabindex="-1" aria-labelledby="modal{{ review.rating_id }}Label" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Edit Review for {{ get_restaurant(review.rest_id).name }}</h5>
+                                <h5 class="modal-title" id="modal{{ review.rating_id }}Label">Edit Review for {{ get_restaurant(review.rest_id).name }}</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
@@ -59,10 +61,32 @@
                         </div>
                     </div>
                 </div>
+                <!-- End Modal -->
+                <div class="modal fade" id="deleteModal{{ review.rating_id }}" tabindex="-1" aria-labelledby="deleteModal{{ review.rating_id }}Label" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="deleteModal{{ review.rating_id }}Label">Are you sure you want to delete this rating?</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" style="font-style:italic;">
+                          You can always rate this restaurant again later.
+                        </div>
+                        <div class="modal-footer">
+                          <form class="" method="post" action="{{ url_for('my_contributions') }}">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                            <input type="hidden" name="rating_" value="{{ review.rating_id }}">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <input type="submit" name="submit_delete" value="Yes, Delete" class="btn btn-danger"></input>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <!-- End 2nd Modal -->
             </div>
 
             {% endfor %}
         </div>
-
 
     {% endblock %}
