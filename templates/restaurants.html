@@ -7,6 +7,7 @@
 {% block content %} 
 
 {% for each in restaurants %} 
+
 <div class="card" >
     <div class="front" style="background-image: url('{{ each.image_url }}');">
         <p class="large">{{ each.name }}</p>
@@ -57,7 +58,7 @@
             {% endif %}
         </p>
 
-        <a href="{{ url_for('eating_place', rest_id=each.rest_id) }}" class="button">See Details</a>
+        <a href="{{ url_for('eating_place', rest_id=each.rest_id) }}" class="btn btn-primary">See Details</a>
         {% if current_user.is_authenticated %}
         {% if current_user.username == "TinyTim" %}
         <a href="#" class="button delete-button">Delete</a>
@@ -65,7 +66,8 @@
         {% endif %}
       </div>
     </div>
-  </div>
+</div>
+
 {% endfor %}
 
 {% endblock %}

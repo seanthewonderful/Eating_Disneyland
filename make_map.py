@@ -10,6 +10,9 @@ def make_map(restaurants):
     
     for each in restaurants:
         html = """
+                <head>
+                <base target="_parent">
+                </head>
                 <div class="card text-center" style="max-width: 22rem;">
                         <img class="card-img-top" src="{0}" alt="an image should be here..." style="max-width: 20rem;">
                                 <div class="card-body">

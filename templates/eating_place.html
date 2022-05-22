@@ -49,11 +49,18 @@
       {% endif %}
       <div class="pt-2">
         {% if restaurant.rest_id > 1 %}
-            <a class="btn btn-outline-primary btn-sm" href="{{ url_for('eating_place', rest_id=restaurant.rest_id-1) }}">Previous Restaurant:<br>{{ previous_restaurant.name }}</a>
+            <a class="btn btn-outline-primary btn-sm" href="{{ url_for('eating_place', rest_id=restaurant.rest_id-1) }}">Previous Restaurant:<br>{{ get_restaurant(restaurant.rest_id-1).name }}</a>
+        {% elif restaurant.rest_id == 1 %}
+            <a class="btn btn-outline-primary btn-sm" href="{{ url_for('eating_place', rest_id=rest_len) }}">Previous Restaurant:<br>{{ get_restaurant(rest_len).name }}</a>
+
         {% endif %} 
         {% if restaurant.rest_id < rest_len %}
-            <a class="btn btn-outline-primary btn-sm" href="{{ url_for('eating_place', rest_id=restaurant.rest_id+1) }}">Next Restaurant:<br>{{ next_restaurant.name }}</a>
+            <a class="btn btn-outline-primary btn-sm" href="{{ url_for('eating_place', rest_id=restaurant.rest_id+1) }}">Next Restaurant:<br>{{ get_restaurant(restaurant.rest_id+1).name }}</a>
         </div> 
+        {% elif restaurant.rest_id == rest_len %}
+            <a class="btn btn-outline-primary btn-sm" href="{{ url_for('eating_place', rest_id=1) }}">Next Restaurant:<br>{{ get_restaurant(1).name }}</a>
+        </div> 
+
         {% endif %}
     </div>
 </div>

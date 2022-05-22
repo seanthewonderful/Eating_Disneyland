@@ -28,7 +28,7 @@ login_manager.init_app(app)
 
 @app.route("/")
 def home():
-    make_map(Restaurant.query.all())
+    # make_map(Restaurant.query.all())
     restaurants = random.choices(Restaurant.query.all(), k=3)
     return render_template('home.html', restaurants=restaurants,
                            total_ratings=total_ratings, 
@@ -36,11 +36,11 @@ def home():
                            generate_stars=generate_stars)
 
 
-# @app.route('/map')
-# def map():
-#     restaurants = Restaurant.query.all()
-#     make_map(restaurants)
-#     return render_template('disneyland_map.html')
+@app.route('/map')
+def map():
+    restaurants = Restaurant.query.all()
+    make_map(restaurants)
+    return render_template('disneyland_map.html')
 
 """ Alphabetical Page Routes"""
 
@@ -63,8 +63,6 @@ def delete_user():
 def eating_place(rest_id):
     form = RateRestaurant()
     restaurant = Restaurant.query.get(rest_id)
-    previous_restaurant = Restaurant.query.get(int(rest_id) - 1)
-    next_restaurant = Restaurant.query.get(int(rest_id) + 1)
     rest_len = Restaurant.query.count()
     if current_user.is_authenticated:
         user_id = current_user.id
@@ -87,24 +85,22 @@ def eating_place(rest_id):
                                restaurant=restaurant, 
                                form=form, 
                                rated=rated, 
-                               previous_restaurant=previous_restaurant, 
-                               next_restaurant=next_restaurant,
                                rest_len=rest_len,
                                total_ratings=total_ratings,
                                star_avg=star_avg,
                                restaurant_reviews=restaurant_reviews, 
                                get_user=get_user,
+                               get_restaurant=get_restaurant,
                                generate_stars=generate_stars)
     return render_template('eating_place.html', 
                            restaurant=restaurant, 
                            form=form, 
-                           previous_restaurant=previous_restaurant, 
-                           next_restaurant=next_restaurant,
                            rest_len=rest_len,
                            total_ratings=total_ratings,
                            star_avg=star_avg,
                            restaurant_reviews=restaurant_reviews,
                            get_user=get_user,
+                           get_restaurant=get_restaurant,
                            generate_stars=generate_stars)
 
 

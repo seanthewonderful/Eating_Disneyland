@@ -84,6 +84,7 @@ p.overview {
     margin: 1rem auto;
     position: relative;
 }
+
 @media screen and (max-width: 800px) {
     .card {
         width: calc(50% - 3rem);

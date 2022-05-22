@@ -10,3 +10,8 @@
 #             <iframe class="map" src="{{ url_for('map') }}" width="700" height="700" style="border: 2px solid black;"></iframe>
 #         </div> -->
 
+# <div class="container-fluid col pt-1">
+#             <div class="map-container col" style="width:100%; height:700; border:2px solid black;" >
+#                 {% include 'disneyland_map.html' %}
+#             </div>
+#         </div>
