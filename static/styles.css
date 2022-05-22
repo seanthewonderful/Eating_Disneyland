@@ -1,6 +1,7 @@
 *, *:before, *:after {
     box-sizing: border-box;
 }
+
 html {
     font-size: 18px;
     line-height: 1.5;
@@ -15,11 +16,12 @@ body {
     background-color: #ecf0f9;
     background-attachment: fixed;
 }
-.navbar {
+/* .navbar {
     font-family: "Roboto", sans-serif;
     font-weight: 400;
-    margin: 2 2 2;
-}
+    margin: 0 0 2;
+    /* background-color: #3081C3; */
+/* } */
 .map-container {
     padding: 10 0 0;
     position: relative;
@@ -138,6 +140,7 @@ p.overview {
     transform: rotateY(-180deg);
 }
 .back {
+    /* background: #bff3d1ce; */
     background: rgba(234, 234, 187, 0.725);
     transform: rotateY(-180deg);
     padding: 0 2em;

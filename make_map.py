@@ -6,7 +6,7 @@ from flask import url_for
 
 def make_map(restaurants):
     
-    disneyland_map = folium.Map(location=[33.812034, -117.918968], zoom_start=16, min_zoom=15, max_zoom=19)
+    disneyland_map = folium.Map(location=[33.812034, -117.918968], zoom_start=16, min_zoom=15, max_zoom=19,)
     
     for each in restaurants:
         html = """
@@ -14,9 +14,9 @@ def make_map(restaurants):
                         <img class="card-img-top" src="{0}" alt="an image should be here..." style="max-width: 20rem;">
                                 <div class="card-body">
                                         <h3 class="card-title">{1}</h3>
-                                        <h5 class="card-text" style="-webkit-text-stroke: 1px green; color: green;">{2}</h5>
+                                        <h4 class="card-text" style="-webkit-text-stroke: 1px green; color: green;">{2}</h4>
                                         <h6 class="card-text" style="font-style: italic;">{3}</h6>
-                                        <a type="button" href="{4}" class="btn btn-primary-sm">See Details</a>
+                                        <a type="button" href="{4}" class="btn btn-primary btn-sm" style="color:white;">See Details</a>
                                 </div>
                 </div>
                 """

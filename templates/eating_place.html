@@ -5,8 +5,8 @@
 {% block title %}Everybody's Got an Eatin' Place{% endblock %}
 
 {% block content %} 
-<div class="container-fluid row">
-<div class="card text-center mb-3 col" style="height: 86vh;">
+<div class="container-fluid row mb-5" >
+<div class="card text-center mb-3 col" style="height: 100%;">
     <img src="{{ restaurant.image_url }}" class="card-img-top" style="height: 25vw;" alt="There ought to be something here...">
     <div class="card-body">
       <h5 class="card-title">{{ restaurant.name }}</h5>
@@ -49,7 +49,7 @@
       {% endif %}
       <div class="pt-2">
         {% if restaurant.rest_id > 1 %}
-            <a class="btn btn-outline-primary btn-sm" href="{{ url_for('eating_place', rest_id=restaurant.rest_id+1) }}">Previous Restaurant:<br>{{ previous_restaurant.name }}</a>
+            <a class="btn btn-outline-primary btn-sm" href="{{ url_for('eating_place', rest_id=restaurant.rest_id-1) }}">Previous Restaurant:<br>{{ previous_restaurant.name }}</a>
         {% endif %} 
         {% if restaurant.rest_id < rest_len %}
             <a class="btn btn-outline-primary btn-sm" href="{{ url_for('eating_place', rest_id=restaurant.rest_id+1) }}">Next Restaurant:<br>{{ next_restaurant.name }}</a>
@@ -72,7 +72,5 @@
 </div>
 
 
-  
-
-
 {% endblock %}
+

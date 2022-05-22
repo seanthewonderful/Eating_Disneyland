@@ -15,9 +15,9 @@
         <div class="container justify-content-md-center m-4">
             {% for review in reviews %}
             <div class="container p-4">
-                <li>{{ get_restaurant(review.rest_id).name }}</li>
-                <p class="text-warning"><i class="fa-solid fa-star"></i> {{ review.star_rating }}</p>
-                <li>{{ review.review }}</li>
+                <dl class="row" style="font-style:italic; font-weight: bold;">{{ get_restaurant(review.rest_id).name }}</dl>
+                <dt class="text-warning col"><i class="fa-solid fa-star"></i> {{ review.star_rating }}</dt>
+                <dd class="col">"{{ review.review }}"</dd>
                 <!-- Modal trigger Buttons -->
                 <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal{{ review.rating_id }}">
                     Edit

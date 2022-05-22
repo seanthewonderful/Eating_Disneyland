@@ -1,15 +1,12 @@
-import model
-from flask_sqlalchemy import SQLAlchemy
 
+# Name: Cyan-Blue Azure
+# Hex: #3081C3
+# RGB: (48, 129, 195)
 
-rests = model.Restaurant.query.all()
+# Disney 4C-60-3 Green with Envy / #77cd94 Hex Color Code
 
-if __name__ == "__main__":
-    # As a convenience, if we run this module interactively, it will leave
-    # you in a state of being able to work with the database directly.
-
-    from main import app
-    model.connect_to_db(app)
-    print("Connected to DB.")
-
+# <!-- <div class="iframe-container">
+#             <h3 style="font-family: Mouse Memoirs;">Restaurant Map</h3>
+#             <iframe class="map" src="{{ url_for('map') }}" width="700" height="700" style="border: 2px solid black;"></iframe>
+#         </div> -->
 

@@ -28,6 +28,7 @@ login_manager.init_app(app)
 
 @app.route("/")
 def home():
+    make_map(Restaurant.query.all())
     restaurants = random.choices(Restaurant.query.all(), k=3)
     return render_template('home.html', restaurants=restaurants,
                            total_ratings=total_ratings, 
@@ -35,11 +36,11 @@ def home():
                            generate_stars=generate_stars)
 
 
-@app.route('/map')
-def map():
-    restaurants = Restaurant.query.all()
-    make_map(restaurants)
-    return render_template('disneyland_map.html')
+# @app.route('/map')
+# def map():
+#     restaurants = Restaurant.query.all()
+#     make_map(restaurants)
+#     return render_template('disneyland_map.html')
 
 """ Alphabetical Page Routes"""
 
