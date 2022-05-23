@@ -1,3 +1,4 @@
+from typing import Text
 from flask_wtf import FlaskForm
 from wtforms import (StringField, SubmitField, PasswordField, TextAreaField, EmailField, DecimalField,
                     IntegerField, RadioField, SelectField, BooleanField)
@@ -49,6 +50,16 @@ class AddRestaurant(FlaskForm):
     snacks = BooleanField('Snacks')
     coffee = BooleanField('Coffee')
     beverage_only = BooleanField('Beverage Only')
+    x_coord = DecimalField('X Coordinate')
+    y_coord = DecimalField('Y Coordinate')
+    submit = SubmitField('Submit')
+    
+
+class AddFountain(FlaskForm):
+    name = StringField('Name: "in front of Big Thunder" or "outside front gate"')
+    image_url = StringField('Image name in static image file: "fountain_image.png"')
+    land = RadioField('Land', choices=['Main Street', 'Adventureland', 'New Orleans Square', 'Critter Country', "Galaxy's Edge", 'Frontierland', 'Fantasyland', "Mickey's Toontown", 'Tomorrowland'])
+    description = TextAreaField('Description')
     x_coord = DecimalField('X Coordinate')
     y_coord = DecimalField('Y Coordinate')
     submit = SubmitField('Submit')

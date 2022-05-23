@@ -6,7 +6,7 @@ from model import total_ratings, star_avg
 
 def make_map(restaurants):
     
-    disneyland_map = folium.Map(location=[33.812034, -117.918968], zoom_start=16, min_zoom=15, max_zoom=19,)
+    disneyland_map = folium.Map(location=[33.812034, -117.918968], zoom_start=16, min_zoom=15, max_zoom=19)
     
     for each in restaurants:
         html = """
@@ -37,3 +37,9 @@ def make_map(restaurants):
                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
         
         disneyland_map.save('templates/disneyland_map.html')
+
+
+def fountain_map(fountains):
+        fountain_map = folium.Map(location=[33.812034, -117.918968], zoom_start=16, min_zoom=15, max_zoom=19)
+        
+        pass

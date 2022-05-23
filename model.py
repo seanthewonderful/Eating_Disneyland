@@ -65,7 +65,23 @@ class Rating(db.Model):
                     star_rating={self.star_rating}>
                     """
 
-
+class Fountain(db.Model):
+    __tablename__ = "fountains"
+    
+    id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    name = db.Column(db.String(250), nullable=False)
+    land = db.Column(db.String(250), nullable=True)
+    image_url = db.Column(db.String(500), nullable=True)
+    description = db.Column(db.String(2000), nullable=True)
+    x_coord = db.Column(db.Numeric, nullable=True)
+    y_coord = db.Column(db.Numeric, nullable=True)
+    
+    def __repr__(self):
+        return f"""<Fountain id={self.id} 
+                    name={self.name}>
+                    """
+    
+    
 
 def total_ratings(rest_id):
     return Rating.query.filter_by(rest_id=rest_id).count()

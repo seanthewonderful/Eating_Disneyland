@@ -5,11 +5,11 @@ from flask_debugtoolbar import DebugToolbarExtension
 from flask_wtf.csrf import CSRFProtect
 from jinja2 import StrictUndefined
 import random
-from model import (connect_to_db, User, Restaurant, Rating, db, 
+from model import (connect_to_db, User, Restaurant, Fountain, Rating, db, 
                    total_ratings, star_avg, restaurant_reviews, get_user, 
                    get_restaurant, generate_stars, get_star_rating)
 from forms import (DeleteUser, UpdateUser, RegisterForm, LoginForm, 
-                   AddRestaurant, RateRestaurant)
+                   AddRestaurant, RateRestaurant, AddFountain)
 from werkzeug.security import generate_password_hash, check_password_hash
 from make_map import make_map
 
@@ -265,13 +265,38 @@ def add_restaurant():
             dessert = form.dessert.data,
             snacks = form.snacks.data,
             coffee = form.coffee.data,
-            beverage_only = form.beverage_only.data
+            beverage_only = form.beverage_only.data,
+            x_coord = form.x_coord.data,
+            y_coord = form.y_coord.data
         )
         db.session.add(new_restaurant)
         db.session.commit()
         flash("Restaurant added successfully", category='success')
         return redirect(url_for('add_restaurant'))
     return render_template('addrestaurant.html', form=form)
+
+
+@app.route('/add_fountain', methods=["GET", "POST"])
+def add_fountain():
+    form = AddFountain()
+    if form.validate_on_submit():
+        if Fountain.query.filter_by(name=form.name.data).first():
+            flash("Fountain name already exists", category='danger')
+            return redirect(url_for('add_fountain'))
+        new_fountain = Fountain(
+            name = form.name.data,
+            image_url = form.image_url.data,
+            land = form.land.data,
+            description = form.description.data,
+            x_coord = form.x_coord.data,
+            y_coord = form.y_coord.data
+        )
+        db.session.add(new_fountain)
+        db.session.commit()
+        db.session.close()
+        flash("Fountain added successfully", category='success')
+        return redirect(url_for('add_fountain'))
+    return render_template('add_fountain.html', form=form)
 
 
 """ Flask Managers """
