@@ -5,7 +5,7 @@
 {% block title %}Everybody's Got an Eatin' Place{% endblock %}
 
 {% block content %} 
-<div class="container-fluid row">
+<div class="container-fluid row mx-0">
     <div class="card text-center mb-3 col" style="height: 100%;">
         <img src="{{ restaurant.image_url }}" class="card-img-top" style="height: 25vw;" alt="There ought to be something here...">
         <div class="card-body">
@@ -64,13 +64,14 @@
             {% endif %}
     </div>
 </div>
-    <div class="collapse col" id="collapseReviews">
-        <div class="card card-body">
+    <div class="collapse col-lg-5" id="collapseReviews">
+        <div class="card card-body" style="overflow:auto; height:90%; width:90%;">
             <h2 style="font-family:Noto; font-style:italic;">Reviews</h2>
             {% for each in restaurant_reviews(restaurant.rest_id) %}
             <ul>
-                <h6>{{ get_user(each.user_id).username }} wrote:</h6>
-                <li>{{ each.review }}</li>
+                <dl class="row" style="font-style:italic; font-weight: bold;">{{ (get_user(each.user_id).username).title() }}:</dl>
+                <dt class="text-warning col"><i class="fa-solid fa-star"></i> {{ get_star_rating(user_id=each.user_id, rest_id=restaurant.rest_id) }}</dt>
+                <dd class="col">"{{ each.review }}"</dd>
             </ul>
             {% endfor %}
         </div>

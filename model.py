@@ -83,6 +83,9 @@ def get_user(user_id):
 def get_restaurant(rest_id):
     return Restaurant.query.get(rest_id)
 
+def get_star_rating(user_id, rest_id):
+    return (Rating.query.filter_by(user_id=user_id, rest_id=rest_id).first()).star_rating
+
 def generate_stars(stars):
     if stars > 4.8:
         return Markup("""
@@ -94,31 +97,31 @@ def generate_stars(stars):
             """)
     elif stars >= 4:
         return Markup("""
-            <strong><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i></strong>
+            <strong><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fa-regular fa-star"></i></strong>
             """)
     elif stars >= 3.5:
         return Markup("""
-            <strong><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fa-solid fa-star-half-stroke"></i></i></strong>
+            <strong><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fa-solid fa-star-half-stroke"></i></i><i class="fa-regular fa-star"></i></strong>
             """)
     elif stars >= 3:
         return Markup("""
-            <strong><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i></strong>
+            <strong><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></strong>
             """)
     elif stars >= 2.5:
         return Markup("""
-            <strong><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fa-solid fa-star-half-stroke"></i></i></strong>
+            <strong><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fa-solid fa-star-half-stroke"></i></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></strong>
             """)
     elif stars >= 2:
         return Markup("""
-            <strong><i class="fas fa-star star"></i><i class="fas fa-star star"></i></strong>
+            <strong><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></strong>
             """)
     elif stars >= 1.5:
         return Markup("""
-            <strong><i class="fas fa-star star"></i><i class="fa-solid fa-star-half-stroke"></i>
+            <strong><i class="fas fa-star star"></i><i class="fa-solid fa-star-half-stroke"><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></i>
             """)
     else:
         return Markup("""
-            <strong><i class="fas fa-star star"></i></strong>
+            <strong><i class="fas fa-star star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></strong>
             """)
 
 def connect_to_db(app):

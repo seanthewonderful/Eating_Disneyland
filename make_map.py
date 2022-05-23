@@ -2,7 +2,6 @@ import folium
 from folium.plugins import MarkerCluster
 from flask import url_for
 from model import total_ratings, star_avg
-from markupsafe import Markup
 
 
 def make_map(restaurants):
@@ -38,4 +37,3 @@ def make_map(restaurants):
                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
         
         disneyland_map.save('templates/disneyland_map.html')
-        # return disneyland_map.render()

@@ -7,7 +7,7 @@ from jinja2 import StrictUndefined
 import random
 from model import (connect_to_db, User, Restaurant, Rating, db, 
                    total_ratings, star_avg, restaurant_reviews, get_user, 
-                   get_restaurant, generate_stars)
+                   get_restaurant, generate_stars, get_star_rating)
 from forms import (DeleteUser, UpdateUser, RegisterForm, LoginForm, 
                    AddRestaurant, RateRestaurant)
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -89,7 +89,8 @@ def eating_place(rest_id):
                                restaurant_reviews=restaurant_reviews, 
                                get_user=get_user,
                                get_restaurant=get_restaurant,
-                               generate_stars=generate_stars)
+                               generate_stars=generate_stars,
+                               get_star_rating=get_star_rating)
     return render_template('eating_place.html', 
                            restaurant=restaurant, 
                            form=form, 
@@ -99,7 +100,8 @@ def eating_place(rest_id):
                            restaurant_reviews=restaurant_reviews,
                            get_user=get_user,
                            get_restaurant=get_restaurant,
-                           generate_stars=generate_stars)
+                           generate_stars=generate_stars,
+                           get_star_rating=get_star_rating)
 
 
 
