@@ -6,26 +6,29 @@
 
 {% block content %} 
 
-{% for each in restaurants %} 
+<!-- <div class="container row"> -->
+  {% for each in restaurants %} 
+<!-- <div class="containter col" style="width:50rem;"> -->
 
-<div class="card" >
+<div class="card">
     <div class="front" style="background-image: url('{{ each.image_url }}');">
         <p class="large">{{ each.name }}</p>
     </div>
+
     <div class="back">
       <div>
-        <div class="title">{{ each.name }} <br><span class="release_date">{{ each.land }}</span></div>
-        <label>{{ each.expense }}</label>
-        <div class="rating">
+        <div class="" style="font-weight: bold; font-size:larger;">{{ each.name }} <br><span class="release_date">{{ each.land }}</span></div>
+          <label>{{ each.expense }}</label>
           
-          <a class="link-warning text-decoration-none" href="{{ url_for('eating_place', rest_id=each.rest_id) }}">
-            {{ star_avg(each.rest_id, total_ratings(each.rest_id)) }}{{ generate_stars(star_avg(each.rest_id, total_ratings(each.rest_id))) }}  
-            <span style="font-style:italic; font-size: smaller;">({{ total_ratings(each.rest_id) }} reviews)</span>
-          </a>
-          
+          <div class="rating">
+            <a class="link-warning text-decoration-none" href="{{ url_for('eating_place', rest_id=each.rest_id) }}">
+              {{ star_avg(each.rest_id, total_ratings(each.rest_id)) }}{{ generate_stars(star_avg(each.rest_id, total_ratings(each.rest_id))) }}  
+              <span style="font-style:italic; font-size: smaller;">({{ total_ratings(each.rest_id) }} reviews)</span>
+            </a>
           </div>
+
           <p class="review">"{{ each.description }}"</p>
-        <p class="overview">
+          <p class="overview">
             {% if each.full_service %}
             Full-Service<br>
             {% endif %}
@@ -56,18 +59,19 @@
             {% if each.beverage_only %}
             Beverages Only<br>
             {% endif %}
-        </p>
+          </p>
 
-        <a href="{{ url_for('eating_place', rest_id=each.rest_id) }}" class="btn btn-primary">See Details</a>
-        {% if current_user.is_authenticated %}
-        {% if current_user.username == "TinyTim" %}
-        <a href="#" class="button delete-button">Delete</a>
-        {% endif %}
-        {% endif %}
+          <a href="{{ url_for('eating_place', rest_id=each.rest_id) }}" class="btn btn-primary">See Details</a>
+          {% if current_user.is_authenticated %}
+          {% if current_user.username == "TinyTim" %}
+          <a href="#" class="button delete-button">Delete</a>
+          {% endif %}
+          {% endif %}
       </div>
     </div>
 </div>
 
+<!-- </div> -->
 {% endfor %}
-
+<!-- </div> -->
 {% endblock %}

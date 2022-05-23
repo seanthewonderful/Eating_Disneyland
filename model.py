@@ -10,7 +10,7 @@ db = SQLAlchemy()
 
 class User(UserMixin, db.Model):
     __tablename__ = "users"
-    # if tablename not set, automatically creates lower case version 
+
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     username = db.Column(db.String(250), nullable=False)
     password = db.Column(db.String(250), nullable=False)

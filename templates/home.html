@@ -9,25 +9,25 @@
 
 {% block content %}
 
-<div class="container-fluid map-container row"  style="text-align: center;">
+<div class="container-fluid row m-2"  style="text-align: center;">
         
-        <div class="iframe-container col">
+        <div class="iframe-container col-lg-7">
             <h3 style="font-family: Mouse Memoirs;">Restaurant Map</h3>
-            <iframe class="map" src="{{ url_for('map') }}" width="700" height="700" style="border: 2px solid black;"></iframe>
+            <iframe class="map" src="{{ url_for('map') }}" width="100%" height="75%" style="border: 2px solid black; min-height:70vh;"></iframe>
         </div>
-        <div class="container-fluid col">
+        <div class="container-fluid col-lg-5">
             <h3 style="font-family: Mouse Memoirs;">Need a Random Spot to Try?</h3>
             {% for each in restaurants %}
-            <div class="card text-center mb-3" style="width: 75%; height: fit-content;">
-                <img src="{{ each.image_url }}" class="card-img-top" alt="There ought to be something here...">
+            <div class="card text-center mb-3 mt-0" style="width: 75%; height: fit-content;">
+                <img src="{{ each.image_url }}" class="card-img-top" style="height: 15vw; min-height:150px;" alt="There ought to be something here...">
                 <div class="card-body">
                   <h5 class="card-title">{{ each.name }}</h5>
-                  <p class="card-text" style="font-style: italic;">{{ each.land }}</p>
+                  <p class="card-text mb-1" style="font-style: italic;">{{ each.land }}</p>
                   <a class="link-warning text-decoration-none" href="{{ url_for('eating_place', rest_id=each.rest_id) }}">
                     {{ star_avg(each.rest_id, total_ratings(each.rest_id)) }} {{ generate_stars(star_avg(each.rest_id, total_ratings(each.rest_id))) }}
                     <span style="font-style:italic; font-size: smaller;">({{ total_ratings(each.rest_id) }} reviews)</span>
                   </a>
-                  <p class="card-text"><small class="text-muted">{{ each.expense }}</small></p>
+                  <p class="card-title mb-0" style="color:green;">{{ each.expense }}</p>
                   <a href="{{ url_for('eating_place', rest_id=each.rest_id) }}" class="btn btn-sm btn-outline-primary">See Details</a>
                 </div>
             </div>

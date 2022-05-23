@@ -23,12 +23,10 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 
-
 """ Home and Map Routes """
 
 @app.route("/")
 def home():
-    # make_map(Restaurant.query.all())
     restaurants = random.choices(Restaurant.query.all(), k=3)
     return render_template('home.html', restaurants=restaurants,
                            total_ratings=total_ratings, 

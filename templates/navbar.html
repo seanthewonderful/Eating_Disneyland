@@ -2,7 +2,7 @@
 <nav class="navbar bg-primary navbar-dark navbar-expand-lg" style="font-family: Noto, sans-serif;">
     <div class="container-fluid justify-content-space-between">
         <div class="col col-lg">
-            <a class="navbar-brand" style="font-family:Noto; font-style:italic; font-size:48px;" href="{{ url_for('home') }}">Eating Disneyland</a>
+            <a class="navbar-brand" style="font-family:Noto; font-style:italic; font-size:2.5rem;" href="{{ url_for('home') }}">Eating Disneyland</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -21,11 +21,11 @@
                 <a class="nav-link" href="{{ url_for('add_restaurant') }}">Add Restaurant</a>
                 </li>
             {% endif %}
-            <li class="navbar-text" style="font-style: italic;">Logged in as:
+            <li class="navbar-text">Logged in as:
                 <!-- <a class="nav-link-disabled" style="color: beige;">{{ current_user.username }}</a> -->
             </li>
             <li class="nav-item-dropdown dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" style="font-style:italic;" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     {{ current_user.username }}
                     <img src="{{ url_for('static', filename='/images/D.png') }}" alt="" width="24" height="18" class="d-inline-block align-text-top">
                   </a>

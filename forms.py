@@ -1,9 +1,8 @@
-from decimal import Decimal
-from flask import Flask
 from flask_wtf import FlaskForm
 from wtforms import (StringField, SubmitField, PasswordField, TextAreaField, EmailField, DecimalField,
                     IntegerField, RadioField, SelectField, BooleanField)
 from wtforms.validators import DataRequired, Email, Length, NumberRange, email_validator, InputRequired, EqualTo, ValidationError
+from markupsafe import Markup
 
 
 class RegisterForm(FlaskForm):
