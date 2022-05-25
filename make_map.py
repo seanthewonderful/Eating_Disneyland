@@ -16,11 +16,11 @@ def make_map(restaurants):
                 <div class="card text-center" style="max-width: 22rem;">
                         <img class="card-img-top" src="{0}" alt="an image should be here..." style="max-width: 20rem;">
                                 <div class="card-body">
-                                        <h4 class="card-title">{1}</h4>
+                                        <h4 class="card-title fw-bold" style="text-shadow: #9ec5fe 1px 0 6px;">{1}</h4>
                                         <h4 class="card-title" style="color: green;">{2}</h4>
                                         <h6 class="card-text" style="font-style: italic;">{3}</h6>
-                                        <h6 style="color:#E4BB23; font-weight:bold;">{5} ⭐️ 
-                                        <span style="font-style:italic; font-size: smaller;"> ({6})</span></h6>
+                                        <h4 style="font-weight:bold; text-shadow: gray 1px 0 8px;">{5} ⭐️ 
+                                        <span style="font-style:italic; font-size: smaller;"> ({6})</span></h4>
                                         <a type="button" href="{4}" class="btn btn-primary btn-sm" style="color:white;">See Details</a>
                                 </div>
                 </div>

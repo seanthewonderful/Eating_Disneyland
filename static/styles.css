@@ -216,15 +216,6 @@ p.overview {
 .review {
    font-style: italic;
 }
-.movie_gens {
-    font-size: 11.5px;
-}
-
-.release_date {
-    font-weight: normal;
-    font-style: italic;
-}
-
 .card-img-top {
     width: 100%;
     object-fit: cover;

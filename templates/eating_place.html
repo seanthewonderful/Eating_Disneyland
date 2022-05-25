@@ -9,13 +9,13 @@
     <div class="card text-center mb-3 col" style="height: 100%;">
         <img src="{{ restaurant.image_url }}" class="card-img-top" style="height: 25vw;" alt="There ought to be something here...">
         <div class="card-body">
-            <h5 class="card-title">{{ restaurant.name }}</h5>
+            <h4 class="card-title">{{ restaurant.name }}</h4>
             <p class="card-text" style="font-style: italic;">{{ restaurant.land }}</p>
-            <label>
+            <label class="text-warning fw-bold" style="text-shadow: 1px 1px 3px rgb(0, 0, 0);">
                 {{ star_avg(restaurant.rest_id, total_ratings(restaurant.rest_id)) }} {{ generate_stars(star_avg(restaurant.rest_id, total_ratings(restaurant.rest_id))) }} 
                 <span style="font-style:italic; font-size: smaller;">({{ total_ratings(restaurant.rest_id) }} reviews)</span>
             </label>
-            <p class="card-text"><small class="text-muted">{{ restaurant.expense }}</small></p>
+            <h5 class="text-success pt-1">{{ restaurant.expense }}</h5>
             <p class="card-text">{{ restaurant.description }}</p>
             <p style="font-size:smaller;">
                 {% if restaurant.full_service %}
@@ -49,14 +49,14 @@
                 Beverages Only<br>
                 {% endif %}
               </p>
-            <button class="btn btn-primary btn-sm pt-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseReviews" aria-expanded="false" aria-controls="collapseReviews">
+            <button class="btn btn-primary btn-sm py-1 mb-2 shadow" type="button" data-bs-toggle="collapse" data-bs-target="#collapseReviews" aria-expanded="false" aria-controls="collapseReviews">
                 See Reviews <i class="fa-solid fa-arrow-right"></i>
             </button>
             {% if current_user.is_authenticated %}
             {% if rated %}
             <div>
                 <h5>You have already reviewed this place, thanks!</h5>
-                <a class="btn btn-outline-warning btn-sm" href="{{ url_for('my_contributions') }}">Edit your review</a>
+                <a class="btn btn-outline-warning btn-sm mb-2 shadow" href="{{ url_for('my_contributions') }}">Edit your review</a>
             </div>
             {% else %}
             <div class="container justify-content-md-center" style="padding-top: 5%;">
@@ -81,16 +81,16 @@
             <div class="pt-2">
                 <!-- <a class="btn btn-primary btn-sm" href="{{ url_for('restaurants') }}">Rate more restaurants</a><br> -->
             {% if restaurant.rest_id > 1 %}
-                <a class="btn btn-outline-primary btn-sm" href="{{ url_for('eating_place', rest_id=restaurant.rest_id-1) }}">Did you check out<br>{{ get_restaurant(restaurant.rest_id-1).name }}?</a>
+                <a class="btn btn-outline-primary btn-sm shadow" href="{{ url_for('eating_place', rest_id=restaurant.rest_id-1) }}">Did you check out<br>{{ get_restaurant(restaurant.rest_id-1).name }}?</a>
             {% elif restaurant.rest_id == 1 %}
-                <a class="btn btn-outline-primary btn-sm" href="{{ url_for('eating_place', rest_id=rest_len) }}">Did you check out<br>{{ get_restaurant(rest_len).name }}?</a>
+                <a class="btn btn-outline-primary btn-sm shadow" href="{{ url_for('eating_place', rest_id=rest_len) }}">Did you check out<br>{{ get_restaurant(rest_len).name }}?</a>
 
             {% endif %} 
             {% if restaurant.rest_id < rest_len %}
-                <a class="btn btn-outline-primary btn-sm" href="{{ url_for('eating_place', rest_id=restaurant.rest_id+1) }}">Want to check out<br>{{ get_restaurant(restaurant.rest_id+1).name }}?</a>
+                <a class="btn btn-outline-primary btn-sm shadow" href="{{ url_for('eating_place', rest_id=restaurant.rest_id+1) }}">Want to check out<br>{{ get_restaurant(restaurant.rest_id+1).name }}?</a>
             </div> 
             {% elif restaurant.rest_id == rest_len %}
-                <a class="btn btn-outline-primary btn-sm" href="{{ url_for('eating_place', rest_id=1) }}">Want to check out<br>{{ get_restaurant(1).name }}?</a>
+                <a class="btn btn-outline-primary btn-sm shadow" href="{{ url_for('eating_place', rest_id=1) }}">Want to check out<br>{{ get_restaurant(1).name }}?</a>
         </div> 
 
             {% endif %}
