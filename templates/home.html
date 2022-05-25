@@ -14,10 +14,10 @@
         <div class="col-lg-7">
             <ul class="nav nav-tabs ps-3" id="mapTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active border border-2 border-bottom-0" id="rest-map-tab" data-bs-toggle="tab" data-bs-target="#rest-map-pane" type="button" role="tab" aria-controls="rest-map-pane" aria-selected="true">Restaurants</button>
+                    <button class="nav-link active border border-2 border-bottom-0" id="rest-map-tab" data-bs-toggle="tab" data-bs-target="#rest-map-pane" type="button" role="tab" aria-controls="rest-map-pane" aria-selected="true"><strong>Restaurants</strong></button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link border border-2 border-bottom-0" id="fountain-map-tab" data-bs-toggle="tab" data-bs-target="#fountain-map-pane" type="button" role="tab" aria-controls="fountain-map-pane" aria-selected="false">Fountains</button>
+                    <button class="nav-link border border-2 border-bottom-0" id="fountain-map-tab" data-bs-toggle="tab" data-bs-target="#fountain-map-pane" type="button" role="tab" aria-controls="fountain-map-pane" aria-selected="false"><strong>Fountains</strong></button>
                 </li>
             </ul>
             <div class="tab-content iframe-container shadow" id="mapTab">
@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="container-fluid col-lg-5">
-            <h3 style="font-family: Mouse Memoirs;">Need a Random Spot to Try?</h3>
+            <h3 style="font-family: Noto; font-style: italic;">Need a Random Spot to Try?</h3>
             {% for each in restaurants %}
             <div class="card text-center mb-3 mt-0 shadow" style="width: 75%; height: fit-content;">
                 <img src="{{ each.image_url }}" class="card-img-top" style="height: 15vw; min-height:150px;" alt="There ought to be something here...">

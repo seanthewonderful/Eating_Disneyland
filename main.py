@@ -87,10 +87,12 @@ def fountain_place(fountain_id):
             return redirect(url_for('fountain_place', fountain_id=fountain_id))
         return render_template('fountain_place.html', 
                                 form=form,
-                                fountain=fountain)
+                                fountain=fountain,
+                                rated=rated)
     return render_template('fountain_place.html', 
                            form=form,
-                           fountain=fountain)
+                           fountain=fountain,
+                           rated=rated)
 
 
 @app.route('/eating_place/<rest_id>', methods=["GET", "POST"])

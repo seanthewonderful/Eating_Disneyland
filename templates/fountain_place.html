@@ -6,23 +6,33 @@
 
 {% block content %} 
 
-<div class="container justify-content-md-center" style="padding-top: 5%;">
-    <form class="" method="post" action="{{ url_for('fountain_place', fountain_id=fountain.id) }}">
-        Fountain {{ fountain.name }}
-        <h2 class="heading">Leave a Review</h2>
-            {{ form.csrf_token }}
-        <div class="form-group m-2">
-            {{ form.star_rating.label }}
-            {{ form.star_rating(class="form-select") }}
-        </div>
-        <div class="form-floating m-2">
-            {{ form.review(class="form-control", placeholder="comments", id="floatingTextarea2", style="height:200px;") }}
-            {{ form.review.label }}
-        </div>
-        <div class="form-group m-2">
-            {{ form.submit(class="btn btn-primary") }}
-        </div>
-    </form>
-</div>
+
+{% if current_user.is_authenticated %}
+{% if rated %}
+    <div>
+        <h5>You have already reviewed this place, thanks!</h5>
+        <a class="btn btn-outline-warning btn-sm mb-2 shadow" href="{{ url_for('my_contributions') }}">Edit your review</a>
+    </div>
+{% else %}
+    <div class="container justify-content-md-center" style="padding-top: 5%;">
+        <form class="" method="post" action="{{ url_for('fountain_place', fountain_id=fountain.id) }}">
+            Fountain {{ fountain.name }}
+            <h2 class="heading">Leave a Review</h2>
+                {{ form.csrf_token }}
+            <div class="form-group m-2">
+                {{ form.star_rating.label }}
+                {{ form.star_rating(class="form-select") }}
+            </div>
+            <div class="form-floating m-2">
+                {{ form.review(class="form-control", placeholder="comments", id="floatingTextarea2", style="height:200px;") }}
+                {{ form.review.label }}
+            </div>
+            <div class="form-group m-2">
+                {{ form.submit(class="btn btn-primary") }}
+            </div>
+        </form>
+    </div>
+{% endif %}
+{% endif %}
 
 {% endblock %}
