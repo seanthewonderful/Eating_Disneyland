@@ -69,6 +69,12 @@ class RateRestaurant(FlaskForm):
     review = TextAreaField('Write a review of your experience here')
     submit = SubmitField('Submit')
     
+    
+class RateFountain(FlaskForm):
+    star_rating = SelectField('Stars out of 5', choices=[(1, '⭐️'), (2, '⭐️⭐️'), (3, '⭐️⭐️⭐️'), (4, '⭐️⭐️⭐️⭐️'), (5, '⭐️⭐️⭐️⭐️⭐️')])
+    review = TextAreaField('Write a review of your drinking fountain experience here')
+    submit = SubmitField('Submit')
+    
 # class EditReview(FlaskForm):
 #     star_rating = SelectField('Stars out of 5', choices=[(1, '⭐️'), (2, '⭐️⭐️'), (3, '⭐️⭐️⭐️'), (4, '⭐️⭐️⭐️⭐️'), (5, '⭐️⭐️⭐️⭐️⭐️')])
 #     review = TextAreaField('Comments', default="", validators=[Length(max=2500)])

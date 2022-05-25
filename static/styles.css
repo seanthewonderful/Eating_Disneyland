@@ -21,6 +21,11 @@ body {
     font-family: Noto;
     font-style: italic;
     font-weight: 800;
+    text-shadow: rgb(196, 159, 12) 1px 0 10px;
+    -webkit-text-stroke: 1.5px black;
+    color: #fff;
+    overflow: hidden;
+    
 }
 .content {
     display: flex;
@@ -110,13 +115,8 @@ p.overview {
 .front {
     background-size: cover;
     padding: 2rem;
-    font-size: 1.618rem;
-    font-weight: 500;
-    text-shadow: rgb(196, 159, 12) 1px 0 10px;
-    -webkit-text-stroke: 1px black;
-    color: #fff;
-    overflow: hidden;
-    font-family: Roboto, sans-serif;
+    text-shadow: rgb(196, 159, 12) 1px 1px 0;
+    color: black;
 }
 .front:before {
     position: absolute;

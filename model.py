@@ -64,6 +64,22 @@ class Rating(db.Model):
                     user_id={self.user_id}
                     star_rating={self.star_rating}>
                     """
+                    
+class RatingF(db.Model):
+    __tablename__ = "ratingf"
+    
+    rating_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    fountain_id = db.Column(db.Integer, db.ForeignKey('restaurants.rest_id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    star_rating = db.Column(db.Integer, nullable=True)
+    review = db.Column(db.String(2000), nullable=True)
+    
+    def __repr__(self):
+        return f"""<RatingF id={self.rating_id}
+                    fountain_id={self.fountain_id}
+                    user_id={self.user_id}
+                    star_rating={self.star_rating}>
+                    """
 
 class Fountain(db.Model):
     __tablename__ = "fountains"
@@ -85,10 +101,17 @@ class Fountain(db.Model):
 
 def total_ratings(rest_id):
     return Rating.query.filter_by(rest_id=rest_id).count()
-    
+
 def star_avg(rest_id, total_ratings):
     total_stars = Rating.query.with_entities(func.sum(Rating.star_rating).filter(Rating.rest_id==rest_id).label('total')).first().total
     return round((total_stars/total_ratings), 1)
+
+def total_ratings_fountain(id):
+    return Fountain.query.filter_by(id=id).count()    
+
+def star_avg_fountain(id, total_ratings_fountain):
+    total_stars = Fountain.query.with_entities(func.sum(RatingF.star_rating).filter(RatingF.fountain_id==id).label('total')).first().total
+    return round((total_stars/total_ratings_fountain), 1)
 
 def restaurant_reviews(rest_id):
     return Rating.query.filter_by(rest_id=rest_id).all()

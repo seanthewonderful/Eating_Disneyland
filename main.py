@@ -7,11 +7,11 @@ from jinja2 import StrictUndefined
 import random
 from model import (connect_to_db, User, Restaurant, Fountain, Rating, db, 
                    total_ratings, star_avg, restaurant_reviews, get_user, 
-                   get_restaurant, generate_stars, get_star_rating)
+                   get_restaurant, generate_stars, get_star_rating, RatingF)
 from forms import (DeleteUser, UpdateUser, RegisterForm, LoginForm, 
-                   AddRestaurant, RateRestaurant, AddFountain)
+                   AddRestaurant, RateRestaurant, AddFountain, RateFountain)
 from werkzeug.security import generate_password_hash, check_password_hash
-from make_map import make_map
+from make_map import make_map, make_fountain_map
 
 
 app = Flask(__name__)
@@ -40,6 +40,13 @@ def map():
     make_map(restaurants)
     return render_template('disneyland_map.html')
 
+
+@app.route('/fountain_map')
+def fountain_map():
+    fountains = Fountain.query.all()
+    make_fountain_map(fountains)
+    return render_template('fountain_map.html')
+
 """ Alphabetical Page Routes"""
 
 
@@ -55,6 +62,35 @@ def delete_user():
         flash("Account sent to the Memory Dump. Now perusing as a guest!", category='info')
         return redirect(url_for('home'))
     return render_template('delete_user.html', form=form)
+
+
+@app.route('/fountain_place/<fountain_id>', methods=["GET", "POST"])
+def fountain_place(fountain_id):
+    form = RateFountain()
+    fountain = Fountain.query.get(fountain_id)
+    if current_user.is_authenticated:
+        user_id = current_user.id
+        rated = RatingF.query.filter_by(user_id=user_id, fountain_id=fountain_id).first()
+        if form.validate_on_submit():
+            star_rating = form.star_rating.data
+            review = form.review.data
+            if RatingF.query.filter_by(user_id=user_id, fountain_id=fountain_id).first():
+                pass
+            new_rating = RatingF(user_id=user_id,
+                                 fountain_id=fountain_id,
+                                 star_rating=star_rating,
+                                 review=review)
+            db.session.add(new_rating)
+            db.session.commit()
+            db.session.close()
+            flash("Your review has been accepted, thank you!", category='success')
+            return redirect(url_for('fountain_place', fountain_id=fountain_id))
+        return render_template('fountain_place.html', 
+                                form=form,
+                                fountain=fountain)
+    return render_template('fountain_place.html', 
+                           form=form,
+                           fountain=fountain)
 
 
 @app.route('/eating_place/<rest_id>', methods=["GET", "POST"])

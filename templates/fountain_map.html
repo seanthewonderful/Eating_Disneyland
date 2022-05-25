@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_a1b670aed4a66a196d0cfdc808875350 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_a1b670aed4a66a196d0cfdc808875350" ></div>
+        
+</body>
+<script>    
+    
+            var map_a1b670aed4a66a196d0cfdc808875350 = L.map(
+                "map_a1b670aed4a66a196d0cfdc808875350",
+                {
+                    center: [33.812034, -117.918968],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 16,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_cf725d3242a0871dbd6da92ecbe43148 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 13, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_a1b670aed4a66a196d0cfdc808875350);
+        
+    
+            var marker_84d94947d02222512a590ad826bed6ca = L.marker(
+                [33.81042465505885, -117.9189002035462],
+                {}
+            ).addTo(map_a1b670aed4a66a196d0cfdc808875350);
+        
+    
+            var icon_a2bc8dd89be786da18cea5c14fc40773 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-tint", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_84d94947d02222512a590ad826bed6ca.setIcon(icon_a2bc8dd89be786da18cea5c14fc40773);
+        
+    
+        var popup_f00162f1e9e26246ac68d0174ef28b92 = L.popup({"maxWidth": 200});
+
+        
+            var html_9f7e38d0d5e5de863e42e18935ed55f8 = $(`<div id="html_9f7e38d0d5e5de863e42e18935ed55f8" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="/static/images/main_3spigot.jpeg" alt="an image should be here..." style="max-width: 20rem; max-height:20rem;">                                 <div class="card-body">                                         <h4 class="card-title">northeast side of Town Square</h4>                                         <h6 class="card-text" style="font-style: italic;">Main Street</h6>                                         <h6 style="color:#E4BB23; font-weight:bold;">5.0 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (1)</span></h6>                                         <a type="button" href="/fountain_place/2" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+            popup_f00162f1e9e26246ac68d0174ef28b92.setContent(html_9f7e38d0d5e5de863e42e18935ed55f8);
+        
+
+        marker_84d94947d02222512a590ad826bed6ca.bindPopup(popup_f00162f1e9e26246ac68d0174ef28b92)
+        ;
+
+        
+    
+    
+            marker_84d94947d02222512a590ad826bed6ca.bindTooltip(
+                `<div>
+                     northeast side of Town Square
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d23ac7bb175fb84da202f6f0b2972f42 = L.marker(
+                [33.81021832043369, -117.9186418592339],
+                {}
+            ).addTo(map_a1b670aed4a66a196d0cfdc808875350);
+        
+    
+            var icon_55f7e1548b951bc2ba9acf0124c1969e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-tint", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_d23ac7bb175fb84da202f6f0b2972f42.setIcon(icon_55f7e1548b951bc2ba9acf0124c1969e);
+        
+    
+        var popup_c65159599a0ac1c23076f649740b1920 = L.popup({"maxWidth": 200});
+
+        
+            var html_c504f687c4e7893dcd0d7dc8cdbf01fe = $(`<div id="html_c504f687c4e7893dcd0d7dc8cdbf01fe" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="/static/images/main_2spigot.jpeg" alt="an image should be here..." style="max-width: 20rem; max-height:20rem;">                                 <div class="card-body">                                         <h4 class="card-title">outside Great Moments with Mr. Lincoln</h4>                                         <h6 class="card-text" style="font-style: italic;">Main Street</h6>                                         <h6 style="color:#E4BB23; font-weight:bold;">5.0 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (1)</span></h6>                                         <a type="button" href="/fountain_place/1" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+            popup_c65159599a0ac1c23076f649740b1920.setContent(html_c504f687c4e7893dcd0d7dc8cdbf01fe);
+        
+
+        marker_d23ac7bb175fb84da202f6f0b2972f42.bindPopup(popup_c65159599a0ac1c23076f649740b1920)
+        ;
+
+        
+    
+    
+            marker_d23ac7bb175fb84da202f6f0b2972f42.bindTooltip(
+                `<div>
+                     outside Great Moments with Mr. Lincoln
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>
