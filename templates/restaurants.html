@@ -20,11 +20,11 @@
 
       <div class="back">
         <div>
-          <div style="font-weight: bold; font-family: Noto, sans-serif; font-size:1.5rem;"><u>{{ each.name }}</u> <br><span class="release_date" style="font-size:large;">{{ each.land }}</span></div>
+          <div style="font-weight: bold; font-family: Noto, sans-serif; font-size:1.5rem; text-shadow: #997404 0 1px 2px;">{{ each.name }} <br><span class="release_date fst-italic fw-normal" style="font-size:medium; text-shadow:none;">{{ each.land }}</span></div>
           <label>{{ each.expense }}</label>
           
           <div class="rating">
-            <a class="link-warning text-decoration-none" href="{{ url_for('eating_place', rest_id=each.rest_id) }}" style="text-shadow: #332701 1px 1px 5px;">
+            <a class="link-warning text-decoration-none" href="{{ url_for('eating_place', rest_id=each.rest_id) }}" style="text-shadow: #274298 0 1px 1px;">
               {{ star_avg(each.rest_id, total_ratings(each.rest_id)) }}{{ generate_stars(star_avg(each.rest_id, total_ratings(each.rest_id))) }}  
               <span style="font-style:italic; font-size: smaller;">({{ total_ratings(each.rest_id) }} reviews)</span>
             </a>

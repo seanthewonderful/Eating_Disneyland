@@ -6,16 +6,17 @@
 
 {% block content %} 
 <div class="container-fluid row mx-0">
+
     <div class="card text-center mb-3 col" style="height: 100%;">
         <img src="{{ restaurant.image_url }}" class="card-img-top" style="height: 25vw;" alt="There ought to be something here...">
         <div class="card-body">
-            <h4 class="card-title">{{ restaurant.name }}</h4>
+            <h4 class="card-title" style="text-shadow: #cc9a07 0 1px 1px;">{{ restaurant.name }}</h4>
             <p class="card-text" style="font-style: italic;">{{ restaurant.land }}</p>
-            <label class="text-warning fw-bold" style="text-shadow: 1px 1px 3px rgb(0, 0, 0);">
+            <label class="text-warning" style="text-shadow: #172c65 0 1px 1px;">
                 {{ star_avg(restaurant.rest_id, total_ratings(restaurant.rest_id)) }} {{ generate_stars(star_avg(restaurant.rest_id, total_ratings(restaurant.rest_id))) }} 
                 <span style="font-style:italic; font-size: smaller;">({{ total_ratings(restaurant.rest_id) }} reviews)</span>
             </label>
-            <h5 class="text-success pt-1">{{ restaurant.expense }}</h5>
+            <h5 class="text-success pt-1" style="text-shadow: #a3cfbc 0 1px 2px;"">{{ restaurant.expense }}</h5>
             <p class="card-text">{{ restaurant.description }}</p>
             <p style="font-size:smaller;">
                 {% if restaurant.full_service %}
@@ -54,9 +55,8 @@
             </button>
             {% if current_user.is_authenticated %}
             {% if rated %}
-            <div>
+            <div class="py-3">
                 <h5>You have already reviewed this place, thanks!</h5>
-                <a class="btn btn-outline-warning btn-sm mb-2 shadow" href="{{ url_for('my_contributions') }}">Edit your review</a>
             </div>
             {% else %}
             <div class="container justify-content-md-center" style="padding-top: 5%;">
@@ -102,11 +102,16 @@
             {% for each in restaurant_reviews(restaurant.rest_id) %}
             <ul>
                 <dl class="row" style="font-style:italic; font-weight: bold;">{{ (get_user(each.user_id).username).title() }}:</dl>
-                <dt class="text-warning col"><i class="fa-solid fa-star"></i> {{ get_star_rating(user_id=each.user_id, rest_id=restaurant.rest_id) }}</dt>
+                <dt class="text-warning fw-normal col" style="text-shadow: #172c65 0 1px 1px;"><i class="fa-solid fa-star"></i> {{ get_star_rating(user_id=each.user_id, rest_id=restaurant.rest_id) }}</dt>
                 {% if each.review == '' %}
                 <dd class="col text-muted" style="font-style: italic;">No written review</dd>
                 {% else %} 
                 <dd class="col">"{{ each.review }}"</dd>
+                {% if current_user.is_authenticated %}
+                {% if get_user(each.user_id).username == current_user.username %}
+                <a class="btn btn-sm btn-outline-warning shadow" href="{{ url_for('my_contributions') }}">Edit review</a>
+                {% endif %}
+                {% endif %}
                 {% endif %}
             </ul>
             {% endfor %}

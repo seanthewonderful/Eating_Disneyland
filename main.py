@@ -203,21 +203,6 @@ def my_contributions():
                            generate_stars=generate_stars)
 
 
-@app.route('/delete_rating/<rating_id>', methods=["GET", "DELETE"])
-@login_required
-def delete_rating(rating_id):
-    if request.method == "DELETE":
-        # rating = Rating.query.filter_by(user_id=user_id, rest_id=rest_id).first()
-        # db.session.delete(rating)
-        # db.session.commit()
-        # db.session.close()
-        # return redirect(url_for('my_contributions'))
-        # print(user_id)
-        # print(rest_id)
-        print(rating_id)
-        # return redirect(url_for('my_contributions'))
-
-
 @app.route('/profile', methods=["GET", "POST"])
 @login_required
 def profile():
