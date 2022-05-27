@@ -107,10 +107,10 @@
                 <dd class="col text-muted" style="font-style: italic;">No written review</dd>
                 {% else %} 
                 <dd class="col">"{{ each.review }}"</dd>
+                {% endif %}
                 {% if current_user.is_authenticated %}
                 {% if get_user(each.user_id).username == current_user.username %}
                 <a class="btn btn-sm btn-outline-warning shadow" href="{{ url_for('my_contributions') }}">Edit review</a>
-                {% endif %}
                 {% endif %}
                 {% endif %}
             </ul>
