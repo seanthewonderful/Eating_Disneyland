@@ -1,8 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import (StringField, SubmitField, PasswordField, TextAreaField, EmailField, DecimalField,
                     IntegerField, RadioField, SelectField, BooleanField)
-from wtforms.validators import DataRequired, Email, Length, NumberRange, email_validator, InputRequired, EqualTo, ValidationError
-from markupsafe import Markup
+from wtforms.validators import DataRequired, Email, Length, NumberRange, email_validator, InputRequired, ValidationError
 
 
 class RegisterForm(FlaskForm):
@@ -75,7 +74,3 @@ class RateFountain(FlaskForm):
     review = TextAreaField('Write a review of your drinking fountain experience here')
     submit = SubmitField('Submit')
     
-# class EditReview(FlaskForm):
-#     star_rating = SelectField('Stars out of 5', choices=[(1, '⭐️'), (2, '⭐️⭐️'), (3, '⭐️⭐️⭐️'), (4, '⭐️⭐️⭐️⭐️'), (5, '⭐️⭐️⭐️⭐️⭐️')])
-#     review = TextAreaField('Comments', default="", validators=[Length(max=2500)])
-#     submit = SubmitField('Submit')

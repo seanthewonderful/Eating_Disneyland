@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin
 from sqlalchemy.sql import func
 from markupsafe import Markup
+from os import environ
 
 
 db = SQLAlchemy()
@@ -96,8 +97,7 @@ class Fountain(db.Model):
         return f"""<Fountain id={self.id} 
                     name={self.name}>
                     """
-    
-    
+
 
 def total_ratings(rest_id):
     return Rating.query.filter_by(rest_id=rest_id).count()
@@ -164,7 +164,7 @@ def generate_stars(stars):
             """)
 
 def connect_to_db(app):
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///disneyland_ratings'
+    app.config['SQLALCHEMY_DATABASE_URI'] = environ["POSTGRES_URI"]
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.app = app
     db.init_app(app)
@@ -173,7 +173,6 @@ def connect_to_db(app):
 if __name__ == "__main__":
     # As a convenience, if we run this module interactively, it will leave
     # you in a state of being able to work with the database directly.
-
     from main import app
     connect_to_db(app)
     print("Connected to DB.")

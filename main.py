@@ -12,10 +12,11 @@ from forms import (DeleteUser, UpdateUser, RegisterForm, LoginForm,
                    AddRestaurant, RateRestaurant, AddFountain, RateFountain)
 from werkzeug.security import generate_password_hash, check_password_hash
 from make_map import make_map, make_fountain_map
+from os import environ
 
 
 app = Flask(__name__)
-app.secret_key = "6fb0ad050f264f45b1c29962f08ff548"
+app.secret_key = environ["SECRET_KEY"]
 csrf = CSRFProtect(app)
 app.jinja_env.undefined = StrictUndefined
 app.config["DEBUG_TB_INTERCEPT_REDIRECTS"]=False
@@ -330,7 +331,7 @@ def load_user(user_id):
 
 
 if __name__ == "__main__":
-    app.jinja_env.auto_reload = app.debug
+    # app.jinja_env.auto_reload = app.debug
+    # DebugToolbarExtension(app)
     connect_to_db(app)
-    DebugToolbarExtension(app)
-    app.run(debug=True)
+    app.run(debug=False)

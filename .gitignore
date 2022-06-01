@@ -1,4 +1,5 @@
-/demos.py
-/secrets.sh
+demos.py
+config.sh
+/__pycache__
+/node_modules
 *.json
-
