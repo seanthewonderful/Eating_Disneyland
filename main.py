@@ -12,16 +12,20 @@ from forms import (DeleteUser, UpdateUser, RegisterForm, LoginForm,
                    AddRestaurant, RateRestaurant, AddFountain, RateFountain)
 from werkzeug.security import generate_password_hash, check_password_hash
 from make_map import make_map, make_fountain_map
+from flask_sqlalchemy import SQLAlchemy
 from os import environ
 
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = environ["POSTGRES_URI"]
 app.secret_key = environ["SECRET_KEY"]
 csrf = CSRFProtect(app)
 app.jinja_env.undefined = StrictUndefined
 app.config["DEBUG_TB_INTERCEPT_REDIRECTS"]=False
 login_manager = LoginManager()
 login_manager.init_app(app)
+db = SQLAlchemy(app)
+
 
 
 """ Home and Map Routes """
@@ -333,5 +337,5 @@ def load_user(user_id):
 if __name__ == "__main__":
     # app.jinja_env.auto_reload = app.debug
     # DebugToolbarExtension(app)
-    connect_to_db(app)
+    # connect_to_db(app)
     app.run(debug=False)

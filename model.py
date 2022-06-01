@@ -1,12 +1,7 @@
-from flask import render_template_string
-from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin
 from sqlalchemy.sql import func
 from markupsafe import Markup
-from os import environ
-
-
-db = SQLAlchemy()
+from main import db
 
 
 class User(UserMixin, db.Model):
@@ -163,16 +158,16 @@ def generate_stars(stars):
             <strong><i class="fas fa-star star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></strong>
             """)
 
-def connect_to_db(app):
-    app.config['SQLALCHEMY_DATABASE_URI'] = environ["POSTGRES_URI"]
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    db.app = app
-    db.init_app(app)
+# def connect_to_db(app):
+#     app.config['SQLALCHEMY_DATABASE_URI'] = environ["POSTGRES_URI"]
+#     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+#     db.app = app
+#     db.init_app(app)
 
 
-if __name__ == "__main__":
-    # As a convenience, if we run this module interactively, it will leave
-    # you in a state of being able to work with the database directly.
-    from main import app
-    connect_to_db(app)
-    print("Connected to DB.")
+# if __name__ == "__main__":
+#     # As a convenience, if we run this module interactively, it will leave
+#     # you in a state of being able to work with the database directly.
+#     from main import app
+#     connect_to_db(app)
+#     print("Connected to DB.")
