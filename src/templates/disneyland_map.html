@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_5298e709ecc0c7253c83eec021716ba0 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_5298e709ecc0c7253c83eec021716ba0" ></div>
+        
+</body>
+<script>    
+    
+            var map_5298e709ecc0c7253c83eec021716ba0 = L.map(
+                "map_5298e709ecc0c7253c83eec021716ba0",
+                {
+                    center: [33.812034, -117.918968],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 16,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_cab5af6f4b4b8b50456a399d087cc036 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 13, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_5298e709ecc0c7253c83eec021716ba0);
+        
+    
+            var marker_7d9c667e1d0faecf38c3952b4b23a7af = L.marker(
+                [33.811067, -117.919103],
+                {}
+            ).addTo(map_5298e709ecc0c7253c83eec021716ba0);
+        
+    
+            var icon_c37cc80819abe86d65859d47afd0f5ee = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-cutlery", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_7d9c667e1d0faecf38c3952b4b23a7af.setIcon(icon_c37cc80819abe86d65859d47afd0f5ee);
+        
+    
+        var popup_5ff15fb9ce2296f2db1cbd57121dd125 = L.popup({"maxWidth": 200});
+
+        
+            var html_dfb33ec0acb521fbc7ad28809adfac7d = $(`<div id="html_dfb33ec0acb521fbc7ad28809adfac7d" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="https://mickeyblog.com/wp-content/uploads/2018/10/Carnation_Cafe_2012.png" alt="an image should be here..." style="max-width: 20rem;">                                 <div class="card-body">                                         <h4 class="card-title fw-bold" style="text-shadow: #cc9a07 0 1px 1px;">Carnation Cafe</h4>                                         <h4 class="card-title" style="color: green; text-shadow: #a3cfbc 1px 0 3px;">$$</h4>                                         <h6 class="card-text" style="font-style: italic;">Main Street</h6>                                         <h4 style="color: #f4c109; font-weight:bold; text-shadow: #172c65 0 1px 1px;">4.0 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (3)</span></h4>                                         <a type="button" href="/eating_place/1" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+            popup_5ff15fb9ce2296f2db1cbd57121dd125.setContent(html_dfb33ec0acb521fbc7ad28809adfac7d);
+        
+
+        marker_7d9c667e1d0faecf38c3952b4b23a7af.bindPopup(popup_5ff15fb9ce2296f2db1cbd57121dd125)
+        ;
+
+        
+    
+    
+            marker_7d9c667e1d0faecf38c3952b4b23a7af.bindTooltip(
+                `<div>
+                     Carnation Cafe
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1ad7fee4a8032e4c98f0f6431090d623 = L.marker(
+                [33.811165, -117.919086],
+                {}
+            ).addTo(map_5298e709ecc0c7253c83eec021716ba0);
+        
+    
+            var icon_7205bfe46067cd409a70cdfd28ad709c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-cutlery", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_1ad7fee4a8032e4c98f0f6431090d623.setIcon(icon_7205bfe46067cd409a70cdfd28ad709c);
+        
+    
+        var popup_2f7305d0057aeb50c2d359b215b41dd1 = L.popup({"maxWidth": 200});
+
+        
+            var html_40ef5c39a5d5156454fb7e2d4ca4da75 = $(`<div id="html_40ef5c39a5d5156454fb7e2d4ca4da75" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="https://farm9.static.flickr.com/8421/7763878548_b4dca6cb9b_b.jpg" alt="an image should be here..." style="max-width: 20rem;">                                 <div class="card-body">                                         <h4 class="card-title fw-bold" style="text-shadow: #cc9a07 0 1px 1px;">Gibson Girl Ice Cream Parlor</h4>                                         <h4 class="card-title" style="color: green; text-shadow: #a3cfbc 1px 0 3px;">$</h4>                                         <h6 class="card-text" style="font-style: italic;">Main Street</h6>                                         <h4 style="color: #f4c109; font-weight:bold; text-shadow: #172c65 0 1px 1px;">4.7 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (3)</span></h4>                                         <a type="button" href="/eating_place/2" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+            popup_2f7305d0057aeb50c2d359b215b41dd1.setContent(html_40ef5c39a5d5156454fb7e2d4ca4da75);
+        
+
+        marker_1ad7fee4a8032e4c98f0f6431090d623.bindPopup(popup_2f7305d0057aeb50c2d359b215b41dd1)
+        ;
+
+        
+    
+    
+            marker_1ad7fee4a8032e4c98f0f6431090d623.bindTooltip(
+                `<div>
+                     Gibson Girl Ice Cream Parlor
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ba289d446ee1352f56c59cd5612a2e13 = L.marker(
+                [33.810929374836455, -117.91888406625188],
+                {}
+            ).addTo(map_5298e709ecc0c7253c83eec021716ba0);
+        
+    
+            var icon_21b677d86ddbd3aec0a0cc8a543c4d04 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-cutlery", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_ba289d446ee1352f56c59cd5612a2e13.setIcon(icon_21b677d86ddbd3aec0a0cc8a543c4d04);
+        
+    
+        var popup_7eca06c5af442fba31cefdfd28173451 = L.popup({"maxWidth": 200});
+
+        
+            var html_7d6dfff1b99018bb1d94e497a7786e8f = $(`<div id="html_7d6dfff1b99018bb1d94e497a7786e8f" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="https://allears.net/wp-content/uploads/archive/dining/images/dining_location_image_2025.jpg" alt="an image should be here..." style="max-width: 20rem;">                                 <div class="card-body">                                         <h4 class="card-title fw-bold" style="text-shadow: #cc9a07 0 1px 1px;">Market House</h4>                                         <h4 class="card-title" style="color: green; text-shadow: #a3cfbc 1px 0 3px;">$</h4>                                         <h6 class="card-text" style="font-style: italic;">Main Street</h6>                                         <h4 style="color: #f4c109; font-weight:bold; text-shadow: #172c65 0 1px 1px;">2.3 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (3)</span></h4>                                         <a type="button" href="/eating_place/3" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+            popup_7eca06c5af442fba31cefdfd28173451.setContent(html_7d6dfff1b99018bb1d94e497a7786e8f);
+        
+
+        marker_ba289d446ee1352f56c59cd5612a2e13.bindPopup(popup_7eca06c5af442fba31cefdfd28173451)
+        ;
+
+        
+    
+    
+            marker_ba289d446ee1352f56c59cd5612a2e13.bindTooltip(
+                `<div>
+                     Market House
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c7fd7aef496b6f541bb199893046ec55 = L.marker(
+                [33.81144, -117.919081],
+                {}
+            ).addTo(map_5298e709ecc0c7253c83eec021716ba0);
+        
+    
+            var icon_72923bdf16fa7b829a0b3aa2133f4468 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-cutlery", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_c7fd7aef496b6f541bb199893046ec55.setIcon(icon_72923bdf16fa7b829a0b3aa2133f4468);
+        
+    
+        var popup_170616b304ac52ead0abb32ecf920e31 = L.popup({"maxWidth": 200});
+
+        
+            var html_4555a5e69b0aaf0f46a0247fc3b91bf1 = $(`<div id="html_4555a5e69b0aaf0f46a0247fc3b91bf1" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="https://live.staticflickr.com/3211/2749054138_ca8843f347_c.jpg" alt="an image should be here..." style="max-width: 20rem;">                                 <div class="card-body">                                         <h4 class="card-title fw-bold" style="text-shadow: #cc9a07 0 1px 1px;">Refreshment Corner</h4>                                         <h4 class="card-title" style="color: green; text-shadow: #a3cfbc 1px 0 3px;">$$</h4>                                         <h6 class="card-text" style="font-style: italic;">Main Street</h6>                                         <h4 style="color: #f4c109; font-weight:bold; text-shadow: #172c65 0 1px 1px;">4.8 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (4)</span></h4>                                         <a type="button" href="/eating_place/4" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+            popup_170616b304ac52ead0abb32ecf920e31.setContent(html_4555a5e69b0aaf0f46a0247fc3b91bf1);
+        
+
+        marker_c7fd7aef496b6f541bb199893046ec55.bindPopup(popup_170616b304ac52ead0abb32ecf920e31)
+        ;
+
+        
+    
+    
+            marker_c7fd7aef496b6f541bb199893046ec55.bindTooltip(
+                `<div>
+                     Refreshment Corner
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fb57bd854a001589b631e19779f6bc18 = L.marker(
+                [33.81168285912394, -117.9193818473908],
+                {}
+            ).addTo(map_5298e709ecc0c7253c83eec021716ba0);
+        
+    
+            var icon_1c17a1d041246fbe23f8badb1d0f26b5 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-cutlery", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_fb57bd854a001589b631e19779f6bc18.setIcon(icon_1c17a1d041246fbe23f8badb1d0f26b5);
+        
+    
+        var popup_26262aab8776346249a8c7c895ce8d48 = L.popup({"maxWidth": 200});
+
+        
+            var html_503e3a2aa630473dd952d14d917887fb = $(`<div id="html_503e3a2aa630473dd952d14d917887fb" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="https://images.fineartamerica.com/images-medium-large-5/jolly-holiday-cafe-main-street-disneyland-01-thomas-woolworth.jpg" alt="an image should be here..." style="max-width: 20rem;">                                 <div class="card-body">                                         <h4 class="card-title fw-bold" style="text-shadow: #cc9a07 0 1px 1px;">Jolly Holliday Bakery Cafe</h4>                                         <h4 class="card-title" style="color: green; text-shadow: #a3cfbc 1px 0 3px;">$$</h4>                                         <h6 class="card-text" style="font-style: italic;">Main Street</h6>                                         <h4 style="color: #f4c109; font-weight:bold; text-shadow: #172c65 0 1px 1px;">4.2 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (4)</span></h4>                                         <a type="button" href="/eating_place/5" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+            popup_26262aab8776346249a8c7c895ce8d48.setContent(html_503e3a2aa630473dd952d14d917887fb);
+        
+
+        marker_fb57bd854a001589b631e19779f6bc18.bindPopup(popup_26262aab8776346249a8c7c895ce8d48)
+        ;
+
+        
+    
+    
+            marker_fb57bd854a001589b631e19779f6bc18.bindTooltip(
+                `<div>
+                     Jolly Holliday Bakery Cafe
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bc1e1463fcaac18d42ed6b620e016a59 = L.marker(
+                [33.8116963939521, -117.91851581766903],
+                {}
+            ).addTo(map_5298e709ecc0c7253c83eec021716ba0);
+        
+    
+            var icon_ae79df6d1018a616e89524e979d2b200 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-cutlery", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_bc1e1463fcaac18d42ed6b620e016a59.setIcon(icon_ae79df6d1018a616e89524e979d2b200);
+        
+    
+        var popup_e396d0ab48799ee5b725f220703ff223 = L.popup({"maxWidth": 200});
+
+        
+            var html_5a29b5398f8317f0144566bc632cfdb3 = $(`<div id="html_5a29b5398f8317f0144566bc632cfdb3" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="https://www.themeparkinsider.com/art/2021/dl-plaza-inn1.jpg" alt="an image should be here..." style="max-width: 20rem;">                                 <div class="card-body">                                         <h4 class="card-title fw-bold" style="text-shadow: #cc9a07 0 1px 1px;">Plaza Inn</h4>                                         <h4 class="card-title" style="color: green; text-shadow: #a3cfbc 1px 0 3px;">$$$</h4>                                         <h6 class="card-text" style="font-style: italic;">Main Street</h6>                                         <h4 style="color: #f4c109; font-weight:bold; text-shadow: #172c65 0 1px 1px;">4.7 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (3)</span></h4>                                         <a type="button" href="/eating_place/6" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+            popup_e396d0ab48799ee5b725f220703ff223.setContent(html_5a29b5398f8317f0144566bc632cfdb3);
+        
+
+        marker_bc1e1463fcaac18d42ed6b620e016a59.bindPopup(popup_e396d0ab48799ee5b725f220703ff223)
+        ;
+
+        
+    
+    
+            marker_bc1e1463fcaac18d42ed6b620e016a59.bindTooltip(
+                `<div>
+                     Plaza Inn
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_728cb1005b95226badff3f0a27d585e2 = L.marker(
+                [33.811728031793685, -117.91691154585381],
+                {}
+            ).addTo(map_5298e709ecc0c7253c83eec021716ba0);
+        
+    
+            var icon_424ab10596c7cdc666403c2520711634 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-cutlery", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_728cb1005b95226badff3f0a27d585e2.setIcon(icon_424ab10596c7cdc666403c2520711634);
+        
+    
+        var popup_486e57c19051822db8408367235a2a77 = L.popup({"maxWidth": 200});
+
+        
+            var html_987048c6e5620fc30badddfcb525de39 = $(`<div id="html_987048c6e5620fc30badddfcb525de39" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="https://www.disneyfoodblog.com/wp-content/uploads/2019/11/disneyland-2019-holidays-alien-pizza-planet_.jpg" alt="an image should be here..." style="max-width: 20rem;">                                 <div class="card-body">                                         <h4 class="card-title fw-bold" style="text-shadow: #cc9a07 0 1px 1px;">Alien Pizza Planet</h4>                                         <h4 class="card-title" style="color: green; text-shadow: #a3cfbc 1px 0 3px;">$$</h4>                                         <h6 class="card-text" style="font-style: italic;">Tomorrowland</h6>                                         <h4 style="color: #f4c109; font-weight:bold; text-shadow: #172c65 0 1px 1px;">4.4 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (5)</span></h4>                                         <a type="button" href="/eating_place/7" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+            popup_486e57c19051822db8408367235a2a77.setContent(html_987048c6e5620fc30badddfcb525de39);
+        
+
+        marker_728cb1005b95226badff3f0a27d585e2.bindPopup(popup_486e57c19051822db8408367235a2a77)
+        ;
+
+        
+    
+    
+            marker_728cb1005b95226badff3f0a27d585e2.bindTooltip(
+                `<div>
+                     Alien Pizza Planet
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_328d9b12eccbce0718ee95db7894bf5d = L.marker(
+                [33.8123815226415, -117.91715260949891],
+                {}
+            ).addTo(map_5298e709ecc0c7253c83eec021716ba0);
+        
+    
+            var icon_09250377afae3b81ef209b913fb1e374 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-cutlery", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_328d9b12eccbce0718ee95db7894bf5d.setIcon(icon_09250377afae3b81ef209b913fb1e374);
+        
+    
+        var popup_44c853e5cf0411d659a8bdf0106f9f35 = L.popup({"maxWidth": 200});
+
+        
+            var html_19822ebe2fa3069ab1c7ff8e23c0d310 = $(`<div id="html_19822ebe2fa3069ab1c7ff8e23c0d310" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="https://i.pinimg.com/originals/0f/91/95/0f9195d1a35d9221b1777e0c04e83d11.jpg" alt="an image should be here..." style="max-width: 20rem;">                                 <div class="card-body">                                         <h4 class="card-title fw-bold" style="text-shadow: #cc9a07 0 1px 1px;">Galactic Grill</h4>                                         <h4 class="card-title" style="color: green; text-shadow: #a3cfbc 1px 0 3px;">$$</h4>                                         <h6 class="card-text" style="font-style: italic;">Tomorrowland</h6>                                         <h4 style="color: #f4c109; font-weight:bold; text-shadow: #172c65 0 1px 1px;">4.3 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (3)</span></h4>                                         <a type="button" href="/eating_place/8" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+            popup_44c853e5cf0411d659a8bdf0106f9f35.setContent(html_19822ebe2fa3069ab1c7ff8e23c0d310);
+        
+
+        marker_328d9b12eccbce0718ee95db7894bf5d.bindPopup(popup_44c853e5cf0411d659a8bdf0106f9f35)
+        ;
+
+        
+    
+    
+            marker_328d9b12eccbce0718ee95db7894bf5d.bindTooltip(
+                `<div>
+                     Galactic Grill
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_000672912d5f565f261ab9ae8adff931 = L.marker(
+                [33.81374305708073, -117.91773874128609],
+                {}
+            ).addTo(map_5298e709ecc0c7253c83eec021716ba0);
+        
+    
+            var icon_d8b452b8f6312c6db8b3f4b0de805398 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-cutlery", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_000672912d5f565f261ab9ae8adff931.setIcon(icon_d8b452b8f6312c6db8b3f4b0de805398);
+        
+    
+        var popup_627c238a7b1deef3d5a05893d4e6e129 = L.popup({"maxWidth": 200});
+
+        
+            var html_3b6e023bf1ea0e4c456ad2989811d644 = $(`<div id="html_3b6e023bf1ea0e4c456ad2989811d644" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="https://farm4.static.flickr.com/3831/12142461163_5034552b43_b.jpg" alt="an image should be here..." style="max-width: 20rem;">                                 <div class="card-body">                                         <h4 class="card-title fw-bold" style="text-shadow: #cc9a07 0 1px 1px;">Edelweiss Snacks</h4>                                         <h4 class="card-title" style="color: green; text-shadow: #a3cfbc 1px 0 3px;">$</h4>                                         <h6 class="card-text" style="font-style: italic;">Fantasyland</h6>                                         <h4 style="color: #f4c109; font-weight:bold; text-shadow: #172c65 0 1px 1px;">4.5 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (4)</span></h4>                                         <a type="button" href="/eating_place/9" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+            popup_627c238a7b1deef3d5a05893d4e6e129.setContent(html_3b6e023bf1ea0e4c456ad2989811d644);
+        
+
+        marker_000672912d5f565f261ab9ae8adff931.bindPopup(popup_627c238a7b1deef3d5a05893d4e6e129)
+        ;
+
+        
+    
+    
+            marker_000672912d5f565f261ab9ae8adff931.bindTooltip(
+                `<div>
+                     Edelweiss Snacks
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2c4668f5ab9275c1b9586fa61d794e00 = L.marker(
+                [33.8144856242707, -117.91875940912425],
+                {}
+            ).addTo(map_5298e709ecc0c7253c83eec021716ba0);
+        
+    
+            var icon_786381b4c048636fc0ae8e4082907292 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-cutlery", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_2c4668f5ab9275c1b9586fa61d794e00.setIcon(icon_786381b4c048636fc0ae8e4082907292);
+        
+    
+        var popup_10537963438ba5a1c3b4b88bf4826ed4 = L.popup({"maxWidth": 200});
+
+        
+            var html_fe0bf2006a90b95245afb02a15711c91 = $(`<div id="html_fe0bf2006a90b95245afb02a15711c91" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="https://www.disneyfoodblog.com/wp-content/uploads/2015/07/TroubadourTavern_15_013.jpg" alt="an image should be here..." style="max-width: 20rem;">                                 <div class="card-body">                                         <h4 class="card-title fw-bold" style="text-shadow: #cc9a07 0 1px 1px;">Troubador Tavern</h4>                                         <h4 class="card-title" style="color: green; text-shadow: #a3cfbc 1px 0 3px;">$</h4>                                         <h6 class="card-text" style="font-style: italic;">Fantasyland</h6>                                         <h4 style="color: #f4c109; font-weight:bold; text-shadow: #172c65 0 1px 1px;">3.7 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (3)</span></h4>                                         <a type="button" href="/eating_place/10" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+            popup_10537963438ba5a1c3b4b88bf4826ed4.setContent(html_fe0bf2006a90b95245afb02a15711c91);
+        
+
+        marker_2c4668f5ab9275c1b9586fa61d794e00.bindPopup(popup_10537963438ba5a1c3b4b88bf4826ed4)
+        ;
+
+        
+    
+    
+            marker_2c4668f5ab9275c1b9586fa61d794e00.bindTooltip(
+                `<div>
+                     Troubador Tavern
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_256a3f75d21848efa72703f362efc700 = L.marker(
+                [33.814462613156586, -117.92153869443413],
+                {}
+            ).addTo(map_5298e709ecc0c7253c83eec021716ba0);
+        
+    
+            var icon_858d6dfefab6a146d845ba24184ff60d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-cutlery", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_256a3f75d21848efa72703f362efc700.setIcon(icon_858d6dfefab6a146d845ba24184ff60d);
+        
+    
+        var popup_1f404349d3b97ab81458b63bddf806ab = L.popup({"maxWidth": 200});
+
+        
+            var html_a5d7c67a1f543a5df15f151c96bac7f9 = $(`<div id="html_a5d7c67a1f543a5df15f151c96bac7f9" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="https://picky-palate.com/wp-content/uploads/2019/06/IMG_6589.jpg" alt="an image should be here..." style="max-width: 20rem;">                                 <div class="card-body">                                         <h4 class="card-title fw-bold" style="text-shadow: #cc9a07 0 1px 1px;">Ronto Roasters</h4>                                         <h4 class="card-title" style="color: green; text-shadow: #a3cfbc 1px 0 3px;">$$</h4>                                         <h6 class="card-text" style="font-style: italic;">Galaxy's Edge</h6>                                         <h4 style="color: #f4c109; font-weight:bold; text-shadow: #172c65 0 1px 1px;">2.8 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (4)</span></h4>                                         <a type="button" href="/eating_place/18" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+            popup_1f404349d3b97ab81458b63bddf806ab.setContent(html_a5d7c67a1f543a5df15f151c96bac7f9);
+        
+
+        marker_256a3f75d21848efa72703f362efc700.bindPopup(popup_1f404349d3b97ab81458b63bddf806ab)
+        ;
+
+        
+    
+    
+            marker_256a3f75d21848efa72703f362efc700.bindTooltip(
+                `<div>
+                     Ronto Roasters
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_48793dac513ea11de06b34f51960413f = L.marker(
+                [33.81551618186138, -117.91871838555176],
+                {}
+            ).addTo(map_5298e709ecc0c7253c83eec021716ba0);
+        
+    
+            var icon_d601c467cd1f833afd5adf8ab1d29f6f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-cutlery", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_48793dac513ea11de06b34f51960413f.setIcon(icon_d601c467cd1f833afd5adf8ab1d29f6f);
+        
+    
+        var popup_2d13df612d08a398ec7d923057d2d0fa = L.popup({"maxWidth": 200});
+
+        
+            var html_2db26e6afa69f11d77f12b2764492a38 = $(`<div id="html_2db26e6afa69f11d77f12b2764492a38" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="https://allears.net/wp-content/uploads/2020/01/Daisys-Diner-Toontown-Storefront-Disneyland.jpg" alt="an image should be here..." style="max-width: 20rem;">                                 <div class="card-body">                                         <h4 class="card-title fw-bold" style="text-shadow: #cc9a07 0 1px 1px;">Daisy's Diner</h4>                                         <h4 class="card-title" style="color: green; text-shadow: #a3cfbc 1px 0 3px;">$$</h4>                                         <h6 class="card-text" style="font-style: italic;">Mickey's Toontown</h6>                                         <h4 style="color: #f4c109; font-weight:bold; text-shadow: #172c65 0 1px 1px;">4.7 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (3)</span></h4>                                         <a type="button" href="/eating_place/11" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+            popup_2d13df612d08a398ec7d923057d2d0fa.setContent(html_2db26e6afa69f11d77f12b2764492a38);
+        
+
+        marker_48793dac513ea11de06b34f51960413f.bindPopup(popup_2d13df612d08a398ec7d923057d2d0fa)
+        ;
+
+        
+    
+    
+            marker_48793dac513ea11de06b34f51960413f.bindTooltip(
+                `<div>
+                     Daisy's Diner
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2e6fbe9940eaa570419346d286dcbf2f = L.marker(
+                [33.81554960890238, -117.91871033892531],
+                {}
+            ).addTo(map_5298e709ecc0c7253c83eec021716ba0);
+        
+    
+            var icon_8b8e8b2eedae5c6988a94099b258ccf9 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-cutlery", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_2e6fbe9940eaa570419346d286dcbf2f.setIcon(icon_8b8e8b2eedae5c6988a94099b258ccf9);
+        
+    
+        var popup_d1827b910f7557247cad7160c77d558d = L.popup({"maxWidth": 200});
+
+        
+            var html_7f62d0252f4b4a4ee20fe0b5a2b06e2f = $(`<div id="html_7f62d0252f4b4a4ee20fe0b5a2b06e2f" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="https://www.disneyfoodblog.com/wp-content/uploads/2014/02/Plutos-Dog-House.jpg" alt="an image should be here..." style="max-width: 20rem;">                                 <div class="card-body">                                         <h4 class="card-title fw-bold" style="text-shadow: #cc9a07 0 1px 1px;">Pluto's Dog House</h4>                                         <h4 class="card-title" style="color: green; text-shadow: #a3cfbc 1px 0 3px;">$</h4>                                         <h6 class="card-text" style="font-style: italic;">Mickey's Toontown</h6>                                         <h4 style="color: #f4c109; font-weight:bold; text-shadow: #172c65 0 1px 1px;">5.0 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (3)</span></h4>                                         <a type="button" href="/eating_place/12" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+            popup_d1827b910f7557247cad7160c77d558d.setContent(html_7f62d0252f4b4a4ee20fe0b5a2b06e2f);
+        
+
+        marker_2e6fbe9940eaa570419346d286dcbf2f.bindPopup(popup_d1827b910f7557247cad7160c77d558d)
+        ;
+
+        
+    
+    
+            marker_2e6fbe9940eaa570419346d286dcbf2f.bindTooltip(
+                `<div>
+                     Pluto's Dog House
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9b6a993bfa7963b86609d0821af128cc = L.marker(
+                [33.81557802187698, -117.91868821070254],
+                {}
+            ).addTo(map_5298e709ecc0c7253c83eec021716ba0);
+        
+    
+            var icon_edcd3bc0b64005eb701902baa7e3b9eb = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-cutlery", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_9b6a993bfa7963b86609d0821af128cc.setIcon(icon_edcd3bc0b64005eb701902baa7e3b9eb);
+        
+    
+        var popup_c4440690cce62fb42ee25ef9affb771e = L.popup({"maxWidth": 200});
+
+        
+            var html_3bb394433ab8725d18d1fa60ee53cbeb = $(`<div id="html_3bb394433ab8725d18d1fa60ee53cbeb" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="https://cdn1.parksmedia.wdprapps.disney.com/media/blog/wp-content/uploads/2016/07/DLICM499875.jpg" alt="an image should be here..." style="max-width: 20rem;">                                 <div class="card-body">                                         <h4 class="card-title fw-bold" style="text-shadow: #cc9a07 0 1px 1px;">Clarabelle's</h4>                                         <h4 class="card-title" style="color: green; text-shadow: #a3cfbc 1px 0 3px;">$</h4>                                         <h6 class="card-text" style="font-style: italic;">Mickey's Toontown</h6>                                         <h4 style="color: #f4c109; font-weight:bold; text-shadow: #172c65 0 1px 1px;">5.0 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (3)</span></h4>                                         <a type="button" href="/eating_place/13" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+            popup_c4440690cce62fb42ee25ef9affb771e.setContent(html_3bb394433ab8725d18d1fa60ee53cbeb);
+        
+
+        marker_9b6a993bfa7963b86609d0821af128cc.bindPopup(popup_c4440690cce62fb42ee25ef9affb771e)
+        ;
+
+        
+    
+    
+            marker_9b6a993bfa7963b86609d0821af128cc.bindTooltip(
+                `<div>
+                     Clarabelle's
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8eac8fbe18d82d02b3caee4a8fbbef5e = L.marker(
+                [33.81346065509974, -117.9194651550013],
+                {}
+            ).addTo(map_5298e709ecc0c7253c83eec021716ba0);
+        
+    
+            var icon_a867edfc82172baf7854f6e42653921e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-cutlery", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_8eac8fbe18d82d02b3caee4a8fbbef5e.setIcon(icon_a867edfc82172baf7854f6e42653921e);
+        
+    
+        var popup_c9ed1cbbfc69f028ecb244eff7922745 = L.popup({"maxWidth": 200});
+
+        
+            var html_c9a4eba02a41348ba74f61d959a3d406 = $(`<div id="html_c9a4eba02a41348ba74f61d959a3d406" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="https://insidethemagic.net/wp-content/uploads/2017/02/village-haus-restaurant-00.jpg" alt="an image should be here..." style="max-width: 20rem;">                                 <div class="card-body">                                         <h4 class="card-title fw-bold" style="text-shadow: #cc9a07 0 1px 1px;">Red Rose Tavern</h4>                                         <h4 class="card-title" style="color: green; text-shadow: #a3cfbc 1px 0 3px;">$$</h4>                                         <h6 class="card-text" style="font-style: italic;">Fantasyland</h6>                                         <h4 style="color: #f4c109; font-weight:bold; text-shadow: #172c65 0 1px 1px;">4.8 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (4)</span></h4>                                         <a type="button" href="/eating_place/14" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+            popup_c9ed1cbbfc69f028ecb244eff7922745.setContent(html_c9a4eba02a41348ba74f61d959a3d406);
+        
+
+        marker_8eac8fbe18d82d02b3caee4a8fbbef5e.bindPopup(popup_c9ed1cbbfc69f028ecb244eff7922745)
+        ;
+
+        
+    
+    
+            marker_8eac8fbe18d82d02b3caee4a8fbbef5e.bindTooltip(
+                `<div>
+                     Red Rose Tavern
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_00848c88636f5ec8238e4833e128e1f0 = L.marker(
+                [33.814428886234296, -117.92069637808706],
+                {}
+            ).addTo(map_5298e709ecc0c7253c83eec021716ba0);
+        
+    
+            var icon_55d5d992f5bece66db8bc9fd6cfd682a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-cutlery", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_00848c88636f5ec8238e4833e128e1f0.setIcon(icon_55d5d992f5bece66db8bc9fd6cfd682a);
+        
+    
+        var popup_7a413cf3e4496363d9472a440d7f38e3 = L.popup({"maxWidth": 200});
+
+        
+            var html_80e24a6fe0c60820d7ade9e699226100 = $(`<div id="html_80e24a6fe0c60820d7ade9e699226100" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="https://www.disneyfoodblog.com/wp-content/uploads/2019/05/milkstand-atmosphere-3.jpg" alt="an image should be here..." style="max-width: 20rem;">                                 <div class="card-body">                                         <h4 class="card-title fw-bold" style="text-shadow: #cc9a07 0 1px 1px;">Milk Stand</h4>                                         <h4 class="card-title" style="color: green; text-shadow: #a3cfbc 1px 0 3px;">$$$</h4>                                         <h6 class="card-text" style="font-style: italic;">Galaxy's Edge</h6>                                         <h4 style="color: #f4c109; font-weight:bold; text-shadow: #172c65 0 1px 1px;">4.0 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (3)</span></h4>                                         <a type="button" href="/eating_place/15" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+            popup_7a413cf3e4496363d9472a440d7f38e3.setContent(html_80e24a6fe0c60820d7ade9e699226100);
+        
+
+        marker_00848c88636f5ec8238e4833e128e1f0.bindPopup(popup_7a413cf3e4496363d9472a440d7f38e3)
+        ;
+
+        
+    
+    
+            marker_00848c88636f5ec8238e4833e128e1f0.bindTooltip(
+                `<div>
+                     Milk Stand
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0bddc77a461200b68afb027f1e702210 = L.marker(
+                [33.8147258031444, -117.920964585531],
+                {}
+            ).addTo(map_5298e709ecc0c7253c83eec021716ba0);
+        
+    
+            var icon_428f044642053fd6222ac7150bed2e1f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-cutlery", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_0bddc77a461200b68afb027f1e702210.setIcon(icon_428f044642053fd6222ac7150bed2e1f);
+        
+    
+        var popup_4c43521a75a4107d2b7ca5905db52474 = L.popup({"maxWidth": 200});
+
+        
+            var html_10f8e6ec40d4c8b2776e93e9f05c3fe7 = $(`<div id="html_10f8e6ec40d4c8b2776e93e9f05c3fe7" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="https://1.bp.blogspot.com/-OgKZPkbeDbw/Xg9xicQSGZI/AAAAAAAAPoQ/aY7-k5nvndou5KDssyY7GXCmPKgczqIvgCEwYBhgL/s1600/ogas-cantina-star-wars-galaxy-edge-disneyland-disneyworld%2B%252829%2529.jpg" alt="an image should be here..." style="max-width: 20rem;">                                 <div class="card-body">                                         <h4 class="card-title fw-bold" style="text-shadow: #cc9a07 0 1px 1px;">Oga's Cantina</h4>                                         <h4 class="card-title" style="color: green; text-shadow: #a3cfbc 1px 0 3px;">$$$</h4>                                         <h6 class="card-text" style="font-style: italic;">Galaxy's Edge</h6>                                         <h4 style="color: #f4c109; font-weight:bold; text-shadow: #172c65 0 1px 1px;">3.0 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (3)</span></h4>                                         <a type="button" href="/eating_place/16" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+            popup_4c43521a75a4107d2b7ca5905db52474.setContent(html_10f8e6ec40d4c8b2776e93e9f05c3fe7);
+        
+
+        marker_0bddc77a461200b68afb027f1e702210.bindPopup(popup_4c43521a75a4107d2b7ca5905db52474)
+        ;
+
+        
+    
+    
+            marker_0bddc77a461200b68afb027f1e702210.bindTooltip(
+                `<div>
+                     Oga's Cantina
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a096b198c61328c40e994f3a718556e4 = L.marker(
+                [33.81469267859092, -117.92147272989884],
+                {}
+            ).addTo(map_5298e709ecc0c7253c83eec021716ba0);
+        
+    
+            var icon_50c82630fc446ccd8073f6562bb27c67 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-cutlery", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_a096b198c61328c40e994f3a718556e4.setIcon(icon_50c82630fc446ccd8073f6562bb27c67);
+        
+    
+        var popup_e44d2e415c18a19b5f3684dfa77162fb = L.popup({"maxWidth": 200});
+
+        
+            var html_e647e17c49b679f0e742a8dde07f60eb = $(`<div id="html_e647e17c49b679f0e742a8dde07f60eb" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="https://blogmickey.com/wp-content/uploads/2019/06/docking-bay-7-review-lunch-dinner-food-10.jpg" alt="an image should be here..." style="max-width: 20rem;">                                 <div class="card-body">                                         <h4 class="card-title fw-bold" style="text-shadow: #cc9a07 0 1px 1px;">Docking Bay 7 Food & Cargo</h4>                                         <h4 class="card-title" style="color: green; text-shadow: #a3cfbc 1px 0 3px;">$$$</h4>                                         <h6 class="card-text" style="font-style: italic;">Galaxy's Edge</h6>                                         <h4 style="color: #f4c109; font-weight:bold; text-shadow: #172c65 0 1px 1px;">3.8 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (4)</span></h4>                                         <a type="button" href="/eating_place/17" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+            popup_e44d2e415c18a19b5f3684dfa77162fb.setContent(html_e647e17c49b679f0e742a8dde07f60eb);
+        
+
+        marker_a096b198c61328c40e994f3a718556e4.bindPopup(popup_e44d2e415c18a19b5f3684dfa77162fb)
+        ;
+
+        
+    
+    
+            marker_a096b198c61328c40e994f3a718556e4.bindTooltip(
+                `<div>
+                     Docking Bay 7 Food & Cargo
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f3b32826c3fa6b6ac8fb14e9984a1bea = L.marker(
+                [33.812590935972715, -117.92260721018377],
+                {}
+            ).addTo(map_5298e709ecc0c7253c83eec021716ba0);
+        
+    
+            var icon_9714f3e837ac4e2138cb1ce1d6b25a0b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-cutlery", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_f3b32826c3fa6b6ac8fb14e9984a1bea.setIcon(icon_9714f3e837ac4e2138cb1ce1d6b25a0b);
+        
+    
+        var popup_4f1f00931f109af4cbdb8f917448a281 = L.popup({"maxWidth": 200});
+
+        
+            var html_aaa014261cb9e0a7c9ef23d81a9b5323 = $(`<div id="html_aaa014261cb9e0a7c9ef23d81a9b5323" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="https://www.disneyfoodblog.com/wp-content/uploads/2021/05/disneyand-hungry-bear-restaurant-exterior-and-sign-may-2021-5-700x414.jpg" alt="an image should be here..." style="max-width: 20rem;">                                 <div class="card-body">                                         <h4 class="card-title fw-bold" style="text-shadow: #cc9a07 0 1px 1px;">Hungry Bear Restaurant</h4>                                         <h4 class="card-title" style="color: green; text-shadow: #a3cfbc 1px 0 3px;">$$</h4>                                         <h6 class="card-text" style="font-style: italic;">Critter Country</h6>                                         <h4 style="color: #f4c109; font-weight:bold; text-shadow: #172c65 0 1px 1px;">4.8 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (4)</span></h4>                                         <a type="button" href="/eating_place/19" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+            popup_4f1f00931f109af4cbdb8f917448a281.setContent(html_aaa014261cb9e0a7c9ef23d81a9b5323);
+        
+
+        marker_f3b32826c3fa6b6ac8fb14e9984a1bea.bindPopup(popup_4f1f00931f109af4cbdb8f917448a281)
+        ;
+
+        
+    
+    
+            marker_f3b32826c3fa6b6ac8fb14e9984a1bea.bindTooltip(
+                `<div>
+                     Hungry Bear Restaurant
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0596f4a8383b140221dafb2bcafd0321 = L.marker(
+                [33.812041180621804, -117.9219757109676],
+                {}
+            ).addTo(map_5298e709ecc0c7253c83eec021716ba0);
+        
+    
+            var icon_60c552043d0e2b6a165957d3a5926eda = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-cutlery", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_0596f4a8383b140221dafb2bcafd0321.setIcon(icon_60c552043d0e2b6a165957d3a5926eda);
+        
+    
+        var popup_da444e6893ad3edb529807aae0eda31f = L.popup({"maxWidth": 200});
+
+        
+            var html_1101d6a02808770270b71ae77863f829 = $(`<div id="html_1101d6a02808770270b71ae77863f829" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="https://www.disneyland4ever.com/uploads/2/4/8/5/24855797/237474779.jpg" alt="an image should be here..." style="max-width: 20rem;">                                 <div class="card-body">                                         <h4 class="card-title fw-bold" style="text-shadow: #cc9a07 0 1px 1px;">Harbour Galley</h4>                                         <h4 class="card-title" style="color: green; text-shadow: #a3cfbc 1px 0 3px;">$$</h4>                                         <h6 class="card-text" style="font-style: italic;">Critter Country</h6>                                         <h4 style="color: #f4c109; font-weight:bold; text-shadow: #172c65 0 1px 1px;">4.5 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (4)</span></h4>                                         <a type="button" href="/eating_place/20" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+            popup_da444e6893ad3edb529807aae0eda31f.setContent(html_1101d6a02808770270b71ae77863f829);
+        
+
+        marker_0596f4a8383b140221dafb2bcafd0321.bindPopup(popup_da444e6893ad3edb529807aae0eda31f)
+        ;
+
+        
+    
+    
+            marker_0596f4a8383b140221dafb2bcafd0321.bindTooltip(
+                `<div>
+                     Harbour Galley
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6e63634b87c0254de055eb12de2bfcb8 = L.marker(
+                [33.811182398373205, -117.92166376575899],
+                {}
+            ).addTo(map_5298e709ecc0c7253c83eec021716ba0);
+        
+    
+            var icon_24e0765136bf1fcc994634805cd492fe = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-cutlery", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_6e63634b87c0254de055eb12de2bfcb8.setIcon(icon_24e0765136bf1fcc994634805cd492fe);
+        
+    
+        var popup_ee9965ae7656cd320fdeac537c038206 = L.popup({"maxWidth": 200});
+
+        
+            var html_5b8c492c44c6062aafc3ef003b7c5dc0 = $(`<div id="html_5b8c492c44c6062aafc3ef003b7c5dc0" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="https://www.disneyfoodblog.com/wp-content/uploads/2020/02/disneyland-new-orleans-square-mint-julep-bar-chocolate-strawberry-beignet-and-strawberry-julep.jpg" alt="an image should be here..." style="max-width: 20rem;">                                 <div class="card-body">                                         <h4 class="card-title fw-bold" style="text-shadow: #cc9a07 0 1px 1px;">Mint Julep Bar</h4>                                         <h4 class="card-title" style="color: green; text-shadow: #a3cfbc 1px 0 3px;">$$</h4>                                         <h6 class="card-text" style="font-style: italic;">New Orleans Square</h6>                                         <h4 style="color: #f4c109; font-weight:bold; text-shadow: #172c65 0 1px 1px;">3.8 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (4)</span></h4>                                         <a type="button" href="/eating_place/21" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+            popup_ee9965ae7656cd320fdeac537c038206.setContent(html_5b8c492c44c6062aafc3ef003b7c5dc0);
+        
+
+        marker_6e63634b87c0254de055eb12de2bfcb8.bindPopup(popup_ee9965ae7656cd320fdeac537c038206)
+        ;
+
+        
+    
+    
+            marker_6e63634b87c0254de055eb12de2bfcb8.bindTooltip(
+                `<div>
+                     Mint Julep Bar
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bf73a460a91cd62a121e54678207c69f = L.marker(
+                [33.81125204155685, -117.92162085041623],
+                {}
+            ).addTo(map_5298e709ecc0c7253c83eec021716ba0);
+        
+    
+            var icon_7f6c095189bab677fb13e0a975d4442b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-cutlery", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_bf73a460a91cd62a121e54678207c69f.setIcon(icon_7f6c095189bab677fb13e0a975d4442b);
+        
+    
+        var popup_5dcf15a8636544b2c41aebc3d4276bb1 = L.popup({"maxWidth": 200});
+
+        
+            var html_a34daf9f5c000490bf9130e0ad24f80c = $(`<div id="html_a34daf9f5c000490bf9130e0ad24f80c" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="https://www.disneyfoodblog.com/wp-content/uploads/2015/11/French-Market-Disneyland-15-021.jpg" alt="an image should be here..." style="max-width: 20rem;">                                 <div class="card-body">                                         <h4 class="card-title fw-bold" style="text-shadow: #cc9a07 0 1px 1px;">French Market Restaurant</h4>                                         <h4 class="card-title" style="color: green; text-shadow: #a3cfbc 1px 0 3px;">$$</h4>                                         <h6 class="card-text" style="font-style: italic;">New Orleans Square</h6>                                         <h4 style="color: #f4c109; font-weight:bold; text-shadow: #172c65 0 1px 1px;">4.7 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (3)</span></h4>                                         <a type="button" href="/eating_place/22" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+            popup_5dcf15a8636544b2c41aebc3d4276bb1.setContent(html_a34daf9f5c000490bf9130e0ad24f80c);
+        
+
+        marker_bf73a460a91cd62a121e54678207c69f.bindPopup(popup_5dcf15a8636544b2c41aebc3d4276bb1)
+        ;
+
+        
+    
+    
+            marker_bf73a460a91cd62a121e54678207c69f.bindTooltip(
+                `<div>
+                     French Market Restaurant
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9bfabe687caf01c7c0f1d1c8c89c3834 = L.marker(
+                [33.811243684377416, -117.92120041416223],
+                {}
+            ).addTo(map_5298e709ecc0c7253c83eec021716ba0);
+        
+    
+            var icon_fce42c53454782d99fcc2d9fb5e883b3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-cutlery", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_9bfabe687caf01c7c0f1d1c8c89c3834.setIcon(icon_fce42c53454782d99fcc2d9fb5e883b3);
+        
+    
+        var popup_40ff37454f8ffd28d558c5ad5b11e518 = L.popup({"maxWidth": 200});
+
+        
+            var html_6abdf1bc80d9f752274ee0dda22da036 = $(`<div id="html_6abdf1bc80d9f752274ee0dda22da036" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="https://i.pinimg.com/736x/d7/66/fe/d766fee473f394d20cf65c3c2e7b77e5--disneyland-california-west-coast.jpg" alt="an image should be here..." style="max-width: 20rem;">                                 <div class="card-body">                                         <h4 class="card-title fw-bold" style="text-shadow: #cc9a07 0 1px 1px;">Cafe Orleans</h4>                                         <h4 class="card-title" style="color: green; text-shadow: #a3cfbc 1px 0 3px;">$$$</h4>                                         <h6 class="card-text" style="font-style: italic;">New Orleans Square</h6>                                         <h4 style="color: #f4c109; font-weight:bold; text-shadow: #172c65 0 1px 1px;">4.0 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (3)</span></h4>                                         <a type="button" href="/eating_place/23" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+            popup_40ff37454f8ffd28d558c5ad5b11e518.setContent(html_6abdf1bc80d9f752274ee0dda22da036);
+        
+
+        marker_9bfabe687caf01c7c0f1d1c8c89c3834.bindPopup(popup_40ff37454f8ffd28d558c5ad5b11e518)
+        ;
+
+        
+    
+    
+            marker_9bfabe687caf01c7c0f1d1c8c89c3834.bindTooltip(
+                `<div>
+                     Cafe Orleans
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5814c12987e371a227362712b429d254 = L.marker(
+                [33.811113869426435, -117.9210944669072],
+                {}
+            ).addTo(map_5298e709ecc0c7253c83eec021716ba0);
+        
+    
+            var icon_92c928cfb2d9ea633e435712d7ce597c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-cutlery", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_5814c12987e371a227362712b429d254.setIcon(icon_92c928cfb2d9ea633e435712d7ce597c);
+        
+    
+        var popup_09c6a8cdd49e1edced9274c8a24fae72 = L.popup({"maxWidth": 200});
+
+        
+            var html_3ad101ac80664c33cb2ddd2e3b831004 = $(`<div id="html_3ad101ac80664c33cb2ddd2e3b831004" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="https://s.hdnux.com/photos/01/23/47/43/21919957/3/1200x0.jpg" alt="an image should be here..." style="max-width: 20rem;">                                 <div class="card-body">                                         <h4 class="card-title fw-bold" style="text-shadow: #cc9a07 0 1px 1px;">Blue Bayou</h4>                                         <h4 class="card-title" style="color: green; text-shadow: #a3cfbc 1px 0 3px;">$$$$</h4>                                         <h6 class="card-text" style="font-style: italic;">New Orleans Square</h6>                                         <h4 style="color: #f4c109; font-weight:bold; text-shadow: #172c65 0 1px 1px;">3.6 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (5)</span></h4>                                         <a type="button" href="/eating_place/24" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+            popup_09c6a8cdd49e1edced9274c8a24fae72.setContent(html_3ad101ac80664c33cb2ddd2e3b831004);
+        
+
+        marker_5814c12987e371a227362712b429d254.bindPopup(popup_09c6a8cdd49e1edced9274c8a24fae72)
+        ;
+
+        
+    
+    
+            marker_5814c12987e371a227362712b429d254.bindTooltip(
+                `<div>
+                     Blue Bayou
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6b95ddf4342b9a9e2149323206fe2398 = L.marker(
+                [33.81149662796846, -117.92051108644743],
+                {}
+            ).addTo(map_5298e709ecc0c7253c83eec021716ba0);
+        
+    
+            var icon_5fb852ae54db4a8028dba5fe109fbe6f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-cutlery", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_6b95ddf4342b9a9e2149323206fe2398.setIcon(icon_5fb852ae54db4a8028dba5fe109fbe6f);
+        
+    
+        var popup_6d1700121b109b11b4cb3880473cc8b1 = L.popup({"maxWidth": 200});
+
+        
+            var html_ddefc97a3d008c347e5ab5e3be5ea5ff = $(`<div id="html_ddefc97a3d008c347e5ab5e3be5ea5ff" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="https://d23.com/app/uploads/2013/04/1180w-600h_a-to-z-river-belle-terrace.jpg" alt="an image should be here..." style="max-width: 20rem;">                                 <div class="card-body">                                         <h4 class="card-title fw-bold" style="text-shadow: #cc9a07 0 1px 1px;">River Belle Terrace</h4>                                         <h4 class="card-title" style="color: green; text-shadow: #a3cfbc 1px 0 3px;">$$$</h4>                                         <h6 class="card-text" style="font-style: italic;">Adventureland</h6>                                         <h4 style="color: #f4c109; font-weight:bold; text-shadow: #172c65 0 1px 1px;">4.2 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (4)</span></h4>                                         <a type="button" href="/eating_place/25" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+            popup_6d1700121b109b11b4cb3880473cc8b1.setContent(html_ddefc97a3d008c347e5ab5e3be5ea5ff);
+        
+
+        marker_6b95ddf4342b9a9e2149323206fe2398.bindPopup(popup_6d1700121b109b11b4cb3880473cc8b1)
+        ;
+
+        
+    
+    
+            marker_6b95ddf4342b9a9e2149323206fe2398.bindTooltip(
+                `<div>
+                     River Belle Terrace
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1de3974ae1d90b116480bc10fdab72d5 = L.marker(
+                [33.81154732802444, -117.92031126189028],
+                {}
+            ).addTo(map_5298e709ecc0c7253c83eec021716ba0);
+        
+    
+            var icon_2259c6462843e86a165b7ae2b65141bc = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-cutlery", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_1de3974ae1d90b116480bc10fdab72d5.setIcon(icon_2259c6462843e86a165b7ae2b65141bc);
+        
+    
+        var popup_1f6b1b0826956e245b0d394c76c1f69b = L.popup({"maxWidth": 200});
+
+        
+            var html_1ead183ca032247b195550816cf5ebfc = $(`<div id="html_1ead183ca032247b195550816cf5ebfc" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="https://media1.popsugar-assets.com/files/thumbor/MhbNoa_DTcPbizQu4rCCMABnc9w/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2018/11/07/013/n/45064954/3905520df9c03af7_IMG_0629/i/Bengal-Barbecue-Bengal-Plate.JPG" alt="an image should be here..." style="max-width: 20rem;">                                 <div class="card-body">                                         <h4 class="card-title fw-bold" style="text-shadow: #cc9a07 0 1px 1px;">Bengal Barbecue</h4>                                         <h4 class="card-title" style="color: green; text-shadow: #a3cfbc 1px 0 3px;">$$</h4>                                         <h6 class="card-text" style="font-style: italic;">Adventureland</h6>                                         <h4 style="color: #f4c109; font-weight:bold; text-shadow: #172c65 0 1px 1px;">4.8 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (4)</span></h4>                                         <a type="button" href="/eating_place/26" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+            popup_1f6b1b0826956e245b0d394c76c1f69b.setContent(html_1ead183ca032247b195550816cf5ebfc);
+        
+
+        marker_1de3974ae1d90b116480bc10fdab72d5.bindPopup(popup_1f6b1b0826956e245b0d394c76c1f69b)
+        ;
+
+        
+    
+    
+            marker_1de3974ae1d90b116480bc10fdab72d5.bindTooltip(
+                `<div>
+                     Bengal Barbecue
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fa19eae046c2e33e15125cab2e6d9409 = L.marker(
+                [33.81189888473691, -117.9203206496091],
+                {}
+            ).addTo(map_5298e709ecc0c7253c83eec021716ba0);
+        
+    
+            var icon_f2544470dde91dde5228edff94a5b483 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-cutlery", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_fa19eae046c2e33e15125cab2e6d9409.setIcon(icon_f2544470dde91dde5228edff94a5b483);
+        
+    
+        var popup_9b47d0f88d34251f0e514bff4ac6dba5 = L.popup({"maxWidth": 200});
+
+        
+            var html_eef03aa9173ec9ab09fff21aca8bcb84 = $(`<div id="html_eef03aa9173ec9ab09fff21aca8bcb84" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="https://www.ocregister.com/wp-content/uploads/migration/o0k/o0k3m7-b88517821z.120160106161829000g84crc77.20.jpg" alt="an image should be here..." style="max-width: 20rem;">                                 <div class="card-body">                                         <h4 class="card-title fw-bold" style="text-shadow: #cc9a07 0 1px 1px;">Stage Door Cafe</h4>                                         <h4 class="card-title" style="color: green; text-shadow: #a3cfbc 1px 0 3px;">$</h4>                                         <h6 class="card-text" style="font-style: italic;">Frontierland</h6>                                         <h4 style="color: #f4c109; font-weight:bold; text-shadow: #172c65 0 1px 1px;">4.3 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (3)</span></h4>                                         <a type="button" href="/eating_place/27" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+            popup_9b47d0f88d34251f0e514bff4ac6dba5.setContent(html_eef03aa9173ec9ab09fff21aca8bcb84);
+        
+
+        marker_fa19eae046c2e33e15125cab2e6d9409.bindPopup(popup_9b47d0f88d34251f0e514bff4ac6dba5)
+        ;
+
+        
+    
+    
+            marker_fa19eae046c2e33e15125cab2e6d9409.bindTooltip(
+                `<div>
+                     Stage Door Cafe
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_eb31bed4f83c9aba2ac3afb1ddeb7ed4 = L.marker(
+                [33.812048755541824, -117.9202844397871],
+                {}
+            ).addTo(map_5298e709ecc0c7253c83eec021716ba0);
+        
+    
+            var icon_56aa1bf6f5d425d57e295b784266ecc8 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-cutlery", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_eb31bed4f83c9aba2ac3afb1ddeb7ed4.setIcon(icon_56aa1bf6f5d425d57e295b784266ecc8);
+        
+    
+        var popup_8178cdf5e6bf49d738fa1472b824e921 = L.popup({"maxWidth": 200});
+
+        
+            var html_8c5631725a825c39552c70899570c4d2 = $(`<div id="html_8c5631725a825c39552c70899570c4d2" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="https://wdwnt.com/wp-content/uploads/2019/11/golden-horseshoe-dueling-pianos-disneyland_3.jpg" alt="an image should be here..." style="max-width: 20rem;">                                 <div class="card-body">                                         <h4 class="card-title fw-bold" style="text-shadow: #cc9a07 0 1px 1px;">Golden Horseshoe</h4>                                         <h4 class="card-title" style="color: green; text-shadow: #a3cfbc 1px 0 3px;">$</h4>                                         <h6 class="card-text" style="font-style: italic;">Frontierland</h6>                                         <h4 style="color: #f4c109; font-weight:bold; text-shadow: #172c65 0 1px 1px;">4.5 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (4)</span></h4>                                         <a type="button" href="/eating_place/28" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+            popup_8178cdf5e6bf49d738fa1472b824e921.setContent(html_8c5631725a825c39552c70899570c4d2);
+        
+
+        marker_eb31bed4f83c9aba2ac3afb1ddeb7ed4.bindPopup(popup_8178cdf5e6bf49d738fa1472b824e921)
+        ;
+
+        
+    
+    
+            marker_eb31bed4f83c9aba2ac3afb1ddeb7ed4.bindTooltip(
+                `<div>
+                     Golden Horseshoe
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1d9c5e33b3e62a3206a2cbf37716c1ea = L.marker(
+                [33.812423735113434, -117.92057041285449],
+                {}
+            ).addTo(map_5298e709ecc0c7253c83eec021716ba0);
+        
+    
+            var icon_1ebe91ae1cff7206e52f67839f08be38 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-cutlery", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_1d9c5e33b3e62a3206a2cbf37716c1ea.setIcon(icon_1ebe91ae1cff7206e52f67839f08be38);
+        
+    
+        var popup_89ab92932fc04ec8db33be19bcdaeae6 = L.popup({"maxWidth": 200});
+
+        
+            var html_a77da746e9a3e9edac7a5e88bd4853e2 = $(`<div id="html_a77da746e9a3e9edac7a5e88bd4853e2" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="https://i.pinimg.com/originals/a4/28/c3/a428c3c5ddd8db7be0981c3e64469f72.jpg" alt="an image should be here..." style="max-width: 20rem;">                                 <div class="card-body">                                         <h4 class="card-title fw-bold" style="text-shadow: #cc9a07 0 1px 1px;">Turkey Leg Cart</h4>                                         <h4 class="card-title" style="color: green; text-shadow: #a3cfbc 1px 0 3px;">$$</h4>                                         <h6 class="card-text" style="font-style: italic;">Frontierland</h6>                                         <h4 style="color: #f4c109; font-weight:bold; text-shadow: #172c65 0 1px 1px;">4.2 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (5)</span></h4>                                         <a type="button" href="/eating_place/29" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+            popup_89ab92932fc04ec8db33be19bcdaeae6.setContent(html_a77da746e9a3e9edac7a5e88bd4853e2);
+        
+
+        marker_1d9c5e33b3e62a3206a2cbf37716c1ea.bindPopup(popup_89ab92932fc04ec8db33be19bcdaeae6)
+        ;
+
+        
+    
+    
+            marker_1d9c5e33b3e62a3206a2cbf37716c1ea.bindTooltip(
+                `<div>
+                     Turkey Leg Cart
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_97b793d96dfd07a44722dcd9f1c4138a = L.marker(
+                [33.81250160079871, -117.91931709893191],
+                {}
+            ).addTo(map_5298e709ecc0c7253c83eec021716ba0);
+        
+    
+            var icon_fd1305f2aabd805c0ffe57c2a6ad9e6c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-cutlery", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_97b793d96dfd07a44722dcd9f1c4138a.setIcon(icon_fd1305f2aabd805c0ffe57c2a6ad9e6c);
+        
+    
+        var popup_f4aa53b569646c42416a5c3649995dcc = L.popup({"maxWidth": 200});
+
+        
+            var html_ffd3bb432b2ba1a11f36d7fcd23a611f = $(`<div id="html_ffd3bb432b2ba1a11f36d7fcd23a611f" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="https://diningatdisney.com/wp-content/uploads/2013/07/Maurices-Treats.jpg" alt="an image should be here..." style="max-width: 20rem;">                                 <div class="card-body">                                         <h4 class="card-title fw-bold" style="text-shadow: #cc9a07 0 1px 1px;">Maurice's Treats</h4>                                         <h4 class="card-title" style="color: green; text-shadow: #a3cfbc 1px 0 3px;">$</h4>                                         <h6 class="card-text" style="font-style: italic;">Fantasyland</h6>                                         <h4 style="color: #f4c109; font-weight:bold; text-shadow: #172c65 0 1px 1px;">3.7 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (3)</span></h4>                                         <a type="button" href="/eating_place/31" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+            popup_f4aa53b569646c42416a5c3649995dcc.setContent(html_ffd3bb432b2ba1a11f36d7fcd23a611f);
+        
+
+        marker_97b793d96dfd07a44722dcd9f1c4138a.bindPopup(popup_f4aa53b569646c42416a5c3649995dcc)
+        ;
+
+        
+    
+    
+            marker_97b793d96dfd07a44722dcd9f1c4138a.bindTooltip(
+                `<div>
+                     Maurice's Treats
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6bdf1a01a7968e77410081fef73bb20e = L.marker(
+                [33.81148556711443, -117.9186905116349],
+                {}
+            ).addTo(map_5298e709ecc0c7253c83eec021716ba0);
+        
+    
+            var icon_88afff570defbf47feef2dd530197217 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-cutlery", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_6bdf1a01a7968e77410081fef73bb20e.setIcon(icon_88afff570defbf47feef2dd530197217);
+        
+    
+        var popup_7d4301dc1fb1ea3d0c98c4a70513663d = L.popup({"maxWidth": 200});
+
+        
+            var html_c041e65f7b12a1ad6849fe07942d33ba = $(`<div id="html_c041e65f7b12a1ad6849fe07942d33ba" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="https://www.yesterland.com/images-mainstreet/redwagoninn_corndogs2017ww.jpg" alt="an image should be here..." style="max-width: 20rem;">                                 <div class="card-body">                                         <h4 class="card-title fw-bold" style="text-shadow: #cc9a07 0 1px 1px;">Little Red Wagon</h4>                                         <h4 class="card-title" style="color: green; text-shadow: #a3cfbc 1px 0 3px;">$$</h4>                                         <h6 class="card-text" style="font-style: italic;">Main Street</h6>                                         <h4 style="color: #f4c109; font-weight:bold; text-shadow: #172c65 0 1px 1px;">4.8 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (4)</span></h4>                                         <a type="button" href="/eating_place/32" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+            popup_7d4301dc1fb1ea3d0c98c4a70513663d.setContent(html_c041e65f7b12a1ad6849fe07942d33ba);
+        
+
+        marker_6bdf1a01a7968e77410081fef73bb20e.bindPopup(popup_7d4301dc1fb1ea3d0c98c4a70513663d)
+        ;
+
+        
+    
+    
+            marker_6bdf1a01a7968e77410081fef73bb20e.bindTooltip(
+                `<div>
+                     Little Red Wagon
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c6dbf97e98365b5bcef6c12318489698 = L.marker(
+                [33.811242012942394, -117.92095096871431],
+                {}
+            ).addTo(map_5298e709ecc0c7253c83eec021716ba0);
+        
+    
+            var icon_9b9e83c00e8da4a5af0ed74a191759d5 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-cutlery", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_c6dbf97e98365b5bcef6c12318489698.setIcon(icon_9b9e83c00e8da4a5af0ed74a191759d5);
+        
+    
+        var popup_9eed1aff77fbdb39f48ccb1bf6fc79fe = L.popup({"maxWidth": 200});
+
+        
+            var html_a068e850ce12bf7bd2a65dbc8cc2c2e3 = $(`<div id="html_a068e850ce12bf7bd2a65dbc8cc2c2e3" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="https://blog-cdn.touringplans.com/blog/wp-content/uploads/2021/11/IMG_3753-700x525.jpg" alt="an image should be here..." style="max-width: 20rem;">                                 <div class="card-body">                                         <h4 class="card-title fw-bold" style="text-shadow: #cc9a07 0 1px 1px;">Royal Street Veranda</h4>                                         <h4 class="card-title" style="color: green; text-shadow: #a3cfbc 1px 0 3px;">$</h4>                                         <h6 class="card-text" style="font-style: italic;">New Orleans Square</h6>                                         <h4 style="color: #f4c109; font-weight:bold; text-shadow: #172c65 0 1px 1px;">4.0 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (3)</span></h4>                                         <a type="button" href="/eating_place/33" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+            popup_9eed1aff77fbdb39f48ccb1bf6fc79fe.setContent(html_a068e850ce12bf7bd2a65dbc8cc2c2e3);
+        
+
+        marker_c6dbf97e98365b5bcef6c12318489698.bindPopup(popup_9eed1aff77fbdb39f48ccb1bf6fc79fe)
+        ;
+
+        
+    
+    
+            marker_c6dbf97e98365b5bcef6c12318489698.bindTooltip(
+                `<div>
+                     Royal Street Veranda
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3f74cd7119ced1d1970cd0608ec9bf6a = L.marker(
+                [33.81245859568607, -117.9199964482139],
+                {}
+            ).addTo(map_5298e709ecc0c7253c83eec021716ba0);
+        
+    
+            var icon_d1a921ffa42aa5af64f9fedd193f8d56 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-cutlery", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_3f74cd7119ced1d1970cd0608ec9bf6a.setIcon(icon_d1a921ffa42aa5af64f9fedd193f8d56);
+        
+    
+        var popup_bb697fa7e11a3fd5ea838796f6725c92 = L.popup({"maxWidth": 200});
+
+        
+            var html_2b2ac778692c3b3311e1a2327839a3f6 = $(`<div id="html_2b2ac778692c3b3311e1a2327839a3f6" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="https://www.disneytouristblog.com/wp-content/uploads/2014/02/disneyland-food-051.jpg" alt="an image should be here..." style="max-width: 20rem;">                                 <div class="card-body">                                         <h4 class="card-title fw-bold" style="text-shadow: #cc9a07 0 1px 1px;">Rancho del Zocalo Restaurante</h4>                                         <h4 class="card-title" style="color: green; text-shadow: #a3cfbc 1px 0 3px;">$$</h4>                                         <h6 class="card-text" style="font-style: italic;">Frontierland</h6>                                         <h4 style="color: #f4c109; font-weight:bold; text-shadow: #172c65 0 1px 1px;">5.0 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (4)</span></h4>                                         <a type="button" href="/eating_place/30" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+            popup_bb697fa7e11a3fd5ea838796f6725c92.setContent(html_2b2ac778692c3b3311e1a2327839a3f6);
+        
+
+        marker_3f74cd7119ced1d1970cd0608ec9bf6a.bindPopup(popup_bb697fa7e11a3fd5ea838796f6725c92)
+        ;
+
+        
+    
+    
+            marker_3f74cd7119ced1d1970cd0608ec9bf6a.bindTooltip(
+                `<div>
+                     Rancho del Zocalo Restaurante
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>

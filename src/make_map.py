@@ -1,7 +1,7 @@
 import folium
 from folium.plugins import MarkerCluster
 from flask import url_for
-from model import total_ratings, star_avg, total_ratings_fountain, star_avg_fountain
+from .model import total_ratings, star_avg, total_ratings_fountain, star_avg_fountain
 
 
 def make_map(restaurants):
@@ -36,7 +36,7 @@ def make_map(restaurants):
         folium.Marker([each.x_coord, each.y_coord], tooltip=each.name, popup=popup,
                 icon=folium.Icon(icon_color='white', icon='fa-cutlery', prefix='fa')).add_to(disneyland_map)
         
-        disneyland_map.save('templates/disneyland_map.html')
+        disneyland_map.save('src/templates/disneyland_map.html')
 
 
 def make_fountain_map(fountains):
@@ -68,4 +68,4 @@ def make_fountain_map(fountains):
             folium.Marker([each.x_coord, each.y_coord], tooltip=each.name, popup=popup,
                 icon=folium.Icon(icon_color='white', icon='fa-tint', prefix='fa')).add_to(fountain_map)
         
-            fountain_map.save('templates/fountain_map.html')
+            fountain_map.save('src/templates/fountain_map.html')

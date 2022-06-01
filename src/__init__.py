@@ -5,13 +5,9 @@ from flask_debugtoolbar import DebugToolbarExtension
 from flask_wtf.csrf import CSRFProtect
 from jinja2 import StrictUndefined
 import random
-from model import (connect_to_db, User, Restaurant, Fountain, Rating, db, 
-                   total_ratings, star_avg, restaurant_reviews, get_user, 
-                   get_restaurant, generate_stars, get_star_rating, RatingF)
-from forms import (DeleteUser, UpdateUser, RegisterForm, LoginForm, 
+from .forms import (DeleteUser, UpdateUser, RegisterForm, LoginForm, 
                    AddRestaurant, RateRestaurant, AddFountain, RateFountain)
 from werkzeug.security import generate_password_hash, check_password_hash
-from make_map import make_map, make_fountain_map
 from flask_sqlalchemy import SQLAlchemy
 from os import environ
 
@@ -25,6 +21,10 @@ app.config["DEBUG_TB_INTERCEPT_REDIRECTS"]=False
 login_manager = LoginManager()
 login_manager.init_app(app)
 db = SQLAlchemy(app)
+from .model import (User, Restaurant, Fountain, Rating, 
+                   total_ratings, star_avg, restaurant_reviews, get_user, 
+                   get_restaurant, generate_stars, get_star_rating, RatingF)
+from .make_map import make_map, make_fountain_map
 
 
 

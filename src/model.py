@@ -1,7 +1,7 @@
 from flask_login import UserMixin
 from sqlalchemy.sql import func
 from markupsafe import Markup
-from main import db
+from src import db
 
 
 class User(UserMixin, db.Model):
