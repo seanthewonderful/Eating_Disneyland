@@ -147,7 +147,6 @@ def eating_place(rest_id):
                            get_star_rating=get_star_rating)
 
 
-
 @app.route('/login', methods=["GET", "POST"])
 def login():
     form = LoginForm()
@@ -325,6 +324,11 @@ def add_fountain():
         flash("Fountain added successfully", category='success')
         return redirect(url_for('add_fountain'))
     return render_template('add_fountain.html', form=form)
+
+
+@app.route('/hp_image_preview')
+def hp_image_preview():
+    return render_template('hp_image_preview.html')
 
 
 """ Flask Managers """

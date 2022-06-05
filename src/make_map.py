@@ -1,5 +1,4 @@
 import folium
-from folium.plugins import MarkerCluster
 from flask import url_for
 from .model import total_ratings, star_avg, total_ratings_fountain, star_avg_fountain
 
