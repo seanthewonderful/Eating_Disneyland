@@ -32,7 +32,7 @@ from .make_map import make_map, make_fountain_map
 
 @app.route("/")
 def home():
-    restaurants = random.choices(Restaurant.query.all(), k=3)
+    restaurants = random.sample(Restaurant.query.all(), k=3)
     return render_template('home.html', restaurants=restaurants,
                            total_ratings=total_ratings, 
                            star_avg=star_avg,
