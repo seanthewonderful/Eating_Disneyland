@@ -337,6 +337,10 @@ def hp_image_preview():
 def load_user(user_id):
     return User.query.get(int(user_id))
 
+@login_manager.unauthorized_handler
+def unauthorized():
+    return "Sorry, you must be logged in to view this page"
+
 
 if __name__ == "__main__":
     # app.jinja_env.auto_reload = app.debug
