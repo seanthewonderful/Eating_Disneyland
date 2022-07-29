@@ -53,6 +53,60 @@ def fountain_map():
     return render_template('fountain_map.html')
 
 """ Alphabetical Page Routes"""
+@app.route('/add_restaurant', methods=["GET", "POST"])
+def add_restaurant():
+    form = AddRestaurant()
+    if form.validate_on_submit():
+        print("Form validated")
+        if Restaurant.query.filter_by(name=form.name.data).first():
+            flash("Restaurant already exists", category='danger')
+            return redirect(url_for('add_restaurant'))
+        new_restaurant = Restaurant(
+            name = form.name.data,
+            image_url = form.image_url.data,
+            land = form.land.data,
+            expense = form.expense.data,
+            full_service = form.full_service.data,
+            breakfast = form.breakfast.data,
+            american = form.american.data,
+            southern = form.southern.data,
+            mexican = form.mexican.data,
+            italian = form.italian.data,
+            dessert = form.dessert.data,
+            snacks = form.snacks.data,
+            coffee = form.coffee.data,
+            beverage_only = form.beverage_only.data,
+            x_coord = form.x_coord.data,
+            y_coord = form.y_coord.data
+        )
+        db.session.add(new_restaurant)
+        db.session.commit()
+        flash("Restaurant added successfully", category='success')
+        return redirect(url_for('add_restaurant'))
+    return render_template('addrestaurant.html', form=form)
+
+
+@app.route('/add_fountain', methods=["GET", "POST"])
+def add_fountain():
+    form = AddFountain()
+    if form.validate_on_submit():
+        if Fountain.query.filter_by(name=form.name.data).first():
+            flash("Fountain name already exists", category='danger')
+            return redirect(url_for('add_fountain'))
+        new_fountain = Fountain(
+            name = form.name.data,
+            image_url = form.image_url.data,
+            land = form.land.data,
+            description = form.description.data,
+            x_coord = form.x_coord.data,
+            y_coord = form.y_coord.data
+        )
+        db.session.add(new_fountain)
+        db.session.commit()
+        db.session.close()
+        flash("Fountain added successfully", category='success')
+        return redirect(url_for('add_fountain'))
+    return render_template('add_fountain.html', form=form)
 
 
 @app.route('/delete_user', methods=["GET", "POST"])
@@ -268,62 +322,6 @@ def restaurants():
                            total_ratings=total_ratings, 
                            star_avg=star_avg,
                            generate_stars=generate_stars)
-
-
-@app.route('/add_restaurant', methods=["GET", "POST"])
-def add_restaurant():
-    form = AddRestaurant()
-    if form.validate_on_submit():
-        print("Form validated")
-        if Restaurant.query.filter_by(name=form.name.data).first():
-            flash("Restaurant already exists", category='danger')
-            return redirect(url_for('add_restaurant'))
-        new_restaurant = Restaurant(
-            name = form.name.data,
-            image_url = form.image_url.data,
-            land = form.land.data,
-            expense = form.expense.data,
-            full_service = form.full_service.data,
-            breakfast = form.breakfast.data,
-            american = form.american.data,
-            southern = form.southern.data,
-            mexican = form.mexican.data,
-            italian = form.italian.data,
-            dessert = form.dessert.data,
-            snacks = form.snacks.data,
-            coffee = form.coffee.data,
-            beverage_only = form.beverage_only.data,
-            x_coord = form.x_coord.data,
-            y_coord = form.y_coord.data
-        )
-        db.session.add(new_restaurant)
-        db.session.commit()
-        flash("Restaurant added successfully", category='success')
-        return redirect(url_for('add_restaurant'))
-    return render_template('addrestaurant.html', form=form)
-
-
-@app.route('/add_fountain', methods=["GET", "POST"])
-def add_fountain():
-    form = AddFountain()
-    if form.validate_on_submit():
-        if Fountain.query.filter_by(name=form.name.data).first():
-            flash("Fountain name already exists", category='danger')
-            return redirect(url_for('add_fountain'))
-        new_fountain = Fountain(
-            name = form.name.data,
-            image_url = form.image_url.data,
-            land = form.land.data,
-            description = form.description.data,
-            x_coord = form.x_coord.data,
-            y_coord = form.y_coord.data
-        )
-        db.session.add(new_fountain)
-        db.session.commit()
-        db.session.close()
-        flash("Fountain added successfully", category='success')
-        return redirect(url_for('add_fountain'))
-    return render_template('add_fountain.html', form=form)
 
 
 @app.route('/hp_image_preview')
