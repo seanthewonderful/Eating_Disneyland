@@ -1,51 +1,123 @@
-
-{% extends 'base.html' %}
-
-{% block title %}Eating Disneyland!{% endblock %}
+{% extends 'base.html' %} {% block title %}Eating Disneyland!{% endblock %}
 
 <body>
-    {% include 'navbar.html' %}
+  {% include 'navbar.html' %} {% block content %}
 
-
-{% block content %}
-
-<div class="container-fluid row mx-0 pt-2"  style="text-align: center;">
-        
-        <div class="col-lg-7">
-            <ul class="nav nav-tabs ps-3" id="mapTab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active border border-2 border-bottom-0" id="rest-map-tab" data-bs-toggle="tab" data-bs-target="#rest-map-pane" type="button" role="tab" aria-controls="rest-map-pane" aria-selected="true"><strong>Restaurants</strong></button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link border border-2 border-bottom-0" id="fountain-map-tab" data-bs-toggle="tab" data-bs-target="#fountain-map-pane" type="button" role="tab" aria-controls="fountain-map-pane" aria-selected="false"><strong>Fountains</strong></button>
-                </li>
-            </ul>
-            <div class="tab-content iframe-container shadow" id="mapTab">
-                <!-- <h3 style="font-family: Mouse Memoirs;">Restaurant Map</h3> -->
-                <iframe class="map tab-pane fade show active" id="rest-map-pane" role="tabpanel" aria-labelledby="restaurant-tab" tabindex="0" src="{{ url_for('map') }}" width="100%" height="75%" style="border: 2px solid black; min-height:70vh;"></iframe>
-                <iframe class="map tab-pane fade" id="fountain-map-pane" role="tabpanel" aria-labelledby="fountain-tab" tabindex="0" src="{{ url_for('fountain_map') }}" width="100%" height="75%" style="border: 2px solid black; min-height:70vh;"></iframe>
-            </div>
-        </div>
-        <div class="container-fluid col-lg-5">
-            <h3 style="font-family: Noto; font-style: italic; text-shadow: #cc9a07 0 1px 1px;">Need a Random Spot to Try?</h3>
-            {% for each in restaurants %}
-            <div class="card text-center mb-3 mt-0 shadow" style="width: 75%; height: fit-content;">
-                <img src="{{ each.image_url }}" class="card-img-top" style="height: 15vw; min-height:150px;" alt="There ought to be something here...">
-                <div class="card-body">
-                  <h5 class="card-title" style="text-shadow: #cc9a07 1px 1px 1px;">{{ each.name }}</h5>
-                  <p class="card-text mb-1" style="font-style: italic;">{{ each.land }}</p>
-                  <a class="link-warning text-decoration-none" style="text-shadow: #274298 0 1px 1px;"href="{{ url_for('eating_place', rest_id=each.rest_id) }}">
-                    {{ star_avg(each.rest_id, total_ratings(each.rest_id)) }} {{ generate_stars(star_avg(each.rest_id, total_ratings(each.rest_id))) }}
-                    <span style="font-style:italic; font-size: smaller;">({{ total_ratings(each.rest_id) }} reviews)</span>
-                  </a>
-                  <p class="card-title pt-1" style="color:green; text-shadow: #a3cfbc 1px 0 3px;">{{ each.expense }}</p>
-                  <a href="{{ url_for('eating_place', rest_id=each.rest_id) }}" class="btn btn-sm btn-outline-primary shadow">See Details</a>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
+  <div class="container-fluid row mx-0 pt-2" style="text-align: center">
+    <div class="col-lg-7">
+      <ul class="nav nav-tabs ps-3" id="mapTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link active border border-2 border-bottom-0"
+            id="rest-map-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#rest-map-pane"
+            type="button"
+            role="tab"
+            aria-controls="rest-map-pane"
+            aria-selected="true"
+          >
+            <strong>Restaurants</strong>
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link border border-2 border-bottom-0"
+            id="fountain-map-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#fountain-map-pane"
+            type="button"
+            role="tab"
+            aria-controls="fountain-map-pane"
+            aria-selected="false"
+          >
+            <strong>Fountains</strong>
+          </button>
+        </li>
+      </ul>
+      <div class="tab-content iframe-container shadow" id="mapTab">
+        <!-- <h3 style="font-family: Mouse Memoirs;">Restaurant Map</h3> -->
+        <iframe
+          class="map tab-pane fade show active"
+          id="rest-map-pane"
+          role="tabpanel"
+          aria-labelledby="restaurant-tab"
+          tabindex="0"
+          src="{{ url_for('map') }}"
+          width="100%"
+          height="75%"
+          style="border: 2px solid black; min-height: 70vh"
+        ></iframe>
+        <iframe
+          class="map tab-pane fade"
+          id="fountain-map-pane"
+          role="tabpanel"
+          aria-labelledby="fountain-tab"
+          tabindex="0"
+          src="{{ url_for('fountain_map') }}"
+          width="100%"
+          height="75%"
+          style="border: 2px solid black; min-height: 70vh"
+        ></iframe>
+      </div>
     </div>
-    
-    {% endblock %}
 
+    <div class="container-fluid col-lg-5">
+      <h3
+        style="
+          font-family: Noto;
+          font-style: italic;
+          text-shadow: #cc9a07 0 1px 1px;
+        "
+      >
+        Need a Random Spot to Try?
+      </h3>
+      {% for each in restaurants %}
+      <div
+        class="card text-center mb-3 mt-0 shadow"
+        style="width: 75%; height: fit-content"
+      >
+        <img
+          src="{{ each.image_url }}"
+          class="card-img-top"
+          style="height: 15vw; min-height: 150px"
+          alt="There ought to be something here..."
+        />
+        <div class="card-body">
+          <h5 class="card-title" style="text-shadow: #cc9a07 1px 1px 1px">
+            {{ each.name }}
+          </h5>
+          <p class="card-text mb-1" style="font-style: italic">
+            {{ each.land }}
+          </p>
+          <a
+            class="link-warning text-decoration-none"
+            style="text-shadow: #274298 0 1px 1px"
+            href="{{ url_for('eating_place', rest_id=each.rest_id) }}"
+          >
+            {{ star_avg(each.rest_id, total_ratings(each.rest_id)) }} {{
+            generate_stars(star_avg(each.rest_id, total_ratings(each.rest_id)))
+            }}
+            <span style="font-style: italic; font-size: smaller"
+              >({{ total_ratings(each.rest_id) }} reviews)</span
+            >
+          </a>
+          <p
+            class="card-title pt-1"
+            style="color: green; text-shadow: #a3cfbc 1px 0 3px"
+          >
+            {{ each.expense }}
+          </p>
+          <a
+            href="{{ url_for('eating_place', rest_id=each.rest_id) }}"
+            class="btn btn-sm btn-outline-primary shadow"
+            >See Details</a
+          >
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  {% endblock %}
 </body>

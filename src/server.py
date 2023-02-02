@@ -1,13 +1,17 @@
 from flask import (Flask, redirect, render_template, 
                    flash, url_for, request)
-from flask_login import LoginManager, login_user, logout_user, login_required, current_user
+from flask_login import (LoginManager, login_user, logout_user, login_required, current_user)
 from flask_debugtoolbar import DebugToolbarExtension
 from flask_wtf.csrf import CSRFProtect
 from jinja2 import StrictUndefined
 import random
-from .forms import (DeleteUser, UpdateUser, RegisterForm, LoginForm, 
+from forms import (DeleteUser, UpdateUser, RegisterForm, LoginForm, 
                    AddRestaurant, RateRestaurant, AddFountain, RateFountain)
-from werkzeug.security import generate_password_hash, check_password_hash
+from model import (User, Restaurant, Fountain, Rating, RatingF)
+from crud import (total_ratings, star_avg, restaurant_reviews, get_user_by_id,
+                  get_restaurant, generate_stars, get_star_rating)
+from make_map import (make_map, make_fountain_map)
+from werkzeug.security import (generate_password_hash, check_password_hash)
 from flask_sqlalchemy import SQLAlchemy
 from os import environ
 
@@ -21,11 +25,6 @@ app.config["DEBUG_TB_INTERCEPT_REDIRECTS"]=False
 login_manager = LoginManager()
 login_manager.init_app(app)
 db = SQLAlchemy(app)
-from .model import (User, Restaurant, Fountain, Rating, 
-                   total_ratings, star_avg, restaurant_reviews, get_user, 
-                   get_restaurant, generate_stars, get_star_rating, RatingF)
-from .make_map import make_map, make_fountain_map
-
 
 
 """ Home and Map Routes """
@@ -38,13 +37,11 @@ def home():
                            star_avg=star_avg,
                            generate_stars=generate_stars)
 
-
 @app.route('/map')
 def map():
     restaurants = Restaurant.query.all()
     make_map(restaurants)
     return render_template('disneyland_map.html')
-
 
 @app.route('/fountain_map')
 def fountain_map():
@@ -83,6 +80,7 @@ def add_restaurant():
         db.session.commit()
         flash("Restaurant added successfully", category='success')
         return redirect(url_for('add_restaurant'))
+    
     return render_template('addrestaurant.html', form=form)
 
 
@@ -162,7 +160,8 @@ def eating_place(rest_id):
     if current_user.is_authenticated:
         user_id = current_user.id
         rated = Rating.query.filter_by(user_id=user_id, rest_id=rest_id).first()
-        if form.validate_on_submit():
+        # if form.validate_on_submit():
+        if request.method == 'POST':
             star_rating = form.star_rating.data
             review = form.review.data
             if Rating.query.filter_by(user_id=user_id, rest_id=rest_id).first():
@@ -184,7 +183,7 @@ def eating_place(rest_id):
                                total_ratings=total_ratings,
                                star_avg=star_avg,
                                restaurant_reviews=restaurant_reviews, 
-                               get_user=get_user,
+                               get_user_by_id=get_user_by_id,
                                get_restaurant=get_restaurant,
                                generate_stars=generate_stars,
                                get_star_rating=get_star_rating)
@@ -195,7 +194,7 @@ def eating_place(rest_id):
                            total_ratings=total_ratings,
                            star_avg=star_avg,
                            restaurant_reviews=restaurant_reviews,
-                           get_user=get_user,
+                           get_user_by_id=get_user_by_id,
                            get_restaurant=get_restaurant,
                            generate_stars=generate_stars,
                            get_star_rating=get_star_rating)
@@ -308,8 +307,8 @@ def register():
                         zipcode=zipcode)
         db.session.add(new_user)
         db.session.commit()
-        db.session.close()
         flash("Account created! Please login with your credentials.", category='success')
+        db.session.close()
         return redirect(url_for('login'))
     return render_template('register.html', form=form)
 

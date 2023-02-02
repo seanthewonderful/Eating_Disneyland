@@ -101,7 +101,7 @@
             <h2 style="font-family:Noto; font-style:italic;">Reviews</h2>
             {% for each in restaurant_reviews(restaurant.rest_id) %}
             <ul>
-                <dl class="row" style="font-style:italic; font-weight: bold;">{{ (get_user(each.user_id).username).title() }}:</dl>
+                <dl class="row" style="font-style:italic; font-weight: bold;">{{ (get_user_by_id(each.user_id).username).title() }}:</dl>
                 <dt class="text-warning fw-normal col" style="text-shadow: #172c65 0 1px 1px;"><i class="fa-solid fa-star"></i> {{ get_star_rating(user_id=each.user_id, rest_id=restaurant.rest_id) }}</dt>
                 {% if each.review == '' %}
                 <dd class="col text-muted" style="font-style: italic;">No written review</dd>
@@ -109,7 +109,7 @@
                 <dd class="col">"{{ each.review }}"</dd>
                 {% endif %}
                 {% if current_user.is_authenticated %}
-                {% if get_user(each.user_id).username == current_user.username %}
+                {% if get_user_by_id(each.user_id).username == current_user.username %}
                 <a class="btn btn-sm btn-outline-warning shadow" href="{{ url_for('my_contributions') }}">Edit review</a>
                 {% endif %}
                 {% endif %}

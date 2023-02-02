@@ -1,4 +1,4 @@
-from src import app
+from src.server import app
 
 if __name__ == "__main__":
     # app.jinja_env.auto_reload = app.debug
