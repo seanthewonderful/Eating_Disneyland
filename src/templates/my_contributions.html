@@ -15,7 +15,7 @@
         <div class="container justify-content-md-center m-4">
             {% for review in reviews %}
             <div class="container p-4">
-                <a class="link-primary" href="{{ url_for('eating_place', rest_id=review.rest_id) }}" style="text-decoration:none; text-shadow: rgba(0, 0, 0, 0.493) 2px 5px 11px;"> <dl class="row h5" style="font-style:italic; font-weight: bold;">{{ get_restaurant(review.rest_id).name }}</dl></a>
+                <a class="link-primary" href="{{ url_for('eating_place', rest_id=review.rest_id) }}" style="text-decoration:none; text-shadow: rgba(0, 0, 0, 0.493) 2px 5px 11px;"> <dl class="row h5" style="font-style:italic; font-weight: bold;">{{ get_restaurant_by_id(review.rest_id).name }}</dl></a>
                 <dt class="text-warning col"><i class="fa-solid fa-star"></i> {{ review.star_rating }}</dt>
                 <dd class="col">"{{ review.review }}"</dd>
                 <!-- Modal trigger Buttons -->
@@ -30,7 +30,7 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="modal{{ review.rating_id }}Label">Edit Review for {{ get_restaurant(review.rest_id).name }}</h5>
+                                <h5 class="modal-title" id="modal{{ review.rating_id }}Label">Edit Review for {{ get_restaurant_by_id(review.rest_id).name }}</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">

@@ -81,16 +81,16 @@
             <div class="pt-2">
                 <!-- <a class="btn btn-primary btn-sm" href="{{ url_for('restaurants') }}">Rate more restaurants</a><br> -->
             {% if restaurant.rest_id > 1 %}
-                <a class="btn btn-outline-primary btn-sm shadow" href="{{ url_for('eating_place', rest_id=restaurant.rest_id-1) }}">Did you check out<br>{{ get_restaurant(restaurant.rest_id-1).name }}?</a>
+                <a class="btn btn-outline-primary btn-sm shadow" href="{{ url_for('eating_place', rest_id=restaurant.rest_id-1) }}">Did you check out<br>{{ get_restaurant_by_id(restaurant.rest_id-1).name }}?</a>
             {% elif restaurant.rest_id == 1 %}
-                <a class="btn btn-outline-primary btn-sm shadow" href="{{ url_for('eating_place', rest_id=rest_len) }}">Did you check out<br>{{ get_restaurant(rest_len).name }}?</a>
+                <a class="btn btn-outline-primary btn-sm shadow" href="{{ url_for('eating_place', rest_id=rest_len) }}">Did you check out<br>{{ get_restaurant_by_id(rest_len).name }}?</a>
 
             {% endif %} 
             {% if restaurant.rest_id < rest_len %}
-                <a class="btn btn-outline-primary btn-sm shadow" href="{{ url_for('eating_place', rest_id=restaurant.rest_id+1) }}">Want to check out<br>{{ get_restaurant(restaurant.rest_id+1).name }}?</a>
+                <a class="btn btn-outline-primary btn-sm shadow" href="{{ url_for('eating_place', rest_id=restaurant.rest_id+1) }}">Want to check out<br>{{ get_restaurant_by_id(restaurant.rest_id+1).name }}?</a>
             </div> 
             {% elif restaurant.rest_id == rest_len %}
-                <a class="btn btn-outline-primary btn-sm shadow" href="{{ url_for('eating_place', rest_id=1) }}">Want to check out<br>{{ get_restaurant(1).name }}?</a>
+                <a class="btn btn-outline-primary btn-sm shadow" href="{{ url_for('eating_place', rest_id=1) }}">Want to check out<br>{{ get_restaurant_by_id(1).name }}?</a>
         </div> 
 
             {% endif %}
