@@ -1,9 +1,8 @@
 from flask_login import UserMixin
-from sqlalchemy.sql import func
-from markupsafe import Markup
-from src.server import db
+from flask_sqlalchemy import SQLAlchemy
 import os
 
+db = SQLAlchemy()
 
 class User(UserMixin, db.Model):
     __tablename__ = "users"
@@ -15,7 +14,7 @@ class User(UserMixin, db.Model):
     age = db.Column(db.Integer, nullable=True)
     zipcode = db.Column(db.String(250), nullable=True)
     
-    ratings = db.Relationship("Rating", back_populates="user")
+    ratings = db.relationship("Rating", back_populates="user")
     
     def __repr__(self):
         return f"<User id={self.id} username={self.username}>"
@@ -30,20 +29,11 @@ class Restaurant(db.Model):
     image_url = db.Column(db.String(500), nullable=True)
     description = db.Column(db.String(2000), nullable=True)
     full_service = db.Column(db.Boolean, nullable=True)
-    # breakfast = db.Column(db.Boolean, nullable=True)
-    # american = db.Column(db.Boolean, nullable=True)
-    # southern = db.Column(db.Boolean, nullable=True)
-    # mexican = db.Column(db.Boolean, nullable=True)
-    # italian = db.Column(db.Boolean, nullable=True)
-    # dessert = db.Column(db.Boolean, nullable=True)
-    # snacks = db.Column(db.Boolean, nullable=True)
-    # coffee = db.Column(db.Boolean, nullable=True)
-    # beverage_only = db.Column(db.Boolean, nullable=True)
     x_coord = db.Column(db.Numeric, nullable=True)
     y_coord = db.Column(db.Numeric, nullable=True)
     
     ratings = db.relationship("Rating", back_populates="restaurant")
-    cuisines = db.relationship("Cuisine", back_populates="restaurant")
+    cuisines = db.relationship("RestaurantCuisine", back_populates="restaurant")
     
     def __repr__(self):
         return f"""<Restaurant rest_id={self.rest_id} 
@@ -56,7 +46,7 @@ class Cuisine(db.Model):
     cuisine_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     name = db.Column(db.String(30), unique=True)
     
-    restaurant = db.relationship("Restaurant", back_populates="cuisines")
+    restaurants = db.relationship("RestaurantCuisine", back_populates="cuisine")
     
     def __repr__(self):
         return f"""<Cuisine: {self.name} 
@@ -68,41 +58,47 @@ class RestaurantCuisine(db.Model):
     __tablename__ = "restaurant_cuisines"
     
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    restaurant = db.relationship("Restaurant", back_populates="cuisines")
+    cuisine = db.relationship("Cuisine", back_populates="restaurants")
+    
     rest_id = db.Column(db.Integer, db.ForeignKey("restaurants.rest_id"))
     cuisine_id = db.Column(db.Integer, db.ForeignKey("cuisines.cuisine_id"))
     
-    # def __repr__(self):
-    #     return f"""<RestaurantCuisine id: {self.id}
-    #                 restaurant: {self.rest_id}
-    #                 cuisine_id: {self.cuisine_id}>"""
+    def __repr__(self):
+        return f"""<RestaurantCuisine id: {self.id}
+                    restaurant: {self.restaurant}
+                    cuisine_id: {self.cuisine}>"""
 
 class Rating(db.Model):
     __tablename__ = "ratings"
     
     rating_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    rest_id = db.Column(db.Integer, db.ForeignKey('restaurants.rest_id'))
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     star_rating = db.Column(db.Integer, nullable=True)
     review = db.Column(db.String(2000), nullable=True)
     
-    restaurant = db.Relationship("Restaurant", back_populates="ratings")
-    user = db.Relationship("User", back_populates="ratings")
+    rest_id = db.Column(db.Integer, db.ForeignKey('restaurants.rest_id'))
+    restaurant = db.relationship("Restaurant", back_populates="ratings")
+    
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    user = db.relationship("User", back_populates="ratings")
     
     def __repr__(self):
         return f"""<Rating rating_id={self.rating_id}
-                    rest_id={self.rest_id}
-                    user_id={self.user_id}
-                    star_rating={self.star_rating}>
+                    restaurant={self.restaurant}
+                    user={self.user}
+                    star_rating={self.star_rating}
+                    review={self.review}>
                     """
                     
 class FountainRating(db.Model):
     __tablename__ = "fountain_ratings"
     
     rating_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    fountain_id = db.Column(db.Integer, db.ForeignKey('restaurants.rest_id'))
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     star_rating = db.Column(db.Integer, nullable=True)
     review = db.Column(db.String(2000), nullable=True)
+    
+    fountain_id = db.Column(db.Integer, db.ForeignKey('restaurants.rest_id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     
     def __repr__(self):
         return f"""<Fountain Rating: id={self.rating_id}
@@ -128,7 +124,6 @@ class Fountain(db.Model):
                     """
 
 
-
 def connect_to_db(app):
     app.config['SQLALCHEMY_DATABASE_URI'] = os.environ["POSTGRES_URI"]
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -141,4 +136,5 @@ if __name__ == "__main__":
     # you in a state of being able to work with the database directly.
     from server import app
     connect_to_db(app)
+    app.app_context().push()
     print("Connected to DB.")

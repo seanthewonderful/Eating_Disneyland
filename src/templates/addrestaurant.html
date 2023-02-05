@@ -1,91 +1,41 @@
-{% extends 'base.html' %} 
-
-{% include 'navbar.html' %}
-
-{% block title %}Add Restaurant{% endblock %}
-
-{% block content %} 
+{% extends 'base.html' %} {% include 'navbar.html' %} {% block title %}Add
+Restaurant{% endblock %} {% block content %}
 
 <div class="container justify-content-md-center">
-    <form class="row" method="post" action="{{ url_for('add_restaurant') }}">
-        <div class="col">
-            <h2 class="heading">Add a Restaurant</h2>
-                {{ form.csrf_token }}
-            <div class="form-group col-4">
-                {{ form.name.label }}
-                {{ form.name }}
-            </div>
-            <div class="form-group col-4">
-                {{ form.image_url.label }}
-                {{ form.image_url }}
-            </div>
-            <div class="form-group col-4">
-                {{ form.land.label }}
-                {{ form.land }}
-            </div>
-            <div class="form-group col-4">
-                {{ form.expense.label }}
-                {{ form.expense }}
-            </div>
-            <div class="form-group col-4">
-                {{ form.description.label }}
-                {{ form.description }}
-            </div>
-            <div class="form-group col-4">
-                {{ form.x_coord.label }}
-                {{ form.x_coord }}
-            </div>
-            <div class="form-group col-4">
-                {{ form.y_coord.label }}
-                {{ form.y_coord }}
-            </div>
-        </div>
-        <div class="col pt-5">
-            <div class="form-group col-4">
-                {{ form.full_service.label }}
-                {{ form.full_service }}
-            </div>
-            <div class="form-group col-4">
-                {{ form.breakfast.label }}
-                {{ form.breakfast }}
-            </div>
-            <div class="form-group col-4">
-                {{ form.american.label }}
-                {{ form.american }}
-            </div>
-            <div class="form-group col-4">
-                {{ form.southern.label }}
-                {{ form.southern }}
-            </div>
-            <div class="form-group col-4">
-                {{ form.mexican.label }}
-                {{ form.mexican }}
-            </div>
-            <div class="form-group col-4">
-                {{ form.italian.label }}
-                {{ form.italian }}
-            </div>
-            <div class="form-group col-4">
-                {{ form.dessert.label }}
-                {{ form.dessert }}
-            </div>
-            <div class="form-group col-4">
-                {{ form.snacks.label }}
-                {{ form.snacks }}
-            </div>
-            <div class="form-group col-4">
-                {{ form.coffee.label }}
-                {{ form.coffee }}
-            </div>
-            <div class="form-group col-4">
-                {{ form.beverage_only.label }}
-                {{ form.beverage_only }}
-            </div>
-            <div class="form-group col">
-                {{ form.submit(class="btn btn-primary") }}
-            </div>
-        </div>
-    </form>
+  <form class="row" method="post" action="{{ url_for('add_restaurant') }}">
+    <div class="col">
+      <h2 class="heading">Add a Restaurant</h2>
+      {{ form.csrf_token }}
+      <div class="form-group col-4">{{ form.name.label }} {{ form.name }}</div>
+      <div class="form-group col-4">
+        {{ form.image_url.label }} {{ form.image_url }}
+      </div>
+      <div class="form-group col-4">{{ form.land.label }} {{ form.land }}</div>
+      <div class="form-group col-4">
+        {{ form.expense.label }} {{ form.expense }}
+      </div>
+      <div class="form-group col-4">
+        {{ form.description.label }} {{ form.description }}
+      </div>
+      <div class="form-group col-4">
+        {{ form.x_coord.label }} {{ form.x_coord }}
+      </div>
+      <div class="form-group col-4">
+        {{ form.y_coord.label }} {{ form.y_coord }}
+      </div>
+    </div>
+    <div class="col pt-5">
+      <div class="form-group col-4">
+        {{ form.full_service.label }} {{ form.full_service }}
+      </div>
+      <div class="form-group col-4">
+        {{ form.cuisines.label }} {{ form.cuisines }}
+      </div>
+      <div class="form-group col">
+        {{ form.submit(class="btn btn-primary") }}
+      </div>
+    </div>
+  </form>
 </div>
 
 {% endblock %}

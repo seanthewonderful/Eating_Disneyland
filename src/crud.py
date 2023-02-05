@@ -1,4 +1,4 @@
-from model import User, Restaurant, Rating, Fountain, FountainRating
+from model import User, Restaurant, Rating, Fountain, FountainRating, Cuisine, RestaurantCuisine
 from sqlalchemy.sql import func
 from markupsafe import Markup
 
@@ -33,6 +33,14 @@ def restaurant_reviews(rest_id):
 
 def get_star_rating(user_id, rest_id):
     return (Rating.query.filter_by(user_id=user_id, rest_id=rest_id).first()).star_rating
+
+"""Cuisines"""
+
+def get_all_cuisines():
+    return Cuisine.query.all()
+
+def get_cuisine_by_name(name):
+    return Cuisine.query.filter_by(name=name).first()
 
 """Fountains"""
 

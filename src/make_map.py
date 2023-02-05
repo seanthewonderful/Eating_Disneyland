@@ -1,6 +1,6 @@
 import folium
 from flask import url_for
-from .model import total_ratings, star_avg, total_ratings_fountain, star_avg_fountain
+from crud import total_ratings, star_avg, total_ratings_fountain, star_avg_fountain
 
 
 def make_map(restaurants):

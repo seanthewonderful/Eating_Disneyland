@@ -7,13 +7,12 @@ from jinja2 import StrictUndefined
 import random
 from forms import (DeleteUser, UpdateUser, RegisterForm, LoginForm, 
                    AddRestaurant, RateRestaurant, AddFountain, RateFountain)
-from model import (User, Restaurant, Fountain, Rating, FountainRating)
+from model import (User, Restaurant, Fountain, Rating, FountainRating, db)
 from crud import (total_ratings, star_avg, restaurant_reviews, get_user_by_id,
                   get_restaurant_by_id, generate_stars, get_star_rating, get_all_fountains,
-                  get_all_restaurants, get_all_users, get_user_by_username, get_fountain_by_id)
+                  get_all_restaurants, get_cuisine_by_name, get_user_by_username, get_fountain_by_id)
 from make_map import (make_map, make_fountain_map)
 from werkzeug.security import (generate_password_hash, check_password_hash)
-from flask_sqlalchemy import SQLAlchemy
 from os import environ
 
 
@@ -25,7 +24,6 @@ app.jinja_env.undefined = StrictUndefined
 app.config["DEBUG_TB_INTERCEPT_REDIRECTS"]=False
 login_manager = LoginManager()
 login_manager.init_app(app)
-db = SQLAlchemy(app)
 
 
 """ Home and Map Routes """
@@ -45,8 +43,7 @@ def home():
 def map():
     """Return restaurant map html"""
     
-    restaurants = get_all_restaurants()
-    make_map(restaurants)
+    make_map(get_all_restaurants())
     
     return render_template('disneyland_map.html')
 
@@ -54,8 +51,7 @@ def map():
 def fountain_map():
     """Return fountain map html"""
     
-    fountains = get_all_fountains()
-    make_fountain_map(fountains)
+    make_fountain_map(get_all_fountains())
     
     return render_template('fountain_map.html')
 
@@ -72,6 +68,10 @@ def add_restaurant():
             
             flash("Restaurant already exists", category='danger')
             return redirect(url_for('add_restaurant'))
+
+        cuisines = []
+        for cuisine in form.cuisines.data:
+            cuisines.append(get_cuisine_by_name(cuisine))
         
         new_restaurant = Restaurant(
             name = form.name.data,
@@ -79,15 +79,7 @@ def add_restaurant():
             land = form.land.data,
             expense = form.expense.data,
             full_service = form.full_service.data,
-            breakfast = form.breakfast.data,
-            american = form.american.data,
-            southern = form.southern.data,
-            mexican = form.mexican.data,
-            italian = form.italian.data,
-            dessert = form.dessert.data,
-            snacks = form.snacks.data,
-            coffee = form.coffee.data,
-            beverage_only = form.beverage_only.data,
+            cuisines = cuisines,
             x_coord = form.x_coord.data,
             y_coord = form.y_coord.data
             )
