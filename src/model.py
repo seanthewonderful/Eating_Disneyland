@@ -15,9 +15,10 @@ class User(UserMixin, db.Model):
     age = db.Column(db.Integer, nullable=True)
     zipcode = db.Column(db.String(250), nullable=True)
     
+    ratings = db.Relationship("Rating", back_populates="user")
+    
     def __repr__(self):
         return f"<User id={self.id} username={self.username}>"
-
 
 class Restaurant(db.Model):
     __tablename__ = "restaurants"
@@ -29,23 +30,52 @@ class Restaurant(db.Model):
     image_url = db.Column(db.String(500), nullable=True)
     description = db.Column(db.String(2000), nullable=True)
     full_service = db.Column(db.Boolean, nullable=True)
-    breakfast = db.Column(db.Boolean, nullable=True)
-    american = db.Column(db.Boolean, nullable=True)
-    southern = db.Column(db.Boolean, nullable=True)
-    mexican = db.Column(db.Boolean, nullable=True)
-    italian = db.Column(db.Boolean, nullable=True)
-    dessert = db.Column(db.Boolean, nullable=True)
-    snacks = db.Column(db.Boolean, nullable=True)
-    coffee = db.Column(db.Boolean, nullable=True)
-    beverage_only = db.Column(db.Boolean, nullable=True)
+    # breakfast = db.Column(db.Boolean, nullable=True)
+    # american = db.Column(db.Boolean, nullable=True)
+    # southern = db.Column(db.Boolean, nullable=True)
+    # mexican = db.Column(db.Boolean, nullable=True)
+    # italian = db.Column(db.Boolean, nullable=True)
+    # dessert = db.Column(db.Boolean, nullable=True)
+    # snacks = db.Column(db.Boolean, nullable=True)
+    # coffee = db.Column(db.Boolean, nullable=True)
+    # beverage_only = db.Column(db.Boolean, nullable=True)
     x_coord = db.Column(db.Numeric, nullable=True)
     y_coord = db.Column(db.Numeric, nullable=True)
+    
+    ratings = db.relationship("Rating", back_populates="restaurant")
+    cuisines = db.relationship("Cuisine", back_populates="restaurant")
     
     def __repr__(self):
         return f"""<Restaurant rest_id={self.rest_id} 
                     name={self.name}>
                     """
+
+class Cuisine(db.Model):
+    __tablename__ = "cuisines"
     
+    cuisine_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    name = db.Column(db.String(30), unique=True)
+    
+    restaurant = db.relationship("Restaurant", back_populates="cuisines")
+    
+    def __repr__(self):
+        return f"""<Cuisine: {self.name} 
+                    cuisine_id: {self.cuisine_id}>"""
+    
+class RestaurantCuisine(db.Model):
+    """Junction table to associate restaurants with cuisines"""
+    
+    __tablename__ = "restaurant_cuisines"
+    
+    id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    rest_id = db.Column(db.Integer, db.ForeignKey("restaurants.rest_id"))
+    cuisine_id = db.Column(db.Integer, db.ForeignKey("cuisines.cuisine_id"))
+    
+    # def __repr__(self):
+    #     return f"""<RestaurantCuisine id: {self.id}
+    #                 restaurant: {self.rest_id}
+    #                 cuisine_id: {self.cuisine_id}>"""
+
 class Rating(db.Model):
     __tablename__ = "ratings"
     
@@ -54,6 +84,9 @@ class Rating(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     star_rating = db.Column(db.Integer, nullable=True)
     review = db.Column(db.String(2000), nullable=True)
+    
+    restaurant = db.Relationship("Restaurant", back_populates="ratings")
+    user = db.Relationship("User", back_populates="ratings")
     
     def __repr__(self):
         return f"""<Rating rating_id={self.rating_id}
