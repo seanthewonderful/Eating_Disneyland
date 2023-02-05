@@ -1,5 +1,6 @@
 from model import Restaurant, User, Rating, Fountain, FountainRating, Cuisine, connect_to_db, db
 from server import app
+from werkzeug.security import generate_password_hash
 import os
 
 os.system("dropdb eating_disneyland")
@@ -7,23 +8,24 @@ os.system("createdb eating_disneyland")
 
 connect_to_db(app)
 app.app_context().push()
+print("Connected to DB")
 db.create_all()
 
 cuisines = ["Breakfast", "American", "Southern", "Mexican", "Italian", "Dessert", "Snacks", "Coffee", "Alcohol", "Intergalactic"]
 
 users = [{"username": "tinytim",
-          "password": os.environ["USER_PW"],
+          "password": generate_password_hash(os.environ["USER_PW"], method='pbkdf2:sha256', salt_length=8),
           "email": "t@t.com",
           "age": 40,
           "zipcode": 92692
           },
          {"username": "myquizowski",
-          "password": os.environ["USER_PW"],
+          "password": generate_password_hash(os.environ["USER_PW"], method='pbkdf2:sha256', salt_length=8),
           "email": "mw@mw.com",
           "age": 18,
           "zipcode": 84045},
          {"username": "larrythelarry",
-          "password": os.environ["USER_PW"],
+          "password": generate_password_hash(os.environ["USER_PW"], method='pbkdf2:sha256', salt_length=8),
           "email": "l@l.com",
           "age": 65,
           "zipcode": 92692
@@ -64,7 +66,7 @@ fountains = [{
               "image_url": "src/static/images/red_rose.png",
               "description": "In the olden times I was left to myself for most of the day, but since the contruction of Galaxy's Edge I can't begin to tell you how many humans must exist on this planet. It might even be in the millions. Come say hi so I can add you to the human tally.",
               "x_coord": 33.813555095191816,
-              "Y_coord": -117.91969266601622
+              "y_coord": -117.91969266601622
               },
              {
               "name": "River Belle Terrace Fountain",
@@ -72,22 +74,20 @@ fountains = [{
               "image_url": "src/static/images/river_belle.png",
               "description": "Elegantly aged, I sit in front of the River Belle Terrace seating area, facing Pirate Island. Without much relief from the sun, my water isn't often very cool, but grab yourself a cup of ice and come fill up!",
               "x_coord": 33.81179993283393,
-              "Y_coord": -117.92053414788177},
+              "y_coord": -117.92053414788177},
              {
               "name": "Small World Fountain",
               "land": "Fantasyland",
               "image_url": "src/static/images/small_world.png",
               "description": "Unassiming and practical, I enjoy occasional peace and quiet simply because of how few people know I exist.",
               "x_coord": 33.814428366540696,
-              "Y_coord": -117.91849157457128
+              "y_coord": -117.91849157457128
               }]
 
 os.system("source config.sh")
 
 for cuisine in cuisines:
-    new_cuisine = Cuisine(
-                          name=cuisine
-                          )
+    new_cuisine = Cuisine(name=cuisine)
     db.session.add(new_cuisine)
 
 for user in users:
@@ -126,3 +126,31 @@ for fountain in fountains:
     
 db.session.commit()
 
+cc_rating = Rating(star_rating=4,
+                   review="Lively location on Main Street.",
+                   restaurant=Restaurant.query.filter_by(name="Carnation Cafe").first(),
+                   user=db.session.get(User, 1))
+es_rating = Rating(star_rating=5,
+                   review="I love to come here for an authentic Swiss chimichanga.",
+                   restaurant=Restaurant.query.filter_by(name="Edelweiss Snacks").first(),
+                   user=db.session.get(User, 2))
+hg_rating = Rating(star_rating=5,
+                   review="Great place for a snack, hidden in plain sight.",
+                   restaurant=Restaurant.query.filter_by(name="Harbour Galley").first(),
+                   user=db.session.get(User, 3))
+
+rrtf_rating = FountainRating(star_rating=5,
+                             review="I love taking a sip near the Red Rose",
+                             user=db.session.get(User, 1),
+                             fountain=Fountain.query.filter_by(name="Red Rose Tavern Fountain").first())
+rbtf_rating = FountainRating(star_rating=4,
+                             review="It's truly warm water, but the locale is lovely.",
+                             user=db.session.get(User, 2),
+                             fountain=Fountain.query.filter_by(name="River Belle Terrace Fountain").first())
+swf_rating = FountainRating(star_rating=5,
+                             review="Sometimes I loiter here to absord the peace and quiet, and to have a constant water flow.",
+                             user=db.session.get(User, 3),
+                             fountain=Fountain.query.filter_by(name="Small World Fountain").first())
+
+db.session.add_all([cc_rating, es_rating, hg_rating, rrtf_rating, rbtf_rating, swf_rating])
+db.session.commit()

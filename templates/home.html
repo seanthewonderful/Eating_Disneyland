@@ -72,44 +72,44 @@
       >
         Need a Random Spot to Try?
       </h3>
-      {% for each in restaurants %}
+      {% for restaurant in restaurants %}
       <div
         class="card text-center mb-3 mt-0 shadow"
         style="width: 75%; height: fit-content"
       >
         <img
-          src="{{ each.image_url }}"
+          src="{{ restaurant.image_url }}"
           class="card-img-top"
           style="height: 15vw; min-height: 150px"
           alt="There ought to be something here..."
         />
         <div class="card-body">
           <h5 class="card-title" style="text-shadow: #cc9a07 1px 1px 1px">
-            {{ each.name }}
+            {{ restaurant.name }}
           </h5>
           <p class="card-text mb-1" style="font-style: italic">
-            {{ each.land }}
+            {{ restaurant.land }}
           </p>
           <a
             class="link-warning text-decoration-none"
             style="text-shadow: #274298 0 1px 1px"
-            href="{{ url_for('eating_place', rest_id=each.rest_id) }}"
+            href="{{ url_for('eating_place', rest_id=restaurant.rest_id) }}"
           >
-            {{ star_avg(each.rest_id, total_ratings(each.rest_id)) }} {{
-            generate_stars(star_avg(each.rest_id, total_ratings(each.rest_id)))
-            }}
+            {{ star_avg(restaurant.rest_id, total_ratings(restaurant.rest_id))
+            }} {{ generate_stars(star_avg(restaurant.rest_id,
+            total_ratings(restaurant.rest_id))) }}
             <span style="font-style: italic; font-size: smaller"
-              >({{ total_ratings(each.rest_id) }} reviews)</span
+              >({{ total_ratings(restaurant.rest_id) }} reviews)</span
             >
           </a>
           <p
             class="card-title pt-1"
             style="color: green; text-shadow: #a3cfbc 1px 0 3px"
           >
-            {{ each.expense }}
+            {{ restaurant.expense }}
           </p>
           <a
-            href="{{ url_for('eating_place', rest_id=each.rest_id) }}"
+            href="{{ url_for('eating_place', rest_id=restaurant.rest_id) }}"
             class="btn btn-sm btn-outline-primary shadow"
             >See Details</a
           >

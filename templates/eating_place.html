@@ -19,36 +19,15 @@
             <h5 class="text-success pt-1" style="text-shadow: #a3cfbc 0 1px 2px;"">{{ restaurant.expense }}</h5>
             <p class="card-text">{{ restaurant.description }}</p>
             <p style="font-size:smaller;">
+                
                 {% if restaurant.full_service %}
                 Full-Service<br>
                 {% endif %}
-                {% if restaurant.breakfast %}
-                Breakfast<br>
-                {% endif %}
-                {% if restaurant.american %}
-                American<br>
-                {% endif %}
-                {% if restaurant.southern %}
-                Southern<br>
-                {% endif %}
-                {% if restaurant.mexican %}
-                Mexican<br>
-                {% endif %}
-                {% if restaurant.italian %}
-                Italian<br>
-                {% endif %}
-                {% if restaurant.dessert %}
-                Dessert<br>
-                {% endif %}
-                {% if restaurant.snacks %}
-                Snacks<br>
-                {% endif %}
-                {% if restaurant.coffee %}
-                Coffee<br>
-                {% endif %}
-                {% if restaurant.beverage_only %}
-                Beverages Only<br>
-                {% endif %}
+
+                {% for cuisine in restaurant.cuisines %} 
+                {{ cuisine }}<br>
+                {% endfor %}
+
               </p>
             <button class="btn btn-primary btn-sm py-1 mb-2 shadow" type="button" data-bs-toggle="collapse" data-bs-target="#collapseReviews" aria-expanded="false" aria-controls="collapseReviews">
                 See Reviews <i class="fa-solid fa-arrow-right"></i>

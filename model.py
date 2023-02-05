@@ -14,7 +14,8 @@ class User(UserMixin, db.Model):
     age = db.Column(db.Integer, nullable=True)
     zipcode = db.Column(db.String(250), nullable=True)
     
-    ratings = db.relationship("Rating", back_populates="user")
+    restaurant_ratings = db.relationship("Rating", back_populates="user")
+    fountain_ratings = db.relationship("FountainRating", back_populates="user")
     
     def __repr__(self):
         return f"<User id={self.id} username={self.username}>"
@@ -36,9 +37,7 @@ class Restaurant(db.Model):
     cuisines = db.relationship("RestaurantCuisine", back_populates="restaurant")
     
     def __repr__(self):
-        return f"""<Restaurant rest_id={self.rest_id} 
-                    name={self.name}>
-                    """
+        return f"<Restaurant rest_id={self.rest_id} name={self.name}>"
 
 class Cuisine(db.Model):
     __tablename__ = "cuisines"
@@ -49,8 +48,7 @@ class Cuisine(db.Model):
     restaurants = db.relationship("RestaurantCuisine", back_populates="cuisine")
     
     def __repr__(self):
-        return f"""<Cuisine: {self.name} 
-                    cuisine_id: {self.cuisine_id}>"""
+        return f"<Cuisine: {self.name} cuisine_id: {self.cuisine_id}>"
     
 class RestaurantCuisine(db.Model):
     """Junction table to associate restaurants with cuisines"""
@@ -65,9 +63,7 @@ class RestaurantCuisine(db.Model):
     cuisine_id = db.Column(db.Integer, db.ForeignKey("cuisines.cuisine_id"))
     
     def __repr__(self):
-        return f"""<RestaurantCuisine id: {self.id}
-                    restaurant: {self.restaurant}
-                    cuisine_id: {self.cuisine}>"""
+        return f"<RestaurantCuisine id: {self.id} restaurant: {self.restaurant} cuisine_id: {self.cuisine}>"
 
 class Rating(db.Model):
     __tablename__ = "ratings"
@@ -76,36 +72,30 @@ class Rating(db.Model):
     star_rating = db.Column(db.Integer, nullable=True)
     review = db.Column(db.String(2000), nullable=True)
     
-    rest_id = db.Column(db.Integer, db.ForeignKey('restaurants.rest_id'))
     restaurant = db.relationship("Restaurant", back_populates="ratings")
+    user = db.relationship("User", back_populates="restaurant_ratings")
     
+    rest_id = db.Column(db.Integer, db.ForeignKey('restaurants.rest_id'))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    user = db.relationship("User", back_populates="ratings")
     
     def __repr__(self):
-        return f"""<Rating rating_id={self.rating_id}
-                    restaurant={self.restaurant}
-                    user={self.user}
-                    star_rating={self.star_rating}
-                    review={self.review}>
-                    """
+        return f"<Rating rating_id={self.rating_id} restaurant={self.restaurant} user={self.user} star_rating={self.star_rating} review={self.review}>"
                     
 class FountainRating(db.Model):
     __tablename__ = "fountain_ratings"
     
-    rating_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     star_rating = db.Column(db.Integer, nullable=True)
     review = db.Column(db.String(2000), nullable=True)
     
-    fountain_id = db.Column(db.Integer, db.ForeignKey('restaurants.rest_id'))
+    fountain = db.relationship("Fountain", back_populates="ratings")
+    user = db.relationship("User", back_populates="fountain_ratings")
+    
+    fountain_id = db.Column(db.Integer, db.ForeignKey('fountains.id'))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     
     def __repr__(self):
-        return f"""<Fountain Rating: id={self.rating_id}
-                    fountain_id={self.fountain_id}
-                    user_id={self.user_id}
-                    star_rating={self.star_rating}>
-                    """
+        return f"<Fountain Rating: id={self.id} fountain_id={self.fountain_id} user_id={self.user_id} star_rating={self.star_rating}>"
 
 class Fountain(db.Model):
     __tablename__ = "fountains"
@@ -118,10 +108,10 @@ class Fountain(db.Model):
     x_coord = db.Column(db.Numeric, nullable=True)
     y_coord = db.Column(db.Numeric, nullable=True)
     
+    ratings = db.relationship("FountainRating", back_populates="fountain")
+    
     def __repr__(self):
-        return f"""<Fountain id={self.id} 
-                    name={self.name}>
-                    """
+        return f"<Fountain id={self.id} name={self.name}>"
 
 
 def connect_to_db(app):

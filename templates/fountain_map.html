@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_c7188d94b26107f1c1b530722ad183fb {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_c7188d94b26107f1c1b530722ad183fb" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_c7188d94b26107f1c1b530722ad183fb = L.map(
+                "map_c7188d94b26107f1c1b530722ad183fb",
+                {
+                    center: [33.812034, -117.918968],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 16,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_65c7bcdbccebabf04210fbf6e9e63092 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca target=\"_blank\" href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\"_blank\" href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 13, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_c7188d94b26107f1c1b530722ad183fb);
+        
+    
+            var marker_1ae821f9da1782ed898c6efacba73770 = L.marker(
+                [33.813555095191816, -117.91969266601622],
+                {}
+            ).addTo(map_c7188d94b26107f1c1b530722ad183fb);
+        
+    
+            var icon_5c3b9912cdcd9c5240ef38ce070bf3da = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-tint", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_1ae821f9da1782ed898c6efacba73770.setIcon(icon_5c3b9912cdcd9c5240ef38ce070bf3da);
+        
+    
+        var popup_48e1883258c516532136a83b81cc4c09 = L.popup({"maxWidth": 200});
+
+        
+            
+                var html_7d1a22170aeb07f2e4ea15659e687ed9 = $(`<div id="html_7d1a22170aeb07f2e4ea15659e687ed9" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="/static/images/src/static/images/red_rose.png" alt="an image should be here..." style="max-width: 20rem; max-height:20rem;">                                 <div class="card-body">                                         <h4 class="card-title">Red Rose Tavern Fountain</h4>                                         <h6 class="card-text" style="font-style: italic;">Fantasyland</h6>                                         <h6 style="color:#E4BB23; font-weight:bold;">5.0 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (1)</span></h6>                                         <a type="button" href="/fountain_place/1" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+                popup_48e1883258c516532136a83b81cc4c09.setContent(html_7d1a22170aeb07f2e4ea15659e687ed9);
+            
+        
+
+        marker_1ae821f9da1782ed898c6efacba73770.bindPopup(popup_48e1883258c516532136a83b81cc4c09)
+        ;
+
+        
+    
+    
+            marker_1ae821f9da1782ed898c6efacba73770.bindTooltip(
+                `<div>
+                     Red Rose Tavern Fountain
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9b4ceae72382981a0d45f9d8d8ad897c = L.marker(
+                [33.81179993283393, -117.92053414788177],
+                {}
+            ).addTo(map_c7188d94b26107f1c1b530722ad183fb);
+        
+    
+            var icon_b8234f67b5d106c5ec91c238932c7eeb = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-tint", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_9b4ceae72382981a0d45f9d8d8ad897c.setIcon(icon_b8234f67b5d106c5ec91c238932c7eeb);
+        
+    
+        var popup_35221fa3c2d5d9df8b407fdb253a5f54 = L.popup({"maxWidth": 200});
+
+        
+            
+                var html_cd88425cb4ae79b54752671b66dea1b6 = $(`<div id="html_cd88425cb4ae79b54752671b66dea1b6" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="/static/images/src/static/images/river_belle.png" alt="an image should be here..." style="max-width: 20rem; max-height:20rem;">                                 <div class="card-body">                                         <h4 class="card-title">River Belle Terrace Fountain</h4>                                         <h6 class="card-text" style="font-style: italic;">Frontierland</h6>                                         <h6 style="color:#E4BB23; font-weight:bold;">4.0 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (1)</span></h6>                                         <a type="button" href="/fountain_place/2" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+                popup_35221fa3c2d5d9df8b407fdb253a5f54.setContent(html_cd88425cb4ae79b54752671b66dea1b6);
+            
+        
+
+        marker_9b4ceae72382981a0d45f9d8d8ad897c.bindPopup(popup_35221fa3c2d5d9df8b407fdb253a5f54)
+        ;
+
+        
+    
+    
+            marker_9b4ceae72382981a0d45f9d8d8ad897c.bindTooltip(
+                `<div>
+                     River Belle Terrace Fountain
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f700ebb3c72b3838c9d711f94243fd43 = L.marker(
+                [33.814428366540696, -117.91849157457128],
+                {}
+            ).addTo(map_c7188d94b26107f1c1b530722ad183fb);
+        
+    
+            var icon_6ab8f6bf4ca2935199007ade7fd155b5 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-tint", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_f700ebb3c72b3838c9d711f94243fd43.setIcon(icon_6ab8f6bf4ca2935199007ade7fd155b5);
+        
+    
+        var popup_8213690b4b86cc4adb48dea1d1f6a25d = L.popup({"maxWidth": 200});
+
+        
+            
+                var html_9756d81bd40b6c3c0594ad811b1987a7 = $(`<div id="html_9756d81bd40b6c3c0594ad811b1987a7" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="/static/images/src/static/images/small_world.png" alt="an image should be here..." style="max-width: 20rem; max-height:20rem;">                                 <div class="card-body">                                         <h4 class="card-title">Small World Fountain</h4>                                         <h6 class="card-text" style="font-style: italic;">Fantasyland</h6>                                         <h6 style="color:#E4BB23; font-weight:bold;">5.0 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (1)</span></h6>                                         <a type="button" href="/fountain_place/3" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+                popup_8213690b4b86cc4adb48dea1d1f6a25d.setContent(html_9756d81bd40b6c3c0594ad811b1987a7);
+            
+        
+
+        marker_f700ebb3c72b3838c9d711f94243fd43.bindPopup(popup_8213690b4b86cc4adb48dea1d1f6a25d)
+        ;
+
+        
+    
+    
+            marker_f700ebb3c72b3838c9d711f94243fd43.bindTooltip(
+                `<div>
+                     Small World Fountain
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>
+</html>
