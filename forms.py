@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import (StringField, SubmitField, PasswordField, TextAreaField, EmailField, DecimalField,IntegerField, RadioField, SelectField, SelectMultipleField)
+from wtforms import (StringField, SubmitField, PasswordField, TextAreaField, EmailField, DecimalField,IntegerField, RadioField, SelectField, SelectMultipleField, BooleanField)
 from wtforms.validators import DataRequired, Email, Length, NumberRange, email_validator, InputRequired, ValidationError
 
 
@@ -37,6 +37,7 @@ class AddRestaurant(FlaskForm):
     land = RadioField('Land', choices=['Main Street', 'Adventureland', 'New Orleans Square', 'Critter Country', "Galaxy's Edge", 'Frontierland', 'Fantasyland', "Mickey's Toontown", 'Tomorrowland'])
     expense = SelectField('Expense', choices=[('$', '$'), ('$$', '$$'), ('$$$', '$$$'), ('$$$$', '$$$$')])
     description = TextAreaField('Description')
+    full_service= BooleanField('Full-service?')
     cuisines = SelectMultipleField('Cuisines', choices=["Breakfast", "American", "Southern", "Mexican", "Italian", "Dessert", "Snacks", "Coffee", "Alcohol", "Intergalactic"])
     x_coord = DecimalField('X Coordinate')
     y_coord = DecimalField('Y Coordinate')
