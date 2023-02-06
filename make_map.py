@@ -58,11 +58,11 @@ def make_fountain_map(fountains):
                 </div>
                 """
             popup = folium.Popup(html.format(each.image_url, 
-                                         each.name, 
-                                         each.land,  
-                                         star_avg_fountain(each.id, total_ratings_fountain(each.id)),
-                                         total_ratings_fountain(each.id),
-                                         url_for('fountain_place', fountain_id=each.id)), max_width=200)
+                                             each.name, 
+                                             each.land,  
+                                             star_avg_fountain(each.id, total_ratings_fountain(each.id)),
+                                             total_ratings_fountain(each.id),
+                                             url_for('fountain_place', fountain_id=each.id)), max_width=200)
         
             folium.Marker([each.x_coord, each.y_coord], tooltip=each.name, popup=popup,
                 icon=folium.Icon(icon_color='white', icon='fa-tint', prefix='fa')).add_to(fountain_map)

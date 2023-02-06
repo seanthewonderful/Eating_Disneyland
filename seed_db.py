@@ -63,7 +63,7 @@ restaurants = [{
 fountains = [{
               "name": "Red Rose Tavern Fountain",
               "land": "Fantasyland",
-              "image_url": "src/static/images/red_rose.png",
+              "image_url": "red_rose.png",
               "description": "In the olden times I was left to myself for most of the day, but since the contruction of Galaxy's Edge I can't begin to tell you how many humans must exist on this planet. It might even be in the millions. Come say hi so I can add you to the human tally.",
               "x_coord": 33.813555095191816,
               "y_coord": -117.91969266601622
@@ -71,14 +71,14 @@ fountains = [{
              {
               "name": "River Belle Terrace Fountain",
               "land": "Frontierland",
-              "image_url": "src/static/images/river_belle.png",
+              "image_url": "river_belle.png",
               "description": "Elegantly aged, I sit in front of the River Belle Terrace seating area, facing Pirate Island. Without much relief from the sun, my water isn't often very cool, but grab yourself a cup of ice and come fill up!",
               "x_coord": 33.81179993283393,
               "y_coord": -117.92053414788177},
              {
               "name": "Small World Fountain",
               "land": "Fantasyland",
-              "image_url": "src/static/images/small_world.png",
+              "image_url": "small_world.png",
               "description": "Unassiming and practical, I enjoy occasional peace and quiet simply because of how few people know I exist.",
               "x_coord": 33.814428366540696,
               "y_coord": -117.91849157457128

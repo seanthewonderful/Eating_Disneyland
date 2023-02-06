@@ -55,7 +55,20 @@ def fountain_map():
     
     return render_template('fountain_map.html')
 
-""" Alphabetical Page Routes"""
+""" Restaurant Routes """
+
+@app.route('/restaurants')
+def restaurants():
+    """Renders page with all restaurants from db"""
+    
+    restaurants = get_all_restaurants()
+    
+    return render_template('restaurants.html', 
+                           restaurants=restaurants, 
+                           total_ratings=total_ratings, 
+                           star_avg=star_avg,
+                           generate_stars=generate_stars)
+
 @app.route('/add_restaurant', methods=["GET", "POST"])
 def add_restaurant():
     """Return page to add a new restaurant, accepts and processes new restaurant submission"""
@@ -72,6 +85,8 @@ def add_restaurant():
         cuisines = []
         for cuisine in form.cuisines.data:
             cuisines.append(get_cuisine_by_name(cuisine))
+            
+        print(cuisines)
         
         new_restaurant = Restaurant(
             name = form.name.data,
@@ -79,10 +94,11 @@ def add_restaurant():
             land = form.land.data,
             expense = form.expense.data,
             full_service = form.full_service.data,
-            cuisines = cuisines,
+            # cuisines = cuisines,
             x_coord = form.x_coord.data,
             y_coord = form.y_coord.data
             )
+        print(new_restaurant)
         db.session.add(new_restaurant)
         db.session.commit()
         flash("Restaurant added successfully", category='success')
@@ -90,96 +106,6 @@ def add_restaurant():
         return redirect(url_for('add_restaurant'))
     
     return render_template('addrestaurant.html', form=form)
-
-
-@app.route('/add_fountain', methods=["GET", "POST"])
-def add_fountain():
-    """Return page to add a new fountain, accepts and processes new fountain submission"""
-    
-    form = AddFountain()
-    
-    if form.validate_on_submit():
-        
-        if Fountain.query.filter_by(name=form.name.data).first():
-            
-            flash("Fountain name already exists", category='danger')
-            return redirect(url_for('add_fountain'))
-        
-        new_fountain = Fountain(
-            name = form.name.data,
-            image_url = form.image_url.data,
-            land = form.land.data,
-            description = form.description.data,
-            x_coord = form.x_coord.data,
-            y_coord = form.y_coord.data
-            )
-        db.session.add(new_fountain)
-        db.session.commit()
-        db.session.close()
-        flash("Fountain added successfully", category='success')
-        
-        return redirect(url_for('add_fountain'))
-    
-    return render_template('add_fountain.html', form=form)
-
-
-@app.route('/delete_user', methods=["GET", "POST"])
-@login_required
-def delete_user():
-    """Page to delete a user from the db, accepts post to delete user"""
-    
-    form = DeleteUser()
-    
-    if form.validate_on_submit():
-        
-        print("form validated")
-        db.session.delete(current_user)
-        db.session.commit()
-        db.session.close()
-        flash("Account sent to the Memory Dump. Now perusing as a guest!", category='info')
-        return redirect(url_for('home'))
-    
-    return render_template('delete_user.html', form=form)
-
-
-@app.route('/fountain_place/<fountain_id>', methods=["GET", "POST"])
-def fountain_place(fountain_id):
-    """Renders page for specific fountain, POST creates a new rating for the fountain"""
-    
-    form = RateFountain()
-    fountain = get_fountain_by_id(fountain_id)
-    
-    if current_user.is_authenticated:
-        
-        user_id = current_user.id
-        rated = FountainRating.query.filter_by(user_id=user_id, fountain_id=fountain_id).first()
-        
-        if form.validate_on_submit():
-            
-            star_rating = form.star_rating.data
-            review = form.review.data
-            
-            if FountainRating.query.filter_by(user_id=user_id, fountain_id=fountain_id).first():
-                pass
-            new_rating = FountainRating(user_id=user_id,
-                                 fountain_id=fountain_id,
-                                 star_rating=star_rating,
-                                 review=review)
-            db.session.add(new_rating)
-            db.session.commit()
-            db.session.close()
-            flash("Your review has been accepted, thank you!", category='success')
-            return redirect(url_for('fountain_place', fountain_id=fountain_id))
-        
-        return render_template('fountain_place.html', 
-                                form=form,
-                                fountain=fountain,
-                                rated=rated)
-        
-    return render_template('fountain_place.html', 
-                           form=form,
-                           fountain=fountain,
-                           rated=rated)
 
 @app.route('/eating_place/<rest_id>', methods=["GET", "POST"])
 def eating_place(rest_id):
@@ -236,44 +162,87 @@ def eating_place(rest_id):
                            generate_stars=generate_stars,
                            get_star_rating=get_star_rating)
 
-
-@app.route('/login', methods=["GET", "POST"])
-def login():
-    """Renders login page, POST logs in a user"""
+@app.route('/update_restaurant/<rest_id>', methods=["POST"])
+def update_restaurant(rest_id):
+    """Updates information about a restaurant"""
     
-    form = LoginForm()
+    
+    
+    pass
+
+""" Fountain Routes """
+
+@app.route('/fountain_place/<fountain_id>', methods=["GET", "POST"])
+def fountain_place(fountain_id):
+    """Renders page for specific fountain, POST creates a new rating for the fountain"""
+    
+    form = RateFountain()
+    fountain = get_fountain_by_id(fountain_id)
+    
+    if current_user.is_authenticated:
+        
+        user_id = current_user.id
+        rated = FountainRating.query.filter_by(user_id=user_id, fountain_id=fountain_id).first()
+        
+        if form.validate_on_submit():
+            
+            star_rating = form.star_rating.data
+            review = form.review.data
+            
+            if FountainRating.query.filter_by(user_id=user_id, fountain_id=fountain_id).first():
+                pass
+            new_rating = FountainRating(user_id=user_id,
+                                 fountain_id=fountain_id,
+                                 star_rating=star_rating,
+                                 review=review)
+            db.session.add(new_rating)
+            db.session.commit()
+            db.session.close()
+            flash("Your review has been accepted, thank you!", category='success')
+            return redirect(url_for('fountain_place', fountain_id=fountain_id))
+        
+        return render_template('fountain_place.html', 
+                                form=form,
+                                fountain=fountain,
+                                rated=rated)
+        
+    return render_template('fountain_place.html', 
+                           form=form,
+                           fountain=fountain,
+                           rated=rated)
+
+
+@app.route('/add_fountain', methods=["GET", "POST"])
+def add_fountain():
+    """Return page to add a new fountain, accepts and processes new fountain submission"""
+    
+    form = AddFountain()
     
     if form.validate_on_submit():
-        user = User.query.filter_by(username=(form.username.data).lower()).first()
         
-        if user:
-            password = form.password.data
+        if Fountain.query.filter_by(name=form.name.data).first():
             
-            if check_password_hash(user.password, password):
-                login_user(user)
-                flash("Flight to LoginLand successful", category='success')
-                return redirect(url_for('home'))
-            
-            else:
-                flash("Incorrect password", category='danger')
-                return redirect(url_for('login'))
-            
-        else:
-            flash("No such username exists...yet. Please register to claim it!", category='warning')
-            return redirect(url_for('login'))
+            flash("Fountain name already exists", category='danger')
+            return redirect(url_for('add_fountain'))
         
-    return render_template('login.html', form=form)
-
-
-@app.route('/logout')
-def logout():
-    """Logs a user out"""
+        new_fountain = Fountain(
+            name = form.name.data,
+            image_url = form.image_url.data,
+            land = form.land.data,
+            description = form.description.data,
+            x_coord = form.x_coord.data,
+            y_coord = form.y_coord.data
+            )
+        db.session.add(new_fountain)
+        db.session.commit()
+        db.session.close()
+        flash("Fountain added successfully", category='success')
+        
+        return redirect(url_for('add_fountain'))
     
-    logout_user()
-    flash("Now leaving LoginLand. Please fly our way again!", category='primary')
-    
-    return redirect(url_for('home'))
+    return render_template('add_fountain.html', form=form)
 
+""" User Routes """
 
 @app.route('/my_contributions', methods=["GET", "POST"])
 @login_required
@@ -312,7 +281,6 @@ def my_contributions():
                            get_restaurant_by_id=get_restaurant_by_id,
                            generate_stars=generate_stars)
 
-
 @app.route('/profile', methods=["GET", "POST"])
 @login_required
 def profile():
@@ -346,6 +314,43 @@ def profile():
     
     return render_template('profile.html', form=form)
 
+""" Login/Logout/Register Routes """
+
+@app.route('/login', methods=["GET", "POST"])
+def login():
+    """Renders login page, POST logs in a user"""
+    
+    form = LoginForm()
+    
+    if form.validate_on_submit():
+        user = User.query.filter_by(username=(form.username.data).lower()).first()
+        
+        if user:
+            password = form.password.data
+            
+            if check_password_hash(user.password, password):
+                login_user(user)
+                flash("Flight to LoginLand successful", category='success')
+                return redirect(url_for('home'))
+            
+            else:
+                flash("Incorrect password", category='danger')
+                return redirect(url_for('login'))
+            
+        else:
+            flash("No such username exists...yet. Please register to claim it!", category='warning')
+            return redirect(url_for('login'))
+        
+    return render_template('login.html', form=form)
+
+@app.route('/logout')
+def logout():
+    """Logs a user out"""
+    
+    logout_user()
+    flash("Now leaving LoginLand. Please fly our way again!", category='primary')
+    
+    return redirect(url_for('home'))
 
 @app.route('/register', methods=["GET", "POST"])
 def register():
@@ -382,24 +387,23 @@ def register():
     
     return render_template('register.html', form=form)
 
-
-@app.route('/restaurants')
-def restaurants():
-    """Renders page with all restaurants from db"""
+@app.route('/delete_user', methods=["GET", "POST"])
+@login_required
+def delete_user():
+    """Page to delete a user from the db, accepts post to delete user"""
     
-    restaurants = get_all_restaurants()
+    form = DeleteUser()
     
-    return render_template('restaurants.html', 
-                           restaurants=restaurants, 
-                           total_ratings=total_ratings, 
-                           star_avg=star_avg,
-                           generate_stars=generate_stars)
-
-
-@app.route('/hp_image_preview')
-def hp_image_preview():
-    return render_template('hp_image_preview.html')
-
+    if form.validate_on_submit():
+        
+        print("form validated")
+        db.session.delete(current_user)
+        db.session.commit()
+        db.session.close()
+        flash("Account sent to the Memory Dump. Now perusing as a guest!", category='info')
+        return redirect(url_for('home'))
+    
+    return render_template('delete_user.html', form=form)
 
 """ Flask Managers """
 
@@ -410,6 +414,10 @@ def load_user(user_id):
 @login_manager.unauthorized_handler
 def unauthorized():
     return "Sorry, you must be logged in to view this page"
+
+@app.route('/hp_image_preview')
+def hp_image_preview():
+    return render_template('hp_image_preview.html')
 
 
 if __name__ == "__main__":
