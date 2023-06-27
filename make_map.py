@@ -5,7 +5,10 @@ from crud import total_ratings, star_avg, total_ratings_fountain, star_avg_fount
 
 def make_map(restaurants):
     
-    disneyland_map = folium.Map(location=[33.812034, -117.918968], zoom_start=16, min_zoom=13, max_zoom=19)
+    disneyland_map = folium.Map(location=[33.812034, -117.918968], 
+                                zoom_start=16, 
+                                min_zoom=13, 
+                                max_zoom=19)
     
     for each in restaurants:
         html = """

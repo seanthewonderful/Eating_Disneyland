@@ -82,11 +82,11 @@ def add_restaurant():
             flash("Restaurant already exists", category='danger')
             return redirect(url_for('add_restaurant'))
 
-        cuisines = []
-        for cuisine in form.cuisines.data:
-            cuisines.append(get_cuisine_by_name(cuisine))
+        # cuisines = []
+        # for cuisine in form.cuisines.data:
+        #     cuisines.append(get_cuisine_by_name(cuisine))
             
-        print(cuisines)
+        # print(cuisines)
         
         new_restaurant = Restaurant(
             name = form.name.data,
@@ -94,11 +94,10 @@ def add_restaurant():
             land = form.land.data,
             expense = form.expense.data,
             full_service = form.full_service.data,
-            # cuisines = cuisines,
             x_coord = form.x_coord.data,
             y_coord = form.y_coord.data
             )
-        print(new_restaurant)
+        
         db.session.add(new_restaurant)
         db.session.commit()
         flash("Restaurant added successfully", category='success')
@@ -415,14 +414,19 @@ def load_user(user_id):
 def unauthorized():
     return "Sorry, you must be logged in to view this page"
 
+"""Custom image preview route"""
+
 @app.route('/hp_image_preview')
 def hp_image_preview():
     return render_template('hp_image_preview.html')
 
 
+
 if __name__ == "__main__":
     from model import connect_to_db
+    import os
     # app.jinja_env.auto_reload = app.debug
     # DebugToolbarExtension(app)
+    os.system("source config.sh")
     connect_to_db(app)
     app.run()

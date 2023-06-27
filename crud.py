@@ -52,7 +52,7 @@ def get_all_fountains():
     return Fountain.query.all()
 
 def get_fountain_by_id(fountain_id):
-    return Fountain.query.get(fountain_id)
+    return Fountain.query.filter_by(id=fountain_id).first()
 
 def total_ratings_fountain(id):
     return Fountain.query.filter_by(id=id).count()    
@@ -117,7 +117,8 @@ def generate_stars(stars):
 if __name__ == "__main__":
     from server import app
     from model import connect_to_db
-    
+    import os
+    os.system("source config.sh")
     connect_to_db(app)
     app.app_context().push()
     print("Connected to DB")

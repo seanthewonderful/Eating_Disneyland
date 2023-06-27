@@ -46,8 +46,8 @@
             >Eating Places</a
           >
         </li>
-        {% if current_user.is_authenticated %} 
-        {% if current_user.username =='tinytim' %}
+        {% if current_user.is_authenticated %} {% if current_user.username
+        =='tinytim' %}
         <li class="nav-item">
           <a class="nav-link" href="{{ url_for('add_restaurant') }}"
             >Add Restaurant</a

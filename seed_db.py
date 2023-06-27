@@ -3,6 +3,7 @@ from server import app
 from werkzeug.security import generate_password_hash
 import os
 
+os.system("source config.sh")
 os.system("dropdb eating_disneyland")
 os.system("createdb eating_disneyland")
 
