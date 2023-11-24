@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% include 'navbar.html' %}
+
+{% block title %}Delete Account{% endblock %}
+
+{% block content %} 
+
+<div class="container justify-content-md-center my-4">
+    <form class="mx-3" method="post" action="{{ url_for('users_bp.delete_user') }}">
+        <h2 class="heading">Delete Your Account</h2>
+            {{ form.csrf_token }}
+        <div class="form-group m-2 col-4">
+            {{ form.type_delete.label }}
+            {{ form.type_delete(class="form-control") }}
+            {% for field, errors in form.errors.items() %}
+            {% if field == 'csrf_token' %} 
+            <span></span>
+            {% elif field == 'type_delete' %}
+            <small class="form-text text-danger ">
+                {{ ', '.join(errors) }}
+            </small>
+            {% endif %}
+            {% endfor %}
+        
+        </div>
+        <div class="form-group m-2 col">
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
+    </form>
+    <!-- <div class="m-2">
+        <p style="padding-top:3%">Need to Register an account first?</p>
+        <a class="btn btn-primary btn-sm" href="{{ url_for('auth_bp.register') }}" role="button">Register</a>
+    </div> -->
+</div>
+
+{% endblock %}
