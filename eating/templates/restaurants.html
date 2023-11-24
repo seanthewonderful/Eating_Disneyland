@@ -1,0 +1,73 @@
+{% extends 'base.html' %} {% include 'navbar.html' %} {% block title
+%}Everywhere to Eat{% endblock %} {% block content %}
+
+<!-- <div class="container row"> -->
+{% for restaurant in restaurants %}
+<!-- <div class="containter col" style="width:50rem;"> -->
+
+<div class="card">
+  <div
+    class="front container row"
+    style="background-image: url('{{ restaurant.image_url }}');"
+  >
+    <div class="">
+      <p class="large">{{ restaurant.name }}</p>
+    </div>
+  </div>
+
+  <div class="back">
+    <div>
+      <div
+        style="
+          font-weight: bold;
+          font-family: Noto, sans-serif;
+          font-size: 1.5rem;
+          text-shadow: #997404 0 1px 2px;
+        "
+      >
+        {{ restaurant.name }} <br /><span
+          class="release_date fst-italic fw-normal"
+          style="font-size: medium; text-shadow: none"
+          >{{ restaurant.land }}</span
+        >
+      </div>
+      <label>{{ restaurant.expense }}</label>
+
+      <div class="rating">
+        <a
+          class="link-warning text-decoration-none"
+          href="{{ url_for('restaurants_bp.eating_place', rest_id=restaurant.rest_id) }}"
+          style="text-shadow: #274298 0 1px 1px"
+        >
+          {{ star_avg(restaurant.rest_id, total_ratings(restaurant.rest_id))
+          }}{{ generate_stars(star_avg(restaurant.rest_id,
+          total_ratings(restaurant.rest_id))) }}
+          <span style="font-style: italic; font-size: smaller"
+            >({{ total_ratings(restaurant.rest_id) }} reviews)</span
+          >
+        </a>
+      </div>
+      <p style="font-size: smaller">
+        {% if restaurant.full_service %} Full-Service<br />
+        {% endif %} {% for cuisine in restaurant.cuisines %} {{ cuisine }}<br />
+        {% endfor %}
+      </p>
+      <p class="review">"{{ restaurant.description }}"</p>
+
+      <a
+        href="{{ url_for('restaurants_bp.eating_place', rest_id=restaurant.rest_id) }}"
+        class="btn btn-primary shadow"
+        >See Details</a
+      >
+      {% if current_user.is_authenticated %} {% if current_user.username ==
+      "TinyTim" %}
+      <a href="#" class="button delete-button">Delete</a>
+      {% endif %} {% endif %}
+    </div>
+  </div>
+</div>
+
+<!-- </div> -->
+{% endfor %}
+<!-- </div> -->
+{% endblock %}

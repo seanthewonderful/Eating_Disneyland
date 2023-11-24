@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_05d20c9b2a2d1ea18d385d849d7e238c {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_05d20c9b2a2d1ea18d385d849d7e238c" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_05d20c9b2a2d1ea18d385d849d7e238c = L.map(
+                "map_05d20c9b2a2d1ea18d385d849d7e238c",
+                {
+                    center: [33.812034, -117.918968],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 16,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_422ef588c3832db9d362a5649ee83c39 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca target=\"_blank\" href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\"_blank\" href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 13, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_05d20c9b2a2d1ea18d385d849d7e238c);
+        
+    
+            var marker_5c5964f3cd4b2daabbefbc979c963959 = L.marker(
+                [33.811067, -117.919103],
+                {}
+            ).addTo(map_05d20c9b2a2d1ea18d385d849d7e238c);
+        
+    
+            var icon_eab85620c6e62cc37fcf2e34b96f496c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-cutlery", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_5c5964f3cd4b2daabbefbc979c963959.setIcon(icon_eab85620c6e62cc37fcf2e34b96f496c);
+        
+    
+        var popup_8042357ee41f92c8a38db4f99483edef = L.popup({"maxWidth": 200});
+
+        
+            
+                var html_828e8bad276d1e42237675dd9b346201 = $(`<div id="html_828e8bad276d1e42237675dd9b346201" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="https://static.wikia.nocookie.net/disney/images/6/65/Carnation_Cafe_2012.png" alt="an image should be here..." style="max-width: 20rem;">                                 <div class="card-body">                                         <h4 class="card-title fw-bold" style="text-shadow: #cc9a07 0 1px 1px;">Carnation Cafe</h4>                                         <h4 class="card-title" style="color: green; text-shadow: #a3cfbc 1px 0 3px;">$$$</h4>                                         <h6 class="card-text" style="font-style: italic;">Main Street</h6>                                         <h4 style="color: #f4c109; font-weight:bold; text-shadow: #172c65 0 1px 1px;">3.3 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (3)</span></h4>                                         <a type="button" href="/eating_place/1" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+                popup_8042357ee41f92c8a38db4f99483edef.setContent(html_828e8bad276d1e42237675dd9b346201);
+            
+        
+
+        marker_5c5964f3cd4b2daabbefbc979c963959.bindPopup(popup_8042357ee41f92c8a38db4f99483edef)
+        ;
+
+        
+    
+    
+            marker_5c5964f3cd4b2daabbefbc979c963959.bindTooltip(
+                `<div>
+                     Carnation Cafe
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_68877f341e7b5e61f4339e7b4aa75da2 = L.marker(
+                [33.81374305708073, -117.91774430413204],
+                {}
+            ).addTo(map_05d20c9b2a2d1ea18d385d849d7e238c);
+        
+    
+            var icon_df238d85778a55df9ab4524ee034cf73 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-cutlery", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_68877f341e7b5e61f4339e7b4aa75da2.setIcon(icon_df238d85778a55df9ab4524ee034cf73);
+        
+    
+        var popup_a7a14d179f26625d3b8a9024ad9fe6d1 = L.popup({"maxWidth": 200});
+
+        
+            
+                var html_0e6780678b9a221fa9f89f862c49cc6f = $(`<div id="html_0e6780678b9a221fa9f89f862c49cc6f" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="https://static.wikia.nocookie.net/disney/images/4/48/EdelweissSnacksExterior.jpg" alt="an image should be here..." style="max-width: 20rem;">                                 <div class="card-body">                                         <h4 class="card-title fw-bold" style="text-shadow: #cc9a07 0 1px 1px;">Edelweiss Snacks</h4>                                         <h4 class="card-title" style="color: green; text-shadow: #a3cfbc 1px 0 3px;">$</h4>                                         <h6 class="card-text" style="font-style: italic;">Fantasyland</h6>                                         <h4 style="color: #f4c109; font-weight:bold; text-shadow: #172c65 0 1px 1px;">5.0 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (1)</span></h4>                                         <a type="button" href="/eating_place/2" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+                popup_a7a14d179f26625d3b8a9024ad9fe6d1.setContent(html_0e6780678b9a221fa9f89f862c49cc6f);
+            
+        
+
+        marker_68877f341e7b5e61f4339e7b4aa75da2.bindPopup(popup_a7a14d179f26625d3b8a9024ad9fe6d1)
+        ;
+
+        
+    
+    
+            marker_68877f341e7b5e61f4339e7b4aa75da2.bindTooltip(
+                `<div>
+                     Edelweiss Snacks
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1296d96e92178dbe796b1ed81c239f8d = L.marker(
+                [33.812041180621804, -117.9219757109676],
+                {}
+            ).addTo(map_05d20c9b2a2d1ea18d385d849d7e238c);
+        
+    
+            var icon_6e6889f41535012041f9788035c11f05 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-cutlery", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_1296d96e92178dbe796b1ed81c239f8d.setIcon(icon_6e6889f41535012041f9788035c11f05);
+        
+    
+        var popup_347c53872e214e3cfb918a5ee9ae6cc2 = L.popup({"maxWidth": 200});
+
+        
+            
+                var html_74fa36aa6bb95bd65855397a734448fa = $(`<div id="html_74fa36aa6bb95bd65855397a734448fa" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="https://blog-cdn.touringplans.com/blog/wp-content/uploads/2021/12/IMG_5040.jpg" alt="an image should be here..." style="max-width: 20rem;">                                 <div class="card-body">                                         <h4 class="card-title fw-bold" style="text-shadow: #cc9a07 0 1px 1px;">Harbour Galley</h4>                                         <h4 class="card-title" style="color: green; text-shadow: #a3cfbc 1px 0 3px;">$$</h4>                                         <h6 class="card-text" style="font-style: italic;">Critter Country</h6>                                         <h4 style="color: #f4c109; font-weight:bold; text-shadow: #172c65 0 1px 1px;">5.0 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (1)</span></h4>                                         <a type="button" href="/eating_place/3" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+                popup_347c53872e214e3cfb918a5ee9ae6cc2.setContent(html_74fa36aa6bb95bd65855397a734448fa);
+            
+        
+
+        marker_1296d96e92178dbe796b1ed81c239f8d.bindPopup(popup_347c53872e214e3cfb918a5ee9ae6cc2)
+        ;
+
+        
+    
+    
+            marker_1296d96e92178dbe796b1ed81c239f8d.bindTooltip(
+                `<div>
+                     Harbour Galley
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_43e0fa1b9919244475de6d670e7cbbce = L.marker(
+                [33.811165, -117.919086],
+                {}
+            ).addTo(map_05d20c9b2a2d1ea18d385d849d7e238c);
+        
+    
+            var icon_9ffcc5082942cebcfbb191e93d259733 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-cutlery", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_43e0fa1b9919244475de6d670e7cbbce.setIcon(icon_9ffcc5082942cebcfbb191e93d259733);
+        
+    
+        var popup_8e24aa406d1522b8fce61ccb4155f637 = L.popup({"maxWidth": 200});
+
+        
+            
+                var html_a5138cbb0be4caef67451ed8e3ea0f5c = $(`<div id="html_a5138cbb0be4caef67451ed8e3ea0f5c" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/dlr/things-to-do/dining/disneyland/gibson-girl-ice-cream-parlor/gibson-girl-ice-cream-parlor-00.jpg?1673561029836" alt="an image should be here..." style="max-width: 20rem;">                                 <div class="card-body">                                         <h4 class="card-title fw-bold" style="text-shadow: #cc9a07 0 1px 1px;">Gibson Girl Ice Cream Parlor</h4>                                         <h4 class="card-title" style="color: green; text-shadow: #a3cfbc 1px 0 3px;">$</h4>                                         <h6 class="card-text" style="font-style: italic;">Main Street</h6>                                         <h4 style="color: #f4c109; font-weight:bold; text-shadow: #172c65 0 1px 1px;">3.5 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (2)</span></h4>                                         <a type="button" href="/eating_place/4" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+                popup_8e24aa406d1522b8fce61ccb4155f637.setContent(html_a5138cbb0be4caef67451ed8e3ea0f5c);
+            
+        
+
+        marker_43e0fa1b9919244475de6d670e7cbbce.bindPopup(popup_8e24aa406d1522b8fce61ccb4155f637)
+        ;
+
+        
+    
+    
+            marker_43e0fa1b9919244475de6d670e7cbbce.bindTooltip(
+                `<div>
+                     Gibson Girl Ice Cream Parlor
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7103a34a5451db756a564738828c45a2 = L.marker(
+                [33.81245859568607, -117.9199964482139],
+                {}
+            ).addTo(map_05d20c9b2a2d1ea18d385d849d7e238c);
+        
+    
+            var icon_79f1ae09a246744213213ae62e27b542 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-cutlery", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_7103a34a5451db756a564738828c45a2.setIcon(icon_79f1ae09a246744213213ae62e27b542);
+        
+    
+        var popup_311ed8389d183f858d1de03aa6f00f75 = L.popup({"maxWidth": 200});
+
+        
+            
+                var html_657b3ea20bb26aaf4cce0d61b60a4d40 = $(`<div id="html_657b3ea20bb26aaf4cce0d61b60a4d40" style="width: 100.0%; height: 100.0%;">                 <head>                 <base target="_parent">                 </head>                 <div class="card text-center" style="max-width: 22rem;">                         <img class="card-img-top" src="https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/dlr/things-to-do/dining/disneyland/rancho-del-zocalo-restaurante/dlr-rancho-del-zocalo-16x9.jpg" alt="an image should be here..." style="max-width: 20rem;">                                 <div class="card-body">                                         <h4 class="card-title fw-bold" style="text-shadow: #cc9a07 0 1px 1px;">Rancho del Zocalo</h4>                                         <h4 class="card-title" style="color: green; text-shadow: #a3cfbc 1px 0 3px;">$$</h4>                                         <h6 class="card-text" style="font-style: italic;">Frontierland</h6>                                         <h4 style="color: #f4c109; font-weight:bold; text-shadow: #172c65 0 1px 1px;">5.0 ⭐️                                          <span style="font-style:italic; font-size: smaller;"> (1)</span></h4>                                         <a type="button" href="/eating_place/5" class="btn btn-primary btn-sm" style="color:white;">See Details</a>                                 </div>                 </div>                 </div>`)[0];
+                popup_311ed8389d183f858d1de03aa6f00f75.setContent(html_657b3ea20bb26aaf4cce0d61b60a4d40);
+            
+        
+
+        marker_7103a34a5451db756a564738828c45a2.bindPopup(popup_311ed8389d183f858d1de03aa6f00f75)
+        ;
+
+        
+    
+    
+            marker_7103a34a5451db756a564738828c45a2.bindTooltip(
+                `<div>
+                     Rancho del Zocalo
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>
+</html>
