@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% include 'navbar.html' %}
+
+{% block title %}Sign on up!{% endblock %}
+
+{% block content %} 
+<div class="container justify-content-md-center pt-5" style="height:73%;">
+<form class="" method="post" action="{{ url_for('users_bp.register') }}">
+    <h2 class="heading">Register an account</h2>
+        {{ form.csrf_token }}
+    <div class="form-group m-2 col-4">
+        {{ form.username.label }}
+        {{ form.username(class="form-control") }}
+    </div>
+    <div class="form-group m-2 col-4">
+        {{ form.password.label }}
+        {{ form.password(class="form-control") }}
+    </div>
+    <div class="form-group m-2 col-4">
+        {{ form.email.label }}
+        {{ form.email(class="form-control") }}
+    </div>
+    <div class="form-group m-2 col-4">
+        {{ form.zipcode.label }}
+        {{ form.zipcode(class="form-control") }}
+    </div>
+    <div class="form-group m-2 col-2">
+        {{ form.age.label }}
+        {{ form.age(class="form-control") }}
+    </div>
+    <div class="form-group m-2 col">
+        {{ form.submit(class="btn btn-primary") }}
+    </div>
+</form>
+</div>
+
+
+
+{% endblock %}

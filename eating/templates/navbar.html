@@ -1,0 +1,142 @@
+<nav
+  class="navbar bg-primary navbar-dark navbar-expand-lg"
+  style="font-family: Noto, sans-serif"
+>
+  <div class="container-fluid justify-content-space-between">
+    <div class="col col-lg">
+      <a
+        class="navbar-brand"
+        style="
+          font-family: Noto;
+          font-style: italic;
+          font-size: 2.5rem;
+          text-shadow: #664d03 1px 1px 2px;
+        "
+        href="{{ url_for('main.home') }}"
+        >Eating Disneyland</a
+      >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="true"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div
+      class="collapse navbar-collapse justify-content-end"
+      id="navbarNav"
+      style="text-shadow: #664d03 1px 1px 1px"
+    >
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            href="{{ url_for('main.home') }}"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item px-4">
+          <a class="nav-link" href="{{ url_for('restaurants_bp.restaurants') }}"
+            >Eating Places</a
+          >
+        </li>
+        {% if current_user.is_authenticated %} {% if current_user.username
+        =='tinytim' %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('restaurants_bp.add_restaurant') }}"
+            >Add Restaurant</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('fountains_bp.add_fountain') }}"
+            >Add Fountain</a
+          >
+        </li>
+        {% endif %}
+        <li class="navbar-text">
+          Logged in as:
+          <!-- <a class="nav-link-disabled" style="color: beige;">{{ current_user.username }}</a> -->
+        </li>
+        <li class="nav-item-dropdown dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            style="font-style: italic"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            {{ current_user.username }}
+            <img
+              src="{{ url_for('static', filename='/images/D.png') }}"
+              alt=""
+              width="24"
+              height="18"
+              class="d-inline-block align-text-top"
+            />
+          </a>
+          <ul
+            class="dropdown-menu dropdown-menu-end"
+            style="text-shadow: none"
+            aria-labelledby="navbarDropdown"
+          >
+            <li>
+              <a class="dropdown-item" href="{{ url_for('users_bp.profile') }}"
+                >Update Profile</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" href="{{ url_for('users_bp.my_contributions') }}"
+                >My Contributions</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" href="{{ url_for('auth_bp.logout') }}">Logout</a>
+            </li>
+          </ul>
+        </li>
+        {% else %}
+        <li class="nav-item-dropdown dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Login/Register
+          </a>
+          <ul
+            class="dropdown-menu dropdown-menu-end"
+            style="text-shadow: none"
+            aria-labelledby="navbarDropdown"
+          >
+            <li>
+              <a class="dropdown-item" href="{{ url_for('auth_bp.login') }}">Login</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="{{ url_for('auth_bp.register') }}"
+                >Register</a
+              >
+            </li>
+          </ul>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+{% with messages = get_flashed_messages(with_categories=true) %} {% if messages
+%} {% for category, message in messages %}
+<div class="alert alert-{{ category }}" role="alert" id="flashMessage">
+  <p>{{ message }}</p>
+</div>
+{% endfor %} {% endif %} {% endwith %}
