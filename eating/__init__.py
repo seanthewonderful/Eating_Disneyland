@@ -20,8 +20,7 @@ def create_app(config_class=Config):
     app.config.from_object(config_class)
 
     csrf.init_app(app)
-    with app.app_context():
-        db.init_app(app)
+    db.init_app(app)
     login_manager.init_app(app)
     app.jinja_env.undefined = StrictUndefined
 
