@@ -3,3 +3,4 @@ config.sh
 /__pycache__
 /node_modules
 *.json
+flask.service
