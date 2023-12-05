@@ -73,6 +73,11 @@
         Need a Random Spot to Try?
       </h3>
       {% for restaurant in restaurants %}
+      <a
+            class="link-warning text-decoration-none"
+            style="text-shadow: #274298 0 1px 1px"
+            href="{{ url_for('restaurants_bp.eating_place', rest_id=restaurant.rest_id) }}"
+          >
       <div
         class="card text-center mb-3 mt-0 shadow"
         style="width: 75%; height: fit-content; display: hidden"
@@ -115,6 +120,7 @@
           >
         </div>
       </div>
+      </a>
       {% endfor %}
     </div>
   </div>
